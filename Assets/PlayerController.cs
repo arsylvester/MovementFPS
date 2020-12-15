@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
 
    public void OnMove(InputAction.CallbackContext context)
     {
-        horizontal = context.ReadValue<Vector2>().x * speed * .1f;
-        vertical = context.ReadValue<Vector2>().y * speed * .1f;
+        horizontal = context.ReadValue<Vector2>().x * speed;
+        vertical = context.ReadValue<Vector2>().y * speed;
+        //playerInput.camera.transform.eulerAngles.
         //Debug.Log(context.ReadValue<Vector2>());
     }
 
@@ -48,8 +49,10 @@ public class PlayerController : MonoBehaviour
         {
             xRotation = lookVerticalMax;
         }
-        float yRotation = (cameraMovement.x * mouseSensitivity) + currentRotation.y;
+        float yRotation = (cameraMovement.x * mouseSensitivity) + transform.localEulerAngles.y;
 
-        playerInput.camera.transform.localEulerAngles = new Vector3(xRotation, yRotation, 0);
+        //Rotate camera's x and player's y
+        playerInput.camera.transform.localEulerAngles = new Vector3(xRotation, 0, 0);
+        transform.localEulerAngles = new Vector3(0, yRotation, 0);
     }
 }
