@@ -9,11 +9,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float mouseSensitivity = 1;
     [SerializeField] float lookVerticalMin = -85;
     [SerializeField] float lookVerticalMax = 85;
+    [SerializeField] float gravity = -9.81f;
+    [SerializeField] float jumpHeight = 1.0f;
     Vector2 inputVector;
     Vector3 movementVector;
     Vector2 cameraMovement;
     PlayerInput playerInput;
     CharacterController characterController;
+    bool isGrounded;
+    bool isJump;
 
     void Start()
     {
@@ -23,12 +27,26 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Check grounded
+        isGrounded = characterController.isGrounded;
+        if(isGrounded && movementVector.y < 0)
+        {
+            movementVector.y = 0;
+        }
+
+        if(isJump && isGrounded)
+        {
+            movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+        }
+
         //Using theorem x2 = xcosB - ysinB
         //y2 = xsinB + ycosB
         //Unity works clockwise, math typically goes counterclockwise so use recipical? (360 - angle)
         float directionAngle = (360 - transform.eulerAngles.y) * Mathf.Deg2Rad;
         movementVector.x = ((Mathf.Cos(directionAngle) * inputVector.x) - (Mathf.Sin(directionAngle) * inputVector.y)) * speed;
         movementVector.z = ((Mathf.Sin(directionAngle) * inputVector.x) + (Mathf.Cos(directionAngle) * inputVector.y)) * speed;
+
+        movementVector.y += gravity * Time.deltaTime;
         characterController.Move(movementVector);
         //Debug.Log("Angle: " + directionAngle * Mathf.Rad2Deg + " x: " + movementVector.x + " z: " + movementVector.z + " Input x:" + inputVector.x + " Input y:" + inputVector.y);
     }
@@ -59,5 +77,11 @@ public class PlayerController : MonoBehaviour
         //Rotate camera's x and player's y
        // playerInput.camera.transform.localEulerAngles = new Vector3(xRotation, 0, 0);
         transform.localEulerAngles = new Vector3(xRotation, yRotation, 0);
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        isJump = context.ReadValueAsButton();
+        Debug.Log(isJump);
     }
 }
