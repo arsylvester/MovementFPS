@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed = 1;
+    [SerializeField] float maxNormalSpeed = 5;
+    [SerializeField] float deceleration = 1;
     [SerializeField] float mouseSensitivity = 1;
     [SerializeField] float lookVerticalMin = -85;
     [SerializeField] float lookVerticalMax = 85;
@@ -43,8 +45,11 @@ public class PlayerController : MonoBehaviour
         //y2 = xsinB + ycosB
         //Unity works clockwise, math typically goes counterclockwise so use recipical? (360 - angle)
         float directionAngle = (360 - transform.eulerAngles.y) * Mathf.Deg2Rad;
-        movementVector.x = ((Mathf.Cos(directionAngle) * inputVector.x) - (Mathf.Sin(directionAngle) * inputVector.y)) * speed;
-        movementVector.z = ((Mathf.Sin(directionAngle) * inputVector.x) + (Mathf.Cos(directionAngle) * inputVector.y)) * speed;
+        movementVector.x += ((Mathf.Cos(directionAngle) * inputVector.x) - (Mathf.Sin(directionAngle) * inputVector.y)) * speed;
+        movementVector.z += ((Mathf.Sin(directionAngle) * inputVector.x) + (Mathf.Cos(directionAngle) * inputVector.y)) * speed;
+
+        movementVector.x = Mathf.Lerp(movementVector.x, 0, deceleration);
+        movementVector.z = Mathf.Lerp(movementVector.z, 0, deceleration);
 
         movementVector.y += gravity * Time.deltaTime;
         characterController.Move(movementVector);
