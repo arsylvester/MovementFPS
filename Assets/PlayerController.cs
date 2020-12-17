@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed = 1;
-    [SerializeField] float maxNormalSpeed = 5;
+    [SerializeField] float maxAcceleration = 5;
     [SerializeField] float deceleration = 1;
     [SerializeField] float mouseSensitivity = 1;
     [SerializeField] float lookVerticalMin = -85;
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     Vector2 inputVector;
     Vector3 movementVector;
     Vector2 cameraMovement;
+    Vector3 wishVector;
     PlayerInput playerInput;
     CharacterController characterController;
     bool isGrounded;
@@ -47,7 +48,12 @@ public class PlayerController : MonoBehaviour
         float directionAngle = (360 - transform.eulerAngles.y) * Mathf.Deg2Rad;
         movementVector.x += ((Mathf.Cos(directionAngle) * inputVector.x) - (Mathf.Sin(directionAngle) * inputVector.y)) * speed;
         movementVector.z += ((Mathf.Sin(directionAngle) * inputVector.x) + (Mathf.Cos(directionAngle) * inputVector.y)) * speed;
-
+        /*
+        float currentSpeed = Vector3.Dot(movementVector, wishVector);
+        float addSpeed = speed - currentSpeed;
+        addSpeed = Mathf.Max(Mathf.Min(addSpeed, maxAcceleration * Time.deltaTime), 0);
+        movementVector += wishVector * addSpeed;
+        */
         movementVector.x = Mathf.Lerp(movementVector.x, 0, deceleration);
         movementVector.z = Mathf.Lerp(movementVector.z, 0, deceleration);
 
