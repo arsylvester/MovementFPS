@@ -942,9 +942,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdeb5217c10ccf74697cd09295e350dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.0002
-  maxAcceleration: 5
-  deceleration: 0.006
+  accelerationAir: 0.5
+  accelerationGround: 0.5
+  maxVelocity: 0.1
+  friction: 10
   mouseSensitivity: 0.2
   lookVerticalMin: 85
   lookVerticalMax: 280
@@ -1355,7 +1356,7 @@ Transform:
   m_GameObject: {fileID: 1235464943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

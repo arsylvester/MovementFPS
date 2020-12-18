@@ -5,18 +5,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 1;
-    [SerializeField] float maxAcceleration = 5;
-    [SerializeField] float deceleration = 1;
+   // [SerializeField] float speed = 1;
+    [SerializeField] float accelerationAir = 5;
+    [SerializeField] float accelerationGround = 5;
+    [SerializeField] float maxVelocity = 10;
+    [SerializeField] float friction = 1;
     [SerializeField] float mouseSensitivity = 1;
     [SerializeField] float lookVerticalMin = -85;
     [SerializeField] float lookVerticalMax = 85;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float jumpHeight = 1.0f;
     Vector2 inputVector;
+    Vector2 wishDirection;
     Vector3 movementVector;
     Vector2 cameraMovement;
-    Vector3 wishVector;
+    Vector2 currentVelocity;
     PlayerInput playerInput;
     CharacterController characterController;
     bool isGrounded;
@@ -42,24 +45,79 @@ public class PlayerController : MonoBehaviour
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
 
-        //Using theorem x2 = xcosB - ysinB
-        //y2 = xsinB + ycosB
-        //Unity works clockwise, math typically goes counterclockwise so use recipical? (360 - angle)
-        float directionAngle = (360 - transform.eulerAngles.y) * Mathf.Deg2Rad;
-        movementVector.x += ((Mathf.Cos(directionAngle) * inputVector.x) - (Mathf.Sin(directionAngle) * inputVector.y)) * speed;
-        movementVector.z += ((Mathf.Sin(directionAngle) * inputVector.x) + (Mathf.Cos(directionAngle) * inputVector.y)) * speed;
+        //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped.
+        GetWishDirection();
+        //print("WishDirection: " + wishDirection.normalized);
+
+        currentVelocity.x = movementVector.x;
+        currentVelocity.y = movementVector.z;
+        print("Velocity before: " + currentVelocity);
+
+        if (isGrounded)
+        {
+            //Friction
+            float speed = currentVelocity.magnitude;
+            if(speed != 0)
+            {
+                float slow = speed * friction * Time.deltaTime;
+                //print("Slowing by: " + slow);
+                currentVelocity *= Mathf.Max(speed - slow, 0) / speed;
+            }
+            print("Friction Velocity: " + currentVelocity);
+
+            currentVelocity = Accelerate(accelerationGround);
+            print("Ground accelerate: " + currentVelocity);
+        }
+        else
+        {
+            currentVelocity = Accelerate(accelerationAir);
+        }
+
+        movementVector.x = currentVelocity.x;
+        movementVector.z = currentVelocity.y;
+        movementVector.y += gravity * Time.deltaTime;
+        print("Moving at x velocity: " + movementVector.x + " z: " + movementVector.z + " and with an input of " + inputVector);
+        characterController.Move(movementVector);
+
         /*
+        
+        
         float currentSpeed = Vector3.Dot(movementVector, wishVector);
         float addSpeed = speed - currentSpeed;
         addSpeed = Mathf.Max(Mathf.Min(addSpeed, maxAcceleration * Time.deltaTime), 0);
         movementVector += wishVector * addSpeed;
-        */
-        movementVector.x = Mathf.Lerp(movementVector.x, 0, deceleration);
-        movementVector.z = Mathf.Lerp(movementVector.z, 0, deceleration);
+        
+        movementVector.x = Mathf.Lerp(movementVector.x, 0, friction);
+        movementVector.z = Mathf.Lerp(movementVector.z, 0, friction);
 
         movementVector.y += gravity * Time.deltaTime;
         characterController.Move(movementVector);
         //Debug.Log("Angle: " + directionAngle * Mathf.Rad2Deg + " x: " + movementVector.x + " z: " + movementVector.z + " Input x:" + inputVector.x + " Input y:" + inputVector.y);
+        */
+    }
+
+    private void GetWishDirection()
+    {
+        //Using theorem x2 = xcosB - ysinB
+        //y2 = xsinB + ycosB
+        //Unity works clockwise, math typically goes counterclockwise so use recipical? (360 - angle)
+        float directionAngle = (360 - transform.eulerAngles.y) * Mathf.Deg2Rad;
+        wishDirection.x = ((Mathf.Cos(directionAngle) * inputVector.x) - (Mathf.Sin(directionAngle) * inputVector.y));
+        wishDirection.y = ((Mathf.Sin(directionAngle) * inputVector.x) + (Mathf.Cos(directionAngle) * inputVector.y));
+    }
+
+    private Vector2 Accelerate(float acceleration)
+    {
+        float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
+        print("Projected Vel dot: " + projectedVelocity);
+        float acceleratedVelocity = acceleration * Time.deltaTime;
+
+        if (acceleratedVelocity + projectedVelocity > maxVelocity)
+        {
+            acceleratedVelocity = maxVelocity - projectedVelocity;
+        }
+        print(wishDirection.normalized.y);
+        return currentVelocity + wishDirection.normalized * acceleratedVelocity;
     }
 
    public void OnMove(InputAction.CallbackContext context)
