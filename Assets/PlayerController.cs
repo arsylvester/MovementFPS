@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        //Check grounded
+        //Check grounded for vertical movement
         isGrounded = characterController.isGrounded;
         if(isGrounded && movementVector.y < 0)
         {
@@ -45,13 +45,12 @@ public class PlayerController : MonoBehaviour
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
 
-        //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped.
+        //Acceleration caluclations
+        //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
         GetWishDirection();
-        //print("WishDirection: " + wishDirection.normalized);
 
         currentVelocity.x = movementVector.x;
         currentVelocity.y = movementVector.z;
-        print("Velocity before: " + currentVelocity);
 
         if (isGrounded)
         {
@@ -59,14 +58,11 @@ public class PlayerController : MonoBehaviour
             float speed = currentVelocity.magnitude;
             if(speed != 0)
             {
-                float slow = speed * friction * Time.deltaTime;
-                //print("Slowing by: " + slow);
+                float slow = speed * friction * Time.fixedDeltaTime;;
                 currentVelocity *= Mathf.Max(speed - slow, 0) / speed;
             }
-            print("Friction Velocity: " + currentVelocity);
 
             currentVelocity = Accelerate(accelerationGround);
-            print("Ground accelerate: " + currentVelocity);
         }
         else
         {
@@ -75,25 +71,10 @@ public class PlayerController : MonoBehaviour
 
         movementVector.x = currentVelocity.x;
         movementVector.z = currentVelocity.y;
-        movementVector.y += gravity * Time.deltaTime;
-        print("Moving at x velocity: " + movementVector.x + " z: " + movementVector.z + " and with an input of " + inputVector);
-        characterController.Move(movementVector);
+        movementVector.y += gravity * Time.fixedDeltaTime;
 
-        /*
-        
-        
-        float currentSpeed = Vector3.Dot(movementVector, wishVector);
-        float addSpeed = speed - currentSpeed;
-        addSpeed = Mathf.Max(Mathf.Min(addSpeed, maxAcceleration * Time.deltaTime), 0);
-        movementVector += wishVector * addSpeed;
-        
-        movementVector.x = Mathf.Lerp(movementVector.x, 0, friction);
-        movementVector.z = Mathf.Lerp(movementVector.z, 0, friction);
-
-        movementVector.y += gravity * Time.deltaTime;
+        print("Current Speed: " + currentVelocity.magnitude);
         characterController.Move(movementVector);
-        //Debug.Log("Angle: " + directionAngle * Mathf.Rad2Deg + " x: " + movementVector.x + " z: " + movementVector.z + " Input x:" + inputVector.x + " Input y:" + inputVector.y);
-        */
     }
 
     private void GetWishDirection()
@@ -109,14 +90,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 Accelerate(float acceleration)
     {
         float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
-        print("Projected Vel dot: " + projectedVelocity);
-        float acceleratedVelocity = acceleration * Time.deltaTime;
+        float acceleratedVelocity = acceleration * Time.fixedDeltaTime;
 
         if (acceleratedVelocity + projectedVelocity > maxVelocity)
         {
             acceleratedVelocity = maxVelocity - projectedVelocity;
         }
-        print(wishDirection.normalized.y);
         return currentVelocity + wishDirection.normalized * acceleratedVelocity;
     }
 
@@ -152,5 +131,10 @@ public class PlayerController : MonoBehaviour
     {
         isJump = context.ReadValueAsButton();
         Debug.Log(isJump);
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return currentVelocity.magnitude;
     }
 }
