@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     CharacterController characterController;
     bool isGrounded;
     bool isJump;
+    bool firstFrameGrounded = true;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if(isJump && isGrounded)
         {
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            firstFrameGrounded = true;
         }
 
         //Acceleration caluclations
@@ -54,12 +56,19 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded)
         {
+
             //Friction
             float speed = currentVelocity.magnitude;
-            if(speed != 0)
+            if(speed != 0 && !firstFrameGrounded)
             {
-                float slow = speed * friction * Time.fixedDeltaTime;;
+                float slow = speed * friction * Time.fixedDeltaTime;
                 currentVelocity *= Mathf.Max(speed - slow, 0) / speed;
+                print("Applying friction");
+            }
+
+            if (firstFrameGrounded)
+            {
+                firstFrameGrounded = false;
             }
 
             currentVelocity = Accelerate(accelerationGround);
@@ -73,7 +82,7 @@ public class PlayerController : MonoBehaviour
         movementVector.z = currentVelocity.y;
         movementVector.y += gravity * Time.fixedDeltaTime;
 
-        print("Current Speed: " + currentVelocity.magnitude);
+        //print("Current Speed: " + currentVelocity.magnitude);
         characterController.Move(movementVector);
     }
 

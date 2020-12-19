@@ -18,6 +18,9 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedText.text = "Speed: " + player.GetCurrentSpeed();
+        float currentSpeed = player.GetCurrentSpeed();
+        if (currentSpeed < .01f)
+            currentSpeed = 0;
+        speedText.text = "Speed:\n" + currentSpeed;
     }
 }
