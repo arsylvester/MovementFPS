@@ -25,11 +25,13 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     bool isJump;
     bool firstFrameGrounded = true;
+    float normalHeight;
 
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
+        normalHeight = characterController.height;
     }
 
     void FixedUpdate()
@@ -140,6 +142,18 @@ public class PlayerController : MonoBehaviour
     {
         isJump = context.ReadValueAsButton();
         Debug.Log(isJump);
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        if(context.ReadValueAsButton())
+        {
+            characterController.height = normalHeight / 2;
+        }
+        else
+        {
+            characterController.height = normalHeight;
+        }
     }
 
     public float GetCurrentSpeed()
