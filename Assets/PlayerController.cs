@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float accelerationGround = 5;
     [SerializeField] float maxVelocity = 10;
     [SerializeField] float friction = 1;
+    [SerializeField] float airResistance = 1;
     [SerializeField] float mouseSensitivity = 1;
     [SerializeField] float lookVerticalMin = -85;
     [SerializeField] float lookVerticalMax = 85;
@@ -58,21 +59,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded)
         {
-
-            //Friction
-            float speed = currentVelocity.magnitude;
-            if(speed != 0 && !firstFrameGrounded)
-            {
-                float slow = speed * friction * Time.fixedDeltaTime;
-                currentVelocity *= Mathf.Max(speed - slow, 0) / speed;
-                print("Applying friction");
-            }
-
-            if (firstFrameGrounded)
-            {
-                firstFrameGrounded = false;
-            }
-
+            currentVelocity = ApplyFriction(friction);
             currentVelocity = Accelerate(accelerationGround);
         }
         else
@@ -80,6 +67,7 @@ public class PlayerController : MonoBehaviour
             currentVelocity = Accelerate(accelerationAir);
         }
 
+        print(currentVelocity);
         movementVector.x = currentVelocity.x;
         movementVector.z = currentVelocity.y;
         movementVector.y += gravity * Time.fixedDeltaTime;
@@ -107,7 +95,28 @@ public class PlayerController : MonoBehaviour
         {
             acceleratedVelocity = maxVelocity - projectedVelocity;
         }
-        return currentVelocity + wishDirection.normalized * acceleratedVelocity;
+        //Trying chaning this to always be in the wishdirection, but now always caps at max velocity, and stops too abrubtly. 
+        if (wishDirection.magnitude == 0)
+        {
+            return ApplyFriction(airResistance);
+        }
+        else
+        {
+            return wishDirection.normalized * (currentVelocity.magnitude + acceleratedVelocity);
+        }
+    }
+
+    private Vector2 ApplyFriction(float currFriction)
+    {
+        Vector2 slowedVelocity = currentVelocity;
+        float speed = currentVelocity.magnitude;
+        if (speed != 0)// && !firstFrameGrounded)
+        {
+            float slow = speed * currFriction * Time.fixedDeltaTime;
+            slowedVelocity = currentVelocity * Mathf.Max(speed - slow, 0) / speed;
+            //print("Applying friction");
+        }
+        return slowedVelocity;
     }
 
    public void OnMove(InputAction.CallbackContext context)
@@ -141,7 +150,7 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         isJump = context.ReadValueAsButton();
-        Debug.Log(isJump);
+        //Debug.Log(isJump);
     }
 
     public void OnCrouch(InputAction.CallbackContext context)
