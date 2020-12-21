@@ -943,7 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationAir: 3
-  accelerationGround: 4
+  accelerationGround: 5
   maxVelocity: 1
   friction: 6
   airResistance: 8

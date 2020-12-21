@@ -59,20 +59,22 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded)
         {
-            currentVelocity = ApplyFriction(friction);
+            if (!firstFrameGrounded)
+            {
+                currentVelocity = ApplyFriction(friction);
+            }
             currentVelocity = Accelerate(accelerationGround);
+            firstFrameGrounded = false;
         }
         else
         {
             currentVelocity = Accelerate(accelerationAir);
         }
 
-        print(currentVelocity);
         movementVector.x = currentVelocity.x;
         movementVector.z = currentVelocity.y;
         movementVector.y += gravity * Time.fixedDeltaTime;
 
-        //print("Current Speed: " + currentVelocity.magnitude);
         characterController.Move(movementVector);
     }
 
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            return wishDirection.normalized * (currentVelocity.magnitude + acceleratedVelocity);
+            return currentVelocity + wishDirection.normalized * acceleratedVelocity;
         }
     }
 
@@ -110,11 +112,10 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 slowedVelocity = currentVelocity;
         float speed = currentVelocity.magnitude;
-        if (speed != 0)// && !firstFrameGrounded)
+        if (speed != 0)
         {
             float slow = speed * currFriction * Time.fixedDeltaTime;
             slowedVelocity = currentVelocity * Mathf.Max(speed - slow, 0) / speed;
-            //print("Applying friction");
         }
         return slowedVelocity;
     }
@@ -150,7 +151,6 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         isJump = context.ReadValueAsButton();
-        //Debug.Log(isJump);
     }
 
     public void OnCrouch(InputAction.CallbackContext context)
