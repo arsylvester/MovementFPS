@@ -1333,6 +1333,8 @@ MonoBehaviour:
   lookVerticalMax: 280
   gravity: -2
   jumpHeight: 0.07
+  dashCoolDown: 0.1
+  DashVelocity: 4
 --- !u!136 &1028622968
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1545,6 +1547,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7cf74b1d-5173-4d2b-87d5-1d7b80961898
     m_ActionName: Player/Crouch[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1028622967}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 12203c3a-3c3c-477f-ae1c-0867a580df28
+    m_ActionName: Player/Dash[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

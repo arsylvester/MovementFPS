@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float lookVerticalMax = 85;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float jumpHeight = 1.0f;
+    [SerializeField] float dashCoolDown = 1.0f;
+    [SerializeField] float DashVelocity = 5f;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     bool isJump;
     bool firstFrameGrounded = true;
     float normalHeight;
+    float currentDashTime;
 
     void Start()
     {
@@ -50,30 +53,40 @@ public class PlayerController : MonoBehaviour
             firstFrameGrounded = true;
         }
 
-        //Acceleration caluclations
-        //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
-        GetWishDirection();
-
-        currentVelocity.x = movementVector.x;
-        currentVelocity.y = movementVector.z;
-
-        if (isGrounded)
+        //Not Dashing
+        if (currentDashTime + dashCoolDown < Time.time)
         {
-            if (!firstFrameGrounded)
+
+            //Acceleration caluclations
+            //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
+            GetWishDirection();
+
+            currentVelocity.x = movementVector.x;
+            currentVelocity.y = movementVector.z;
+
+            if (isGrounded)
             {
-                currentVelocity = ApplyFriction(friction);
+                if (!firstFrameGrounded)
+                {
+                    currentVelocity = ApplyFriction(friction);
+                }
+                currentVelocity = Accelerate(accelerationGround);
+                firstFrameGrounded = false;
             }
-            currentVelocity = Accelerate(accelerationGround);
-            firstFrameGrounded = false;
-        }
-        else
-        {
-            currentVelocity = Accelerate(accelerationAir);
-        }
+            else
+            {
+                currentVelocity = Accelerate(accelerationAir);
+            }
 
-        movementVector.x = currentVelocity.x;
-        movementVector.z = currentVelocity.y;
-        movementVector.y += gravity * Time.fixedDeltaTime;
+            movementVector.x = currentVelocity.x;
+            movementVector.z = currentVelocity.y;
+            movementVector.y += gravity * Time.fixedDeltaTime;
+        }
+        else //Dash
+        {
+            movementVector.x = wishDirection.x * DashVelocity;
+            movementVector.z = wishDirection.y * DashVelocity;
+        }
 
         characterController.Move(movementVector);
     }
@@ -162,6 +175,26 @@ public class PlayerController : MonoBehaviour
         else
         {
             characterController.height = normalHeight;
+        }
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if(context.ReadValueAsButton() && currentDashTime + dashCoolDown < Time.time)
+        {
+            currentDashTime = Time.time;
+            //If no direction dash forward.
+            if(inputVector.magnitude == 0)
+            {
+                inputVector.y = 1;
+                GetWishDirection();
+                inputVector.y = 0;
+            }
+            else
+            {
+                GetWishDirection();
+            }
+            movementVector.y = 0;
         }
     }
 
