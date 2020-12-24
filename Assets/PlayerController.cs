@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float lookVerticalMax = 85;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float jumpHeight = 1.0f;
+    [SerializeField] float dashLength = 1.0f;
     [SerializeField] float dashCoolDown = 1.0f;
     [SerializeField] float DashVelocity = 5f;
     Vector2 inputVector;
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Not Dashing
-        if (currentDashTime + dashCoolDown < Time.time)
+        if (currentDashTime + dashLength < Time.time)
         {
 
             //Acceleration caluclations
@@ -180,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton() && currentDashTime + dashCoolDown < Time.time)
+        if(context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time)
         {
             currentDashTime = Time.time;
             //If no direction dash forward.
