@@ -203,4 +203,9 @@ public class PlayerController : MonoBehaviour
     {
         return currentVelocity.magnitude;
     }
+
+    public float GetDashPercent()
+    {
+        return  (Time.time - currentDashTime) / (dashLength + dashCoolDown);
+    }
 }

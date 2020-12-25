@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour
 {
     [SerializeField] Text speedText;
+    [SerializeField] Slider dashSlider;
     private PlayerController player;
 
     // Start is called before the first frame update
@@ -22,5 +23,7 @@ public class UI : MonoBehaviour
         if (currentSpeed < .01f)
             currentSpeed = 0;
         speedText.text = "Speed:\n" + currentSpeed;
+
+        dashSlider.value = Mathf.Clamp(player.GetDashPercent(), 0, 1);
     }
 }
