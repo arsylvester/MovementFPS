@@ -342,9 +342,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1572604992}
   - {fileID: 821881003}
   - {fileID: 1416736556}
+  - {fileID: 1572604992}
   m_Father: {fileID: 1063581252}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1229,7 +1229,7 @@ RectTransform:
   m_Children:
   - {fileID: 1547263626}
   m_Father: {fileID: 195850436}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
@@ -1828,6 +1828,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedText: {fileID: 1448840505}
   dashSlider: {fileID: 195850437}
+  dashFill: {fileID: 1547263627}
+  unreadyDashColor: {r: 1, g: 1, b: 1, a: 0.56078434}
+  readyDashColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1105711834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2123,7 @@ RectTransform:
   m_Children:
   - {fileID: 1980736272}
   m_Father: {fileID: 195850436}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2341,15 +2344,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.77254903}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e945185f0fe88e64e86541e953bf36d7, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2396,7 +2399,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 195850436}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75, y: 1}
@@ -2416,14 +2419,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.21176471}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e945185f0fe88e64e86541e953bf36d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6872207b69a7588419daa196c743c84e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

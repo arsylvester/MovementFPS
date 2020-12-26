@@ -7,6 +7,9 @@ public class UI : MonoBehaviour
 {
     [SerializeField] Text speedText;
     [SerializeField] Slider dashSlider;
+    [SerializeField] Image dashFill;
+    [SerializeField] Color unreadyDashColor;
+    [SerializeField] Color readyDashColor;
     private PlayerController player;
 
     // Start is called before the first frame update
@@ -14,6 +17,7 @@ public class UI : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         Cursor.visible = false;
+        dashFill.color = readyDashColor;
     }
 
     // Update is called once per frame
@@ -25,5 +29,13 @@ public class UI : MonoBehaviour
         speedText.text = "Speed:\n" + currentSpeed;
 
         dashSlider.value = Mathf.Clamp(player.GetDashPercent(), 0, 1);
+        if (dashSlider.value < 1)
+        {
+            dashFill.color = unreadyDashColor;
+        }
+        else
+        {
+            dashFill.color = readyDashColor;
+        }
     }
 }
