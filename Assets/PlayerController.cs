@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     bool isJump;
     bool firstFrameGrounded = true;
+    bool wallRight;
     float normalHeight;
     float currentDashTime;
 
@@ -57,9 +58,6 @@ public class PlayerController : MonoBehaviour
         //Not Dashing
         if (currentDashTime + dashLength < Time.time)
         {
-
-            //Acceleration caluclations
-            //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
             GetWishDirection();
 
             currentVelocity.x = movementVector.x;
@@ -73,15 +71,73 @@ public class PlayerController : MonoBehaviour
                 }
                 currentVelocity = Accelerate(accelerationGround);
                 firstFrameGrounded = false;
+                movementVector.y += gravity * Time.fixedDeltaTime;
             }
             else
             {
-                currentVelocity = Accelerate(accelerationAir);
+                //Wall running
+                if ((characterController.collisionFlags & CollisionFlags.CollidedSides) != 0)
+                {
+                    print(characterController.velocity);
+                    movementVector.y = 0;
+
+                    //Raycast to see if running on wall to right or left.
+                    RaycastHit hitRight;
+                    RaycastHit hitLeft;
+                    if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hitRight, 10))
+                    {
+                        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 10))
+                        {
+                            if(hitLeft.distance < hitRight.distance)
+                            {
+                                wallRight = false;
+                            }
+                            else
+                            {
+                                wallRight = true;
+                            }
+                        }
+                        else
+                        {
+                            wallRight = true;
+                        }
+                    }
+                    else
+                    {
+                        wallRight = false;
+                    }
+
+                    if(wallRight)
+                    {
+                        print("Wall to right.");
+                    }
+                    else
+                    {
+                        print("Wall to Left");
+                    }
+
+                    if(isJump)
+                    {
+                        if(wallRight)
+                        {
+                            currentVelocity = characterController.velocity.normalized + new Vector3(-1, -1, 0);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+                    currentVelocity = Accelerate(accelerationAir);
+                    movementVector.y += gravity * Time.fixedDeltaTime;
+                }
             }
 
             movementVector.x = currentVelocity.x;
             movementVector.z = currentVelocity.y;
-            movementVector.y += gravity * Time.fixedDeltaTime;
+
         }
         else //Dash
         {
@@ -102,6 +158,9 @@ public class PlayerController : MonoBehaviour
         wishDirection.y = ((Mathf.Sin(directionAngle) * inputVector.x) + (Mathf.Cos(directionAngle) * inputVector.y));
     }
 
+
+    //Acceleration caluclations
+    //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
     private Vector2 Accelerate(float acceleration)
     {
         float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
