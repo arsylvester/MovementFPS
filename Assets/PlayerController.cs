@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashLength = 1.0f;
     [SerializeField] float dashCoolDown = 1.0f;
     [SerializeField] float DashVelocity = 5f;
+    [SerializeField] float wallJumpSideAngle = 30;
+    [SerializeField] float wallJumpUpAngle = 40;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -120,12 +122,19 @@ public class PlayerController : MonoBehaviour
                     {
                         if(wallRight)
                         {
-                            currentVelocity = characterController.velocity.normalized + new Vector3(-1, -1, 0);
+                            float directionAngle = (360 - wallJumpSideAngle) * Mathf.Deg2Rad;
+                            movementVector.x = ((Mathf.Cos(directionAngle) * characterController.velocity.normalized.x) - (Mathf.Sin(directionAngle) * characterController.velocity.normalized.y)) * 5;
+                            movementVector.z = ((Mathf.Sin(directionAngle) * characterController.velocity.normalized.x) + (Mathf.Cos(directionAngle) * characterController.velocity.normalized.y)) * 5;
+                            //movementVector = characterController.velocity.normalized + new Vector3(-1, Mathf.Sqrt(jumpHeight * -3.0f * gravity), 0);
                         }
                         else
                         {
-
+                            float directionAngle = (wallJumpSideAngle) * Mathf.Deg2Rad;
+                            movementVector.x = ((Mathf.Cos(directionAngle) * characterController.velocity.normalized.x) - (Mathf.Sin(directionAngle) * characterController.velocity.normalized.y));
+                            movementVector.z = ((Mathf.Sin(directionAngle) * characterController.velocity.normalized.x) + (Mathf.Cos(directionAngle) * characterController.velocity.normalized.y));
+                            //movementVector = characterController.velocity.normalized + new Vector3(1, Mathf.Sqrt(jumpHeight * -3.0f * gravity), 0);
                         }
+                        movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                     }
                 }
                 else
