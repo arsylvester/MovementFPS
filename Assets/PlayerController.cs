@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashLength = 1.0f;
     [SerializeField] float dashCoolDown = 1.0f;
     [SerializeField] float DashVelocity = 5f;
-    [SerializeField] float wallJumpSideAngle = 30;
-    [SerializeField] float wallJumpUpAngle = 40;
+    [SerializeField] float wallJumpForce = 1;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -32,6 +31,7 @@ public class PlayerController : MonoBehaviour
     bool isJump;
     bool firstFrameGrounded = true;
     bool wallRight;
+    bool OnWall;
     float normalHeight;
     float currentDashTime;
 
@@ -74,13 +74,14 @@ public class PlayerController : MonoBehaviour
                 currentVelocity = Accelerate(accelerationGround);
                 firstFrameGrounded = false;
                 movementVector.y += gravity * Time.fixedDeltaTime;
+                OnWall = false;
             }
             else
             {
                 //Wall running
                 if ((characterController.collisionFlags & CollisionFlags.CollidedSides) != 0)
                 {
-                    print(characterController.velocity);
+                    OnWall = true;
                     movementVector.y = 0;
 
                     //Raycast to see if running on wall to right or left.
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
                             wallRight = true;
                         }
                     }
-                    else
+                    else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 10))
                     {
                         wallRight = false;
                     }
@@ -118,27 +119,26 @@ public class PlayerController : MonoBehaviour
                         print("Wall to Left");
                     }
 
+                    //Jump off wall using the normal of the wall and an upwards force.
                     if(isJump)
                     {
                         if(wallRight)
                         {
-                            float directionAngle = (360 - wallJumpSideAngle) * Mathf.Deg2Rad;
-                            movementVector.x = ((Mathf.Cos(directionAngle) * characterController.velocity.normalized.x) - (Mathf.Sin(directionAngle) * characterController.velocity.normalized.y)) * 5;
-                            movementVector.z = ((Mathf.Sin(directionAngle) * characterController.velocity.normalized.x) + (Mathf.Cos(directionAngle) * characterController.velocity.normalized.y)) * 5;
-                            //movementVector = characterController.velocity.normalized + new Vector3(-1, Mathf.Sqrt(jumpHeight * -3.0f * gravity), 0);
+                            currentVelocity.x = hitRight.normal.x * wallJumpForce;
+                            currentVelocity.y = hitRight.normal.y * wallJumpForce;
+                            print(hitRight.normal);
                         }
                         else
                         {
-                            float directionAngle = (wallJumpSideAngle) * Mathf.Deg2Rad;
-                            movementVector.x = ((Mathf.Cos(directionAngle) * characterController.velocity.normalized.x) - (Mathf.Sin(directionAngle) * characterController.velocity.normalized.y));
-                            movementVector.z = ((Mathf.Sin(directionAngle) * characterController.velocity.normalized.x) + (Mathf.Cos(directionAngle) * characterController.velocity.normalized.y));
-                            //movementVector = characterController.velocity.normalized + new Vector3(1, Mathf.Sqrt(jumpHeight * -3.0f * gravity), 0);
+                            currentVelocity.x = hitLeft.normal.x * wallJumpForce;
+                            currentVelocity.y = hitLeft.normal.y * wallJumpForce;
                         }
                         movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                     }
                 }
                 else
                 {
+                    OnWall = false;
                     currentVelocity = Accelerate(accelerationAir);
                     movementVector.y += gravity * Time.fixedDeltaTime;
                 }
@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time)
+        if(context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time && !OnWall)
         {
             currentDashTime = Time.time;
             //If no direction dash forward.
