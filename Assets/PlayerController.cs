@@ -20,7 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashCoolDown = 1.0f;
     [SerializeField] float DashVelocity = 5f;
     [SerializeField] float wallJumpForce = 1;
-    [SerializeField] float wallRunSpeed = 1;
+    [SerializeField] float wallRunSpeedCap = 1;
+    [SerializeField] float slideSpeed = 1;
+    [SerializeField] float slideFastLength = 1f;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -30,11 +32,13 @@ public class PlayerController : MonoBehaviour
     CharacterController characterController;
     bool isGrounded;
     bool isJump;
+    bool isSliding;
     bool firstFrameGrounded = true;
     bool wallRight;
     bool OnWall;
     float normalHeight;
     float currentDashTime;
+    float currentSlideTime;
 
     void Start()
     {
@@ -68,11 +72,30 @@ public class PlayerController : MonoBehaviour
 
             if (isGrounded)
             {
-                if (!firstFrameGrounded)
+                //Sliding on ground
+                if (isSliding)
                 {
-                    currentVelocity = ApplyFriction(friction);
+                    if(currentVelocity.magnitude <= .01f)
+                    {
+                        GetDirectionLooking();
+                        currentVelocity = wishDirection.normalized * slideSpeed;
+                    }
+                    //Give speed boost if speed is less than slideSpeed.
+                    else if(currentVelocity.magnitude < slideSpeed || currentSlideTime + slideFastLength < Time.time)
+                    {
+                        currentVelocity = currentVelocity.normalized * slideSpeed;
+                    }
+                    //Might seperate slide length so that the slow down is more gradual then instant.
                 }
-                currentVelocity = Accelerate(accelerationGround);
+                else
+                {
+                    if (!firstFrameGrounded)
+                    {
+                        currentVelocity = ApplyFriction(friction);
+                    }
+                    currentVelocity = Accelerate(accelerationGround);
+                }
+
                 firstFrameGrounded = false;
                 movementVector.y += gravity * Time.fixedDeltaTime;
                 OnWall = false;
@@ -84,8 +107,20 @@ public class PlayerController : MonoBehaviour
                 {
                     OnWall = true;
                     movementVector.y = 0;
-                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeed;
-                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeed;
+                    //Sliding on wall
+                    if (isSliding)
+                    {
+                        //Give speed boost if speed is less than slideSpeed.
+                        if (currentVelocity.magnitude < slideSpeed || currentSlideTime + slideFastLength < Time.time)
+                        {
+                            currentVelocity = currentVelocity.normalized * slideSpeed;
+                        }
+                    }
+                    else
+                    {
+                        currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
+                        currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                    }
 
                     //Raycast to see if running on wall to right or left.
                     RaycastHit hitRight;
@@ -247,25 +282,29 @@ public class PlayerController : MonoBehaviour
     {
         if(context.ReadValueAsButton())
         {
-            characterController.height = normalHeight / 2;
+            if (!isSliding)
+            {
+                characterController.height = normalHeight / 2;
+                isSliding = true;
+                currentSlideTime = Time.time;
+            }
         }
         else
         {
             characterController.height = normalHeight;
+            isSliding = false;
         }
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time && !OnWall)
+        if(context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time && !OnWall && !isSliding)
         {
             currentDashTime = Time.time;
             //If no direction dash forward.
             if(inputVector.magnitude == 0)
             {
-                inputVector.y = 1;
-                GetWishDirection();
-                inputVector.y = 0;
+                GetDirectionLooking();
             }
             else
             {
@@ -273,6 +312,13 @@ public class PlayerController : MonoBehaviour
             }
             movementVector.y = 0;
         }
+    }
+
+    private void GetDirectionLooking()
+    {
+        inputVector.y = 1;
+        GetWishDirection();
+        inputVector.y = 0;
     }
 
     public float GetCurrentSpeed()
