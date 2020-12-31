@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashCoolDown = 1.0f;
     [SerializeField] float DashVelocity = 5f;
     [SerializeField] float wallJumpForce = 1;
+    [SerializeField] float wallRunSpeed = 1;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -83,6 +84,8 @@ public class PlayerController : MonoBehaviour
                 {
                     OnWall = true;
                     movementVector.y = 0;
+                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeed;
+                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeed;
 
                     //Raycast to see if running on wall to right or left.
                     RaycastHit hitRight;
@@ -112,10 +115,15 @@ public class PlayerController : MonoBehaviour
 
                     if(wallRight)
                     {
+                        //float directionAngle = 270 * Mathf.Deg2Rad;
+                        ///currentVelocity.x = ((Mathf.Cos(directionAngle) * hitRight.normal.x) - (Mathf.Sin(directionAngle) * hitRight.normal.y));
+                        //currentVelocity.y = ((Mathf.Sin(directionAngle) * hitRight.normal.z) + (Mathf.Cos(directionAngle) * hitRight.normal.z));
                         print("Wall to right.");
                     }
                     else
                     {
+                        //currentVelocity.x = hitLeft.normal.z * wallRunSpeed;
+                       // currentVelocity.y = hitLeft.normal.x * wallRunSpeed;
                         print("Wall to Left");
                     }
 
@@ -125,13 +133,13 @@ public class PlayerController : MonoBehaviour
                         if(wallRight)
                         {
                             currentVelocity.x = hitRight.normal.x * wallJumpForce;
-                            currentVelocity.y = hitRight.normal.y * wallJumpForce;
+                            currentVelocity.y = hitRight.normal.z * wallJumpForce;
                             print(hitRight.normal);
                         }
                         else
                         {
                             currentVelocity.x = hitLeft.normal.x * wallJumpForce;
-                            currentVelocity.y = hitLeft.normal.y * wallJumpForce;
+                            currentVelocity.y = hitLeft.normal.z * wallJumpForce;
                         }
                         movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                     }
