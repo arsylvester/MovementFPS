@@ -1929,6 +1929,8 @@ MonoBehaviour:
   wallRunSpeedCap: 1
   slideSpeed: 1
   slideFastLength: 1.5
+  wallRunTiltAngle: 5
+  tiltHead: 1
 --- !u!136 &1028622968
 CapsuleCollider:
   m_ObjectHideFlags: 0

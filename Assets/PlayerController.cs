@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float wallRunSpeedCap = 1;
     [SerializeField] float slideSpeed = 1;
     [SerializeField] float slideFastLength = 1f;
+    [SerializeField] int wallRunTiltAngle = 10;
+    public bool tiltHead = true;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -105,7 +107,6 @@ public class PlayerController : MonoBehaviour
                 //Wall running
                 if ((characterController.collisionFlags & CollisionFlags.CollidedSides) != 0)
                 {
-                    OnWall = true;
                     movementVector.y = 0;
                     //Sliding on wall
                     if (isSliding)
@@ -121,6 +122,9 @@ public class PlayerController : MonoBehaviour
                         currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
                         currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
                     }
+
+                    //To check if need to tilt to other side. Will remove if I decide not to be able to look the opposite way of running.
+                    bool oldWallRight = wallRight;
 
                     //Raycast to see if running on wall to right or left.
                     RaycastHit hitRight;
@@ -148,17 +152,23 @@ public class PlayerController : MonoBehaviour
                         wallRight = false;
                     }
 
+                    //Actions for wall right or left
                     if(wallRight)
                     {
-                        //float directionAngle = 270 * Mathf.Deg2Rad;
-                        ///currentVelocity.x = ((Mathf.Cos(directionAngle) * hitRight.normal.x) - (Mathf.Sin(directionAngle) * hitRight.normal.y));
-                        //currentVelocity.y = ((Mathf.Sin(directionAngle) * hitRight.normal.z) + (Mathf.Cos(directionAngle) * hitRight.normal.z));
+                        //On initial wall run
+                        if (!OnWall || oldWallRight != wallRight)
+                        {
+                            StartCoroutine(TiltHead(wallRunTiltAngle));
+                        }
                         print("Wall to right.");
                     }
                     else
                     {
-                        //currentVelocity.x = hitLeft.normal.z * wallRunSpeed;
-                       // currentVelocity.y = hitLeft.normal.x * wallRunSpeed;
+                        //On initial wall run
+                        if (!OnWall || oldWallRight != wallRight)
+                        {
+                            StartCoroutine(TiltHead(-wallRunTiltAngle));
+                        }
                         print("Wall to Left");
                     }
 
@@ -176,11 +186,19 @@ public class PlayerController : MonoBehaviour
                             currentVelocity.x = hitLeft.normal.x * wallJumpForce;
                             currentVelocity.y = hitLeft.normal.z * wallJumpForce;
                         }
+                        StartCoroutine(TiltHead(0));
                         movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                     }
+
+                    OnWall = true;
                 }
                 else
                 {
+                    if(OnWall)
+                    {
+                        StartCoroutine(TiltHead(0));
+                    }
+                    transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
                     currentVelocity = Accelerate(accelerationAir);
                     movementVector.y += gravity * Time.fixedDeltaTime;
@@ -270,7 +288,7 @@ public class PlayerController : MonoBehaviour
 
         //Rotate camera's x and player's y
        // playerInput.camera.transform.localEulerAngles = new Vector3(xRotation, 0, 0);
-        transform.localEulerAngles = new Vector3(xRotation, yRotation, 0);
+        transform.localEulerAngles = new Vector3(xRotation, yRotation, transform.localEulerAngles.z);
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -311,6 +329,34 @@ public class PlayerController : MonoBehaviour
                 GetWishDirection();
             }
             movementVector.y = 0;
+        }
+    }
+
+    public IEnumerator TiltHead(float angleToTilt)
+    {
+        int currentTilt = (int)transform.localEulerAngles.z;
+        while(currentTilt != angleToTilt && tiltHead)
+        {
+            if(currentTilt > 300)
+            {
+                currentTilt++;
+            }
+            else if(currentTilt < angleToTilt)
+            {
+                currentTilt++;
+            }
+            else
+            {
+                currentTilt--;
+            }
+
+            if (currentTilt >= 360)
+            {
+                currentTilt = 0;
+            }
+
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, currentTilt);
+            yield return new WaitForFixedUpdate();
         }
     }
 
