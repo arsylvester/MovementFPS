@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float slideSpeed = 1;
     [SerializeField] float slideFastLength = 1f;
     [SerializeField] int wallRunTiltAngle = 10;
+    [SerializeField] float crouchHeightPercent = .5f;
     public bool tiltHead = true;
     Vector2 inputVector;
     Vector2 wishDirection;
@@ -302,7 +303,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!isSliding)
             {
-                characterController.height = normalHeight / 2;
+                characterController.height = normalHeight * crouchHeightPercent;
                 isSliding = true;
                 currentSlideTime = Time.time;
             }

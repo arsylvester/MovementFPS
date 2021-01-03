@@ -709,8 +709,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327922385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.08, y: 5.83, z: 51.539997}
-  m_LocalScale: {x: 11.2144, y: 5, z: 3.0239844}
+  m_LocalPosition: {x: 11.08, y: 5.6, z: 51.539997}
+  m_LocalScale: {x: 11.2144, y: 5.4995003, z: 3.0239844}
   m_Children: []
   m_Father: {fileID: 802410482}
   m_RootOrder: 11
@@ -1889,7 +1889,6 @@ GameObject:
   - component: {fileID: 1028622971}
   - component: {fileID: 1028622970}
   - component: {fileID: 1028622969}
-  - component: {fileID: 1028622968}
   - component: {fileID: 1028622967}
   - component: {fileID: 1028622972}
   - component: {fileID: 1028622973}
@@ -1930,21 +1929,8 @@ MonoBehaviour:
   slideSpeed: 1
   slideFastLength: 1.5
   wallRunTiltAngle: 5
+  crouchHeightPercent: 0.4
   tiltHead: 1
---- !u!136 &1028622968
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028622966}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1028622969
 MeshRenderer:
   m_ObjectHideFlags: 0
