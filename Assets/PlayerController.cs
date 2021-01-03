@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float slideFastLength = 1f;
     [SerializeField] int wallRunTiltAngle = 10;
     [SerializeField] float crouchHeightPercent = .5f;
+    [SerializeField] GameObject slideParticles;
+    [SerializeField] GameObject dashParticles;
     public bool tiltHead = true;
     Vector2 inputVector;
     Vector2 wishDirection;
@@ -72,6 +74,8 @@ public class PlayerController : MonoBehaviour
 
             currentVelocity.x = movementVector.x;
             currentVelocity.y = movementVector.z;
+
+            dashParticles.SetActive(false);
 
             if (isGrounded)
             {
@@ -306,12 +310,14 @@ public class PlayerController : MonoBehaviour
                 characterController.height = normalHeight * crouchHeightPercent;
                 isSliding = true;
                 currentSlideTime = Time.time;
+                slideParticles.SetActive(true);
             }
         }
         else
         {
             characterController.height = normalHeight;
             isSliding = false;
+            slideParticles.SetActive(false);
         }
     }
 
@@ -330,6 +336,7 @@ public class PlayerController : MonoBehaviour
                 GetWishDirection();
             }
             movementVector.y = 0;
+            dashParticles.SetActive(true);
         }
     }
 
