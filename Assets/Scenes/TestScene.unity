@@ -1389,10 +1389,12 @@ MonoBehaviour:
   slideSpeed: 1
   slideFastLength: 1.5
   wallRunTiltAngle: 5
+  groundTiltAngle: 2
   crouchHeightPercent: 0.4
   slideParticles: {fileID: 503097897}
   dashParticles: {fileID: 1434650155306438101}
   tiltHead: 1
+  tiltHeadGround: 0
 --- !u!23 &1028622969
 MeshRenderer:
   m_ObjectHideFlags: 0

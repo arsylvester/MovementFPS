@@ -24,10 +24,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float slideSpeed = 1;
     [SerializeField] float slideFastLength = 1f;
     [SerializeField] int wallRunTiltAngle = 10;
+    [SerializeField] int groundTiltAngle = 5;
     [SerializeField] float crouchHeightPercent = .5f;
     [SerializeField] GameObject slideParticles;
     [SerializeField] GameObject dashParticles;
     public bool tiltHead = true;
+    public bool tiltHeadGround = false;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
+    float lastInput;
 
     void Start()
     {
@@ -101,6 +104,7 @@ public class PlayerController : MonoBehaviour
                         currentVelocity = ApplyFriction(friction);
                     }
                     currentVelocity = Accelerate(accelerationGround);
+                    TiltHeadGround();
                 }
 
                 firstFrameGrounded = false;
@@ -266,6 +270,25 @@ public class PlayerController : MonoBehaviour
             slowedVelocity = currentVelocity * Mathf.Max(speed - slow, 0) / speed;
         }
         return slowedVelocity;
+    }
+    private void TiltHeadGround()
+    {
+        if (tiltHeadGround)
+        {
+            if (inputVector.x > 0 && lastInput <= 0)
+            {
+                StartCoroutine(TiltHead(-groundTiltAngle));
+            }
+            else if (inputVector.x < 0 && lastInput >= 0)
+            {
+                StartCoroutine(TiltHead(groundTiltAngle));
+            }
+            else if (inputVector.x == 0 && lastInput != 0)
+            {
+                StartCoroutine(TiltHead(0));
+            }
+            lastInput = inputVector.x;
+        }
     }
 
    public void OnMove(InputAction.CallbackContext context)
