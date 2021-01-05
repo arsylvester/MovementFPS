@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float crouchHeightPercent = .5f;
     [SerializeField] GameObject slideParticles;
     [SerializeField] GameObject dashParticles;
+    [SerializeField] Weapon currentWeapon;
     public bool tiltHead = true;
     public bool tiltHeadGround = false;
     Vector2 inputVector;
@@ -321,7 +322,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        isJump = context.ReadValueAsButton();
+        isJump = context.performed;
     }
 
     public void OnCrouch(InputAction.CallbackContext context)
@@ -360,6 +361,14 @@ public class PlayerController : MonoBehaviour
             }
             movementVector.y = 0;
             dashParticles.SetActive(true);
+        }
+    }
+    
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            currentWeapon.UseWeapon();
         }
     }
 
