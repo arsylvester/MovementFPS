@@ -1,35 +1,49 @@
-﻿using System.Collections;
+﻿//Player controller created by Andrew Sylvester. Enables the player to move, dash, slide, wall run, b hop, and strafe jump.
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-   // [SerializeField] float speed = 1;
+    [Header("Base Movement Control")]
     [SerializeField] float accelerationAir = 5;
     [SerializeField] float accelerationGround = 5;
+    [Tooltip("Cap on velocity with normal movement.")]
     [SerializeField] float maxVelocity = 10;
+    [Tooltip("Ground friction")]
     [SerializeField] float friction = 1;
+    [Tooltip("Slows down player if no input while in the air.")]
     [SerializeField] float airResistance = 1;
     [SerializeField] float mouseSensitivity = 1;
     [SerializeField] float lookVerticalMin = -85;
     [SerializeField] float lookVerticalMax = 85;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float jumpHeight = 1.0f;
+    [Header("Dash")]
     [SerializeField] float dashLength = 1.0f;
     [SerializeField] float dashCoolDown = 1.0f;
     [SerializeField] float DashVelocity = 5f;
+    [SerializeField] GameObject dashParticles;
+    [Header("Wall Running")]
     [SerializeField] float wallJumpForce = 1;
     [SerializeField] float wallRunSpeedCap = 1;
+    [Tooltip("How much the camera should tilt while on a wall.")]
+    [SerializeField] int wallRunTiltAngle = 10;
+    [Header("Sliding")]
     [SerializeField] float slideSpeed = 1;
     [SerializeField] float slideFastLength = 1f;
-    [SerializeField] int wallRunTiltAngle = 10;
-    [SerializeField] int groundTiltAngle = 5;
     [SerializeField] float crouchHeightPercent = .5f;
     [SerializeField] GameObject slideParticles;
-    [SerializeField] GameObject dashParticles;
+    [Header("Other")]
+    [Tooltip("Angle to tilt at while on ground moving.")]
+    [SerializeField] int groundTiltAngle = 5;
     [SerializeField] Weapon currentWeapon;
+    [Header("Options")]
+    [Tooltip("Enables tilting head at all, wall or ground.")]
     public bool tiltHead = true;
+    [Tooltip("Enables tilting of head on ground during movement. NOTE: Must have Tilt Head enabled as well.")]
     public bool tiltHeadGround = false;
     Vector2 inputVector;
     Vector2 wishDirection;
@@ -65,6 +79,7 @@ public class PlayerController : MonoBehaviour
             movementVector.y = 0;
         }
 
+        //Check to jump
         if(isJump && isGrounded)
         {
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
@@ -76,6 +91,7 @@ public class PlayerController : MonoBehaviour
         {
             GetWishDirection();
 
+            //Going using a Vector 2 for most calculations as y axis is not needed.
             currentVelocity.x = movementVector.x;
             currentVelocity.y = movementVector.z;
 
@@ -86,6 +102,7 @@ public class PlayerController : MonoBehaviour
                 //Sliding on ground
                 if (isSliding)
                 {
+                    //Provide speed boost in direction looking if standing still
                     if(currentVelocity.magnitude <= .01f)
                     {
                         GetDirectionLooking();
@@ -100,6 +117,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
+                    //Only apply friction after the first frame, to allow speed to be reserved while bhopping
                     if (!firstFrameGrounded)
                     {
                         currentVelocity = ApplyFriction(friction);
@@ -170,7 +188,6 @@ public class PlayerController : MonoBehaviour
                         {
                             StartCoroutine(TiltHead(wallRunTiltAngle));
                         }
-                        print("Wall to right.");
                     }
                     else
                     {
@@ -179,7 +196,6 @@ public class PlayerController : MonoBehaviour
                         {
                             StartCoroutine(TiltHead(-wallRunTiltAngle));
                         }
-                        print("Wall to Left");
                     }
 
                     //Jump off wall using the normal of the wall and an upwards force.
@@ -202,8 +218,10 @@ public class PlayerController : MonoBehaviour
 
                     OnWall = true;
                 }
+                //Not on ground nor a wall
                 else
                 {
+                    //If jumped off wall tilt head back
                     if(OnWall)
                     {
                         StartCoroutine(TiltHead(0));
@@ -225,6 +243,7 @@ public class PlayerController : MonoBehaviour
             movementVector.z = wishDirection.y * DashVelocity;
         }
 
+        //Move the player dependent on code above.
         characterController.Move(movementVector);
     }
 
@@ -250,7 +269,7 @@ public class PlayerController : MonoBehaviour
         {
             acceleratedVelocity = maxVelocity - projectedVelocity;
         }
-        //Trying chaning this to always be in the wishdirection, but now always caps at max velocity, and stops too abrubtly. 
+        //Trying changing this to always be in the wishdirection, but now always caps at max velocity, and stops too abrubtly. 
         if (wishDirection.magnitude == 0)
         {
             return ApplyFriction(airResistance);
@@ -261,6 +280,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Slow player based on either ground friction or air resistance passed in.
     private Vector2 ApplyFriction(float currFriction)
     {
         Vector2 slowedVelocity = currentVelocity;
@@ -272,6 +292,8 @@ public class PlayerController : MonoBehaviour
         }
         return slowedVelocity;
     }
+
+    //Tilts heads based on current input.
     private void TiltHeadGround()
     {
         if (tiltHeadGround)
@@ -292,11 +314,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Move input action
    public void OnMove(InputAction.CallbackContext context)
     {
         inputVector = context.ReadValue<Vector2>();
     }
 
+    //Mouse control input action
     public void OnLook(InputAction.CallbackContext context)
     {
         //Was using camera rotation, but that had some stutter issues. Rotating whole player seems to work. If issues down the line might have to revert back to adjusting camera.
@@ -316,7 +340,6 @@ public class PlayerController : MonoBehaviour
         float yRotation = (cameraMovement.x * mouseSensitivity) + transform.localEulerAngles.y;
 
         //Rotate camera's x and player's y
-       // playerInput.camera.transform.localEulerAngles = new Vector3(xRotation, 0, 0);
         transform.localEulerAngles = new Vector3(xRotation, yRotation, transform.localEulerAngles.z);
     }
 
@@ -372,6 +395,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Used to tilt heads for when on a wall or moving on ground if enabled. Currently a little too course as it moves the camera in ints over fixed time. If using ground camera tilt then need to smooth, but on the wall its okay.
     public IEnumerator TiltHead(float angleToTilt)
     {
         int currentTilt = (int)transform.localEulerAngles.z;
@@ -400,6 +424,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //A way to get the wish direction with just the camera rotation.
     private void GetDirectionLooking()
     {
         inputVector.y = 1;
@@ -407,11 +432,13 @@ public class PlayerController : MonoBehaviour
         inputVector.y = 0;
     }
 
+    //Used for UI
     public float GetCurrentSpeed()
     {
         return currentVelocity.magnitude;
     }
 
+    //Used for UI of dash cooldown
     public float GetDashPercent()
     {
         return  (Time.time - currentDashTime) / (dashLength + dashCoolDown);
