@@ -5,16 +5,28 @@ using UnityEngine;
 public class ProjectileWeapon : Weapon
 {
     [SerializeField] GameObject objectAtEnd;
+    //[SerializeField] protected bool hitScan;
+
+    protected RaycastHit hit;
+    protected bool isHit;
+
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     public override void UseWeapon()
     {
-        print("This is a projectile shot.");
 
-        RaycastHit hit;
-        if(Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 100))
+        if(Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 1000))
         {
             print("Projectile hit : " + hit.transform);
-            Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
+            isHit = true;
+            //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
+        }
+        else
+        {
+            isHit = false;
         }
     }
 }
