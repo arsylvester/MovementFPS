@@ -8,30 +8,45 @@ public class Kunai : ProjectileWeapon
     [SerializeField] float lifeTime = 1;
     [SerializeField] GameObject projectileToSpawn;
     private GameObject kunaiProjectile;
+    private Renderer[] rends;
 
     protected override void Start()
     {
         base.Start();
+        rends = GetComponentsInChildren<Renderer>();
     }
 
     private void Update()
     {
-        if(kunaiProjectile != null)
+        if(!(rends[0].enabled) && coolDown + currentCoolDown < Time.time)
         {
-            //kunaiProjectile.transform.Translate(kunaiProjectile.transform.forward * throwSpeed * Time.deltaTime, Space.World);
+            ToggleAllRenderers(true);
         }
     }
 
     public override void UseWeapon()
     {
-        base.UseWeapon();
-        kunaiProjectile = Instantiate(projectileToSpawn, transform.position, transform.rotation);
-        kunaiProjectile.GetComponent<KunaiProjectile>().SetSpeed(throwSpeed);
-        Destroy(kunaiProjectile, lifeTime);
-
-        if(isHit)
+        if (coolDown + currentCoolDown < Time.time)
         {
-            kunaiProjectile.transform.LookAt(hit.point);
+            base.UseWeapon();
+            kunaiProjectile = Instantiate(projectileToSpawn, transform.position, transform.rotation);
+            kunaiProjectile.GetComponent<KunaiProjectile>().SetSpeed(throwSpeed);
+            Destroy(kunaiProjectile, lifeTime);
+            currentCoolDown = Time.time;
+            ToggleAllRenderers(false);
+
+            if (isHit)
+            {
+                kunaiProjectile.transform.LookAt(hit.point);
+            }
+        }
+    }
+
+    private void ToggleAllRenderers(bool enable)
+    {
+        foreach(Renderer rend in rends)
+        {
+            rend.enabled = enable;
         }
     }
 }
