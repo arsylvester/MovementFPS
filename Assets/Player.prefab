@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6833140820239332429}
   - component: {fileID: 6833140820239332426}
   - component: {fileID: 6833140820239332427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 6833140820308169550}
   - component: {fileID: 6833140820308169541}
   - component: {fileID: 6833140820308169540}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   crouchHeightPercent: 0.4
   slideParticles: {fileID: 6833140820833710864}
   groundTiltAngle: 2
-  currentWeapon: {fileID: 6833140818798083991}
+  currentWeapon: {fileID: 692650927441393475}
   tiltHead: 1
   tiltHeadGround: 0
 --- !u!114 &6833140820308169541
@@ -468,16 +468,16 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 692650926796869028}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6833140818798083991 stripped
+--- !u!114 &692650927441393475 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6289552883243086387, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
+  m_CorrespondingSourceObject: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
     type: 3}
   m_PrefabInstance: {fileID: 692650926796869028}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2daf8455dbdfdd4eb64d802d728b9ac, type: 3}
+  m_Script: {fileID: 11500000, guid: d47d9349b8ab3ff4ebed67ad2008183a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3057168033521432190
@@ -491,6 +491,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dash Particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444988710409052818, guid: 074df34b3a0b30c409cfa388a03107f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7444988710409052823, guid: 074df34b3a0b30c409cfa388a03107f3,
         type: 3}
@@ -577,6 +582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350098624000424866, guid: e2d631427324ffd489f16e9e036bb9c3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4350098624000424871, guid: e2d631427324ffd489f16e9e036bb9c3,
         type: 3}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] protected float coolDown;
+    [SerializeField] protected int damage = 1;
+    protected float currentCoolDown;
     protected Transform playerCamera;
 
     protected virtual void Start()
