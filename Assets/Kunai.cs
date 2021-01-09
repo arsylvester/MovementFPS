@@ -30,7 +30,7 @@ public class Kunai : ProjectileWeapon
         {
             base.UseWeapon();
             kunaiProjectile = Instantiate(projectileToSpawn, transform.position, transform.rotation);
-            kunaiProjectile.GetComponent<KunaiProjectile>().SetSpeed(throwSpeed);
+            kunaiProjectile.GetComponent<KunaiProjectile>().SetParameters(throwSpeed, damage);
             Destroy(kunaiProjectile, lifeTime);
             currentCoolDown = Time.time;
             ToggleAllRenderers(false);

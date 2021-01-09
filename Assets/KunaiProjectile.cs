@@ -6,6 +6,7 @@ public class KunaiProjectile : MonoBehaviour
 {
     private float throwSpeed;
     private bool shouldMove = true;
+    private int damageToDeal;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +23,10 @@ public class KunaiProjectile : MonoBehaviour
         }
     }
 
-    public void SetSpeed(float speed)
+    public void SetParameters(float speed, int damage)
     {
         throwSpeed = speed;
+        damageToDeal = damage;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +35,10 @@ public class KunaiProjectile : MonoBehaviour
         if(other.tag != "Player")
         {
             shouldMove = false;
+            if(other.GetComponent<IDamageable>() != null)
+            {
+                other.GetComponent<IDamageable>().TakeDamage(damageToDeal);
+            }
         }
     }
 }
