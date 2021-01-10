@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class KunaiProjectile : MonoBehaviour
 {
+    [SerializeField] float renderDelay = .5f;
     private float throwSpeed;
     private bool shouldMove = true;
     private int damageToDeal;
     private Vector3 lastPoint;
     private Vector3 lastPointDirection;
     private RaycastHit hit;
+    private Renderer[] rends;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rends = GetComponentsInChildren<Renderer>();
+        ToggleAllRenderers(false);
+        StartCoroutine(DelayRender());
     }
 
     // Update is called once per frame
@@ -46,6 +50,20 @@ public class KunaiProjectile : MonoBehaviour
         throwSpeed = speed;
         damageToDeal = damage;
         lastPoint = transform.position;
+    }
+
+    private void ToggleAllRenderers(bool enable)
+    {
+        foreach (Renderer rend in rends)
+        {
+            rend.enabled = enable;
+        }
+    }
+
+    private IEnumerator DelayRender()
+    {
+        yield return new WaitForSeconds(renderDelay);
+        ToggleAllRenderers(true);
     }
 
 }

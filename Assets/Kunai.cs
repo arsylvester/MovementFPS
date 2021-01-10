@@ -29,7 +29,7 @@ public class Kunai : ProjectileWeapon
         if (coolDown + currentCoolDown < Time.time)
         {
             base.UseWeapon();
-            kunaiProjectile = Instantiate(projectileToSpawn, transform.position, transform.rotation);
+            kunaiProjectile = Instantiate(projectileToSpawn, playerCamera.position, transform.rotation);
             kunaiProjectile.GetComponent<KunaiProjectile>().SetParameters(throwSpeed, damage);
             Destroy(kunaiProjectile, lifeTime);
             currentCoolDown = Time.time;
