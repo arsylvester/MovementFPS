@@ -8,10 +8,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected int damage = 1;
     protected float currentCoolDown;
     protected Transform playerCamera;
+    protected UI ui;
 
     protected virtual void Start()
     {
         playerCamera = Camera.main.transform;
+        ui = FindObjectOfType<UI>();
         print("playerCamera set");
     }
 

@@ -12,6 +12,7 @@ public class KunaiProjectile : MonoBehaviour
     private Vector3 lastPointDirection;
     private RaycastHit hit;
     private Renderer[] rends;
+    private UI ui;
 
 
     // Start is called before the first frame update
@@ -38,6 +39,7 @@ public class KunaiProjectile : MonoBehaviour
                     if (hit.transform.GetComponent<IDamageable>() != null)
                     {
                         hit.transform.GetComponent<IDamageable>().TakeDamage(damageToDeal);
+                        ui.ShowHitMarker();
                     }
                 }
             }
@@ -45,11 +47,12 @@ public class KunaiProjectile : MonoBehaviour
         }
     }
 
-    public void SetParameters(float speed, int damage)
+    public void SetParameters(float speed, int damage, UI uiToSet)
     {
         throwSpeed = speed;
         damageToDeal = damage;
         lastPoint = transform.position;
+        ui = uiToSet;
     }
 
     private void ToggleAllRenderers(bool enable)
