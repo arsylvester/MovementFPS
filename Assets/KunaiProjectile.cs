@@ -31,7 +31,7 @@ public class KunaiProjectile : MonoBehaviour
             transform.Translate(transform.forward * throwSpeed * Time.deltaTime, Space.World);
             lastPointDirection = transform.position - lastPoint;
             Debug.DrawRay(transform.position, lastPointDirection, Color.cyan, Vector3.Distance(transform.position, lastPoint));
-            if(Physics.Raycast(transform.position, lastPointDirection, out hit, Vector3.Distance(transform.position, lastPoint)))
+            if(Physics.Raycast(lastPoint, lastPointDirection, out hit, Vector3.Distance(transform.position, lastPoint)))
             {
                 if (hit.transform.tag != "Player")
                 {

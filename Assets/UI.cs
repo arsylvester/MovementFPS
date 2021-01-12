@@ -19,6 +19,7 @@ public class UI : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         dashFill.color = readyDashColor;
         hitMarker.gameObject.SetActive(false);
     }
@@ -40,6 +41,7 @@ public class UI : MonoBehaviour
         {
             dashFill.color = readyDashColor;
         }
+
     }
 
     public void ShowHitMarker()
