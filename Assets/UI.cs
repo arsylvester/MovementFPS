@@ -10,6 +10,8 @@ public class UI : MonoBehaviour
     [SerializeField] Image dashFill;
     [SerializeField] Color unreadyDashColor;
     [SerializeField] Color readyDashColor;
+    [SerializeField] Image hitMarker;
+    [SerializeField] float hitMarkerDelay = .1f;
     private PlayerController player;
 
     // Start is called before the first frame update
@@ -17,7 +19,9 @@ public class UI : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         dashFill.color = readyDashColor;
+        hitMarker.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,5 +41,18 @@ public class UI : MonoBehaviour
         {
             dashFill.color = readyDashColor;
         }
+
+    }
+
+    public void ShowHitMarker()
+    {
+        hitMarker.gameObject.SetActive(true);
+        StartCoroutine(HideHitMarker());
+    }
+
+    private IEnumerator HideHitMarker()
+    {
+        yield return new WaitForSeconds(hitMarkerDelay);
+        hitMarker.gameObject.SetActive(false);
     }
 }
