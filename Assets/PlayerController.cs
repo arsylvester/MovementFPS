@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public bool tiltHead = true;
     [Tooltip("Enables tilting of head on ground during movement. NOTE: Must have Tilt Head enabled as well.")]
     public bool tiltHeadGround = false;
+    public bool HoldJump = false;
+    public bool HoldFire = true;
     Vector2 inputVector;
     Vector2 wishDirection;
     Vector3 movementVector;
@@ -84,6 +86,10 @@ public class PlayerController : MonoBehaviour
         {
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             firstFrameGrounded = true;
+            if(!HoldJump)
+            {
+                isJump = false;
+            }
         }
 
         //Not Dashing
