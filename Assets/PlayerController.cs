@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     bool firstFrameGrounded = true;
     bool wallRight;
     bool OnWall;
+    bool isFiring;
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
@@ -70,6 +71,13 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
         normalHeight = characterController.height;
+    }
+    private void Update()
+    {
+        if(isFiring)
+        {
+            currentWeapon.UseWeapon();
+        }
     }
 
     void FixedUpdate()
@@ -397,7 +405,18 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed)
         {
-            currentWeapon.UseWeapon();
+            if (HoldFire)
+            {
+                isFiring = true;
+            }
+            else
+            {
+                currentWeapon.UseWeapon();
+            }
+        }
+        else
+        {
+            isFiring = false;
         }
     }
 
