@@ -22,6 +22,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
 
     private void Death()
     {
+        FindObjectOfType<UI>().CountEnemies();
         Destroy(Instantiate(vfx, transform.position, transform.rotation), 2); //have vfx self destroy later
         Destroy(gameObject);
     }
