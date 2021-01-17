@@ -5,11 +5,11 @@ using UnityEngine;
 public class TimerTrigger : MonoBehaviour
 {
     [SerializeField] bool startsTimer = true;
-    UI ui;
+    TimedCourse timedCourse;
 
     private void Start()
     {
-        ui = FindObjectOfType<UI>();
+        timedCourse = FindObjectOfType<TimedCourse>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,11 +18,11 @@ public class TimerTrigger : MonoBehaviour
         {
             if(startsTimer)
             {
-                ui.StartTimer();
+                timedCourse.StartTimer();
             }
             else
             {
-                ui.StopTimer();
+                timedCourse.StopTimer();
             }
         }
     }

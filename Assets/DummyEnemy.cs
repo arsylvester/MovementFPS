@@ -14,6 +14,11 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         health = maxHealth;
     }
 
+    private void OnEnable()
+    {
+        health = maxHealth;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -22,9 +27,10 @@ public class DummyEnemy : MonoBehaviour, IDamageable
 
     private void Death()
     {
-        FindObjectOfType<UI>().CountEnemies();
+        FindObjectOfType<TimedCourse>().CountEnemies();
         Destroy(Instantiate(vfx, transform.position, transform.rotation), 2); //have vfx self destroy later
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 
     public void TakeDamage(int damage)

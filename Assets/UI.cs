@@ -7,6 +7,7 @@ public class UI : MonoBehaviour
 {
     [SerializeField] Text speedText;
     [SerializeField] Text EnemiesText;
+    [SerializeField] Text bestTimeText;
     [SerializeField] Text TimeText;
     [SerializeField] Slider dashSlider;
     [SerializeField] Image dashFill;
@@ -15,12 +16,9 @@ public class UI : MonoBehaviour
     [SerializeField] Image hitMarker;
     [SerializeField] float hitMarkerDelay = .1f;
     [SerializeField] bool timingIsDisplayed;
-    [SerializeField] float enemiesKiledMax;
     private PlayerController player;
     private bool isTiming;
-    private float currentTime;
-    private float bestTime;
-    private float enemiesKilled;
+    private TimedCourse timedCourse;
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +28,13 @@ public class UI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         dashFill.color = readyDashColor;
         hitMarker.gameObject.SetActive(false);
+        timedCourse = FindObjectOfType<TimedCourse>();
 
         if(timingIsDisplayed)
         {
             EnemiesText.gameObject.SetActive(true);
             TimeText.gameObject.SetActive(true);
+            bestTimeText.gameObject.SetActive(true);
         }
     }
 
@@ -58,9 +58,8 @@ public class UI : MonoBehaviour
 
         if(isTiming)
         {
-            currentTime += Time.deltaTime;
-            TimeText.text = "Time: " + currentTime.ToString("F2");
-            EnemiesText.text = "Targets Destroyed: " + enemiesKilled + "/" + enemiesKiledMax;
+            TimeText.text = "Time: " + timedCourse.GetCurrentTime().ToString("F2");
+            EnemiesText.text = "Targets Destroyed: " + timedCourse.GetCurrentEnemyCount() + "/" + timedCourse.GetEnemyMax();
         }
     }
 
@@ -76,32 +75,15 @@ public class UI : MonoBehaviour
         hitMarker.gameObject.SetActive(false);
     }
 
-    public void StartTimer()
+    public void SetTiming(bool timing)
     {
-        if (isTiming == false)
+        isTiming = timing;
+        EnemiesText.gameObject.SetActive(timing);
+        if(!timing)
         {
-            currentTime = 0;
-            isTiming = true;
-            ResetEnemyCount();
+            bestTimeText.text = "Best: " + timedCourse.GetBestTime().ToString("F2");
         }
-    }
-
-    public void StopTimer()
-    {
-        isTiming = false;
-        if(currentTime > bestTime)
-        {
-            bestTime = currentTime;
-        }
-    }
-
-    public void CountEnemies()
-    {
-        enemiesKilled++;
-    }
-
-    public void ResetEnemyCount()
-    {
-        enemiesKilled = 0;
+        //TimeText.gameObject.SetActive(timing);
+        //bestTimeTest.gameObject.SetActive(timing);
     }
 }
