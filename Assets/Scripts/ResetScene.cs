@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 //For early testing purposes, delete later
 public class ResetScene : MonoBehaviour
 {
+    [SerializeField] string sceneToLoad;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerController>())
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }
