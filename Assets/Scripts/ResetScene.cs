@@ -7,12 +7,20 @@ using UnityEngine.SceneManagement;
 public class ResetScene : MonoBehaviour
 {
     [SerializeField] string sceneToLoad;
+    [SerializeField] bool resetScene = true;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerController>())
         {
-            SceneManager.LoadScene(sceneToLoad);
+            if (resetScene)
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
+            else
+            {
+                CheckpointSystem.instance.ResetPlayerToCheckpoint();
+            }
         }
     }
 }

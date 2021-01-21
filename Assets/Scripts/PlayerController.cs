@@ -468,4 +468,14 @@ public class PlayerController : MonoBehaviour
     {
         return  (Time.time - currentDashTime) / (dashLength + dashCoolDown);
     }
+
+    public void StopMovement()
+    {
+        movementVector = Vector3.zero;
+        characterController.enabled = false;
+    }
+    public void ResumeMovement()
+    {
+        characterController.enabled = true;
+    }
 }
