@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2888137722316791090}
   - component: {fileID: 6492368897594144826}
   - component: {fileID: 5634692164166551250}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8276929200418447966}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
