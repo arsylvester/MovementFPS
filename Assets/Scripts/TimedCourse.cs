@@ -9,7 +9,7 @@ public class TimedCourse : MonoBehaviour
     private PlayerController player;
     private bool isTiming;
     private float currentTime;
-    private float bestTime = 9999;
+    private static float bestTime;
     private int enemiesKilled;
     private UI ui;
 
@@ -18,6 +18,7 @@ public class TimedCourse : MonoBehaviour
     {
         ui = FindObjectOfType<UI>();
         targets = FindObjectsOfType<DummyEnemy>();
+        ui.SetTiming(false);
     }
 
     // Update is called once per frame
@@ -47,7 +48,7 @@ public class TimedCourse : MonoBehaviour
     public void StopTimer()
     {
         isTiming = false;
-        if (currentTime < bestTime)
+        if (currentTime < bestTime || bestTime == 0)
         {
             bestTime = currentTime;
         }
