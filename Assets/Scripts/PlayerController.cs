@@ -149,24 +149,6 @@ public class PlayerController : MonoBehaviour
                 //Wall running
                 if ((characterController.collisionFlags & CollisionFlags.CollidedSides) != 0)
                 {
-                    movementVector.y = 0;
-                    //Sliding on wall
-                    if (isSliding)
-                    {
-                        //Give speed boost if speed is less than slideSpeed.
-                        if (currentVelocity.magnitude < slideSpeed || currentSlideTime + slideFastLength < Time.time)
-                        {
-                            currentVelocity = currentVelocity.normalized * slideSpeed;
-                        }
-                    }
-                    else
-                    {
-                        currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
-                        currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
-                    }
-
-                    //To check if need to tilt to other side. Will remove if I decide not to be able to look the opposite way of running.
-                    bool oldWallRight = wallRight;
 
                     //Raycast to see if running on wall to right or left.
                     RaycastHit hitRight;
@@ -194,43 +176,102 @@ public class PlayerController : MonoBehaviour
                         wallRight = false;
                     }
 
-                    //Actions for wall right or left
+                    bool canWallRun = true;
+
                     if(wallRight)
                     {
-                        //On initial wall run
-                        if (!OnWall || oldWallRight != wallRight)
+                        if(hitRight.transform != null)
                         {
-                            StartCoroutine(TiltHead(wallRunTiltAngle));
+                            canWallRun = hitRight.transform.tag != "Ignore Wall Run";
+                        }
+                        else
+                        {
+                            canWallRun = false;
                         }
                     }
                     else
                     {
-                        //On initial wall run
-                        if (!OnWall || oldWallRight != wallRight)
+                        if (hitLeft.transform != null)
                         {
-                            StartCoroutine(TiltHead(-wallRunTiltAngle));
-                        }
-                    }
-
-                    //Jump off wall using the normal of the wall and an upwards force.
-                    if(isJump)
-                    {
-                        if(wallRight)
-                        {
-                            currentVelocity.x = hitRight.normal.x * wallJumpForce;
-                            currentVelocity.y = hitRight.normal.z * wallJumpForce;
-                            print(hitRight.normal);
+                            canWallRun = hitLeft.transform.tag != "Ignore Wall Run";
                         }
                         else
                         {
-                            currentVelocity.x = hitLeft.normal.x * wallJumpForce;
-                            currentVelocity.y = hitLeft.normal.z * wallJumpForce;
+                            canWallRun = false;
                         }
-                        StartCoroutine(TiltHead(0));
-                        movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                     }
 
-                    OnWall = true;
+                    if (canWallRun)
+                    {
+                        movementVector.y = 0;
+                        //Sliding on wall
+                        if (isSliding)
+                        {
+                            //Give speed boost if speed is less than slideSpeed.
+                            if (currentVelocity.magnitude < slideSpeed || currentSlideTime + slideFastLength < Time.time)
+                            {
+                                currentVelocity = currentVelocity.normalized * slideSpeed;
+                            }
+                        }
+                        else
+                        {
+                            currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
+                            currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                        }
+
+                        //To check if need to tilt to other side. Will remove if I decide not to be able to look the opposite way of running.
+                        bool oldWallRight = wallRight;
+
+                        //Actions for wall right or left
+                        if (wallRight)
+                        {
+                            //On initial wall run
+                            if (!OnWall || oldWallRight != wallRight)
+                            {
+                                StartCoroutine(TiltHead(wallRunTiltAngle));
+                            }
+                        }
+                        else
+                        {
+                            //On initial wall run
+                            if (!OnWall || oldWallRight != wallRight)
+                            {
+                                StartCoroutine(TiltHead(-wallRunTiltAngle));
+                            }
+                        }
+
+                        //Jump off wall using the normal of the wall and an upwards force.
+                        if (isJump)
+                        {
+                            if (wallRight)
+                            {
+                                currentVelocity.x = hitRight.normal.x * wallJumpForce;
+                                currentVelocity.y = hitRight.normal.z * wallJumpForce;
+                                print(hitRight.normal);
+                            }
+                            else
+                            {
+                                currentVelocity.x = hitLeft.normal.x * wallJumpForce;
+                                currentVelocity.y = hitLeft.normal.z * wallJumpForce;
+                            }
+                            StartCoroutine(TiltHead(0));
+                            movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                        }
+
+                        OnWall = true;
+                    }
+                    else
+                    {
+                        //If jumped off wall tilt head back
+                        if (OnWall)
+                        {
+                            StartCoroutine(TiltHead(0));
+                        }
+                        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+                        OnWall = false;
+                        currentVelocity = Accelerate(accelerationAir);
+                        movementVector.y += gravity * Time.fixedDeltaTime;
+                    }
                 }
                 //Not on ground nor a wall
                 else
