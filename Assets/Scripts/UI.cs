@@ -7,7 +7,8 @@ public class UI : MonoBehaviour
 {
     [SerializeField] Text speedText;
     [SerializeField] Text EnemiesText;
-    [SerializeField] Text bestTimeText;
+    [SerializeField] TextMesh bestTimeText;
+    [SerializeField] TextMesh bestTimeChalText;
     [SerializeField] Text TimeText;
     [SerializeField] Slider dashSlider;
     [SerializeField] Image dashFill;
@@ -81,7 +82,8 @@ public class UI : MonoBehaviour
         EnemiesText.gameObject.SetActive(timing);
         if(!timing)
         {
-            bestTimeText.text = "Best: " + timedCourse.GetBestTime().ToString("F2");
+            bestTimeText.text = "Best Time: " + timedCourse.GetBestTime().ToString("F2");
+            bestTimeChalText.text = "Best Challenge Time: " + timedCourse.GetBestChallengeTime().ToString("F2");
         }
         //TimeText.gameObject.SetActive(timing);
         //bestTimeTest.gameObject.SetActive(timing);

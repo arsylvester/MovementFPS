@@ -10,6 +10,7 @@ public class TimedCourse : MonoBehaviour
     private bool isTiming;
     private float currentTime;
     private static float bestTime;
+    private static float bestChalTime;
     private int enemiesKilled;
     private UI ui;
 
@@ -52,6 +53,10 @@ public class TimedCourse : MonoBehaviour
         {
             bestTime = currentTime;
         }
+        if(enemiesKilled >= enemiesKiledMax && (currentTime < bestChalTime || bestChalTime == 0))
+        {
+            bestChalTime = currentTime;
+        }
         ui.SetTiming(false);
     }
 
@@ -82,5 +87,10 @@ public class TimedCourse : MonoBehaviour
     public float GetBestTime()
     {
         return bestTime;
+    }
+
+    public float GetBestChallengeTime()
+    {
+        return bestChalTime;
     }
 }
