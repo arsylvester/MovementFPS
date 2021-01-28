@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
     float currentDashTime;
     float currentSlideTime;
     float lastInput;
+    RaycastHit hitRight;
+    RaycastHit hitLeft;
 
     void Start()
     {
@@ -151,8 +153,8 @@ public class PlayerController : MonoBehaviour
                 {
 
                     //Raycast to see if running on wall to right or left.
-                    RaycastHit hitRight;
-                    RaycastHit hitLeft;
+
+                    Transform wallHit = null;
                     if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hitRight, 10))
                     {
                         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 10))
@@ -160,45 +162,35 @@ public class PlayerController : MonoBehaviour
                             if(hitLeft.distance < hitRight.distance)
                             {
                                 wallRight = false;
+                                wallHit = hitLeft.transform;
                             }
                             else
                             {
+                                wallHit = hitRight.transform;
                                 wallRight = true;
                             }
                         }
                         else
                         {
                             wallRight = true;
+                            wallHit = hitRight.transform;
                         }
                     }
                     else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 10))
                     {
                         wallRight = false;
+                        wallHit = hitLeft.transform;
                     }
 
                     bool canWallRun = true;
 
-                    if(wallRight)
+                    if(wallHit != null)
                     {
-                        if(hitRight.transform != null)
-                        {
-                            canWallRun = hitRight.transform.tag != "Ignore Wall Run";
-                        }
-                        else
-                        {
-                            canWallRun = false;
-                        }
+                        canWallRun = wallHit.tag != "Ignore Wall Run";
                     }
                     else
                     {
-                        if (hitLeft.transform != null)
-                        {
-                            canWallRun = hitLeft.transform.tag != "Ignore Wall Run";
-                        }
-                        else
-                        {
-                            canWallRun = false;
-                        }
+                        canWallRun = false;
                     }
 
                     if (canWallRun)
@@ -215,8 +207,16 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
-                            currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
-                            currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                            if (wallRight)
+                            {
+                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
+                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap ;
+                            }
+                            else
+                            {
+                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
+                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap ;
+                            }
                         }
 
                         //To check if need to tilt to other side. Will remove if I decide not to be able to look the opposite way of running.
@@ -247,7 +247,6 @@ public class PlayerController : MonoBehaviour
                             {
                                 currentVelocity.x = hitRight.normal.x * wallJumpForce;
                                 currentVelocity.y = hitRight.normal.z * wallJumpForce;
-                                print(hitRight.normal);
                             }
                             else
                             {
@@ -262,10 +261,21 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        //If jumped off wall tilt head back
+                        //If jumped off wall tilt head back and counter velocity that was going into wall.
+                        //likely should change from wallJumpForce, but it seems to work for now.
                         if (OnWall)
                         {
                             StartCoroutine(TiltHead(0));
+                            if (wallRight)
+                            {
+                                currentVelocity.x = hitRight.normal.x * wallJumpForce;
+                                currentVelocity.y = hitRight.normal.z * wallJumpForce;
+                            }
+                            else
+                            {
+                                currentVelocity.x = hitLeft.normal.x * wallJumpForce;
+                                currentVelocity.y = hitLeft.normal.z * wallJumpForce;
+                            }
                         }
                         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                         OnWall = false;
@@ -276,10 +286,20 @@ public class PlayerController : MonoBehaviour
                 //Not on ground nor a wall
                 else
                 {
-                    //If jumped off wall tilt head back
-                    if(OnWall)
+                    //If jumped off wall tilt head back and counter velocity that was going into wall.
+                    if (OnWall)
                     {
                         StartCoroutine(TiltHead(0));
+                        if (wallRight)
+                        {
+                            currentVelocity.x = hitRight.normal.x * wallJumpForce;
+                            currentVelocity.y = hitRight.normal.z * wallJumpForce;
+                        }
+                        else
+                        {
+                            currentVelocity.x = hitLeft.normal.x * wallJumpForce;
+                            currentVelocity.y = hitLeft.normal.z * wallJumpForce;
+                        }
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
