@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float friction = 1;
     [Tooltip("Slows down player if no input while in the air.")]
     [SerializeField] float airResistance = 1;
-    [SerializeField] float mouseSensitivity = 1;
+    public static float mouseSensitivity = .2f;
     [SerializeField] float lookVerticalMin = -85;
     [SerializeField] float lookVerticalMax = 85;
     [SerializeField] float gravity = -9.81f;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Weapon currentWeapon;
     [Header("Options")]
     [Tooltip("Enables tilting head at all, wall or ground.")]
-    public bool tiltHead = true;
+    public static bool tiltHead = true;
     [Tooltip("Enables tilting of head on ground during movement. NOTE: Must have Tilt Head enabled as well.")]
     public bool tiltHeadGround = false;
     public bool HoldJump = false;
