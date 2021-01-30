@@ -8,6 +8,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeReference] GameObject options;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
     public void OnSceneStart(string sceneToMove)
     {
         SceneManager.LoadScene(sceneToMove);

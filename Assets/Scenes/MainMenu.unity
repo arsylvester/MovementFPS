@@ -615,6 +615,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd253f5dff3afb044a104fadf72ada29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSense: {fileID: 1855875968}
+  volume: {fileID: 1397609571}
+  headTilt: {fileID: 16523703}
 --- !u!1 &534288925
 GameObject:
   m_ObjectHideFlags: 0

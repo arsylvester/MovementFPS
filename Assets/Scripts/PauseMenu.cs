@@ -44,6 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     public void OnSceneStart(string sceneToMove)
     {
+        TogglePauseMenu();
         SceneManager.LoadScene(sceneToMove);
     }
 
