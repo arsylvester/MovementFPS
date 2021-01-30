@@ -334,8 +334,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -790.92, y: -435.11}
-  m_SizeDelta: {x: 667.89246, y: 105.32178}
+  m_AnchoredPosition: {x: -790.6658, y: -436.2523}
+  m_SizeDelta: {x: 757.56067, y: 205.818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91779735
 MonoBehaviour:
@@ -370,7 +370,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thats all, feel free to mess around here. Then try the speed course!
+  m_Text: Thats all, feel free to mess around here. Then try the speed course! Access
+    the speed course from the Pause menu (<b>ESC</b>).
 --- !u!222 &91779736
 CanvasRenderer:
   m_ObjectHideFlags: 0
