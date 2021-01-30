@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     bool wallRight;
     bool OnWall;
     bool isFiring;
+    bool canMove = true;
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
@@ -398,54 +399,63 @@ public class PlayerController : MonoBehaviour
     //Mouse control input action
     public void OnLook(InputAction.CallbackContext context)
     {
-        //Was using camera rotation, but that had some stutter issues. Rotating whole player seems to work. If issues down the line might have to revert back to adjusting camera.
-        cameraMovement = context.ReadValue<Vector2>() * mouseSensitivity;
-        Vector3 currentRotation = playerInput.camera.transform.localEulerAngles;
-
-        //Add last frame angle with mousedelta and clamp the vertical. Mathf.clamp won't work with the angles so have to custom clamp it.
-        float xRotation = (cameraMovement.y * mouseSensitivity * -1) + transform.localEulerAngles.x;
-        if(transform.localEulerAngles.x < 90 && xRotation > lookVerticalMin)
+        if (canMove)
         {
-            xRotation = lookVerticalMin;
-        }
-        else if(transform.localEulerAngles.x > 270 && xRotation < lookVerticalMax)
-        {
-            xRotation = lookVerticalMax;
-        }
-        float yRotation = (cameraMovement.x * mouseSensitivity) + transform.localEulerAngles.y;
+            //Was using camera rotation, but that had some stutter issues. Rotating whole player seems to work. If issues down the line might have to revert back to adjusting camera.
+            cameraMovement = context.ReadValue<Vector2>() * mouseSensitivity;
+            Vector3 currentRotation = playerInput.camera.transform.localEulerAngles;
 
-        //Rotate camera's x and player's y
-        transform.localEulerAngles = new Vector3(xRotation, yRotation, transform.localEulerAngles.z);
+            //Add last frame angle with mousedelta and clamp the vertical. Mathf.clamp won't work with the angles so have to custom clamp it.
+            float xRotation = (cameraMovement.y * mouseSensitivity * -1) + transform.localEulerAngles.x;
+            if (transform.localEulerAngles.x < 90 && xRotation > lookVerticalMin)
+            {
+                xRotation = lookVerticalMin;
+            }
+            else if (transform.localEulerAngles.x > 270 && xRotation < lookVerticalMax)
+            {
+                xRotation = lookVerticalMax;
+            }
+            float yRotation = (cameraMovement.x * mouseSensitivity) + transform.localEulerAngles.y;
+
+            //Rotate camera's x and player's y
+            transform.localEulerAngles = new Vector3(xRotation, yRotation, transform.localEulerAngles.z);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        isJump = context.performed;
+        if (canMove)
+        {
+            isJump = context.performed;
+        }
     }
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton())
+        if (canMove)
         {
-            if (!isSliding)
+            if (context.ReadValueAsButton())
             {
-                characterController.height = normalHeight * crouchHeightPercent;
-                isSliding = true;
-                currentSlideTime = Time.time;
-                slideParticles.SetActive(true);
+                if (!isSliding)
+                {
+                    characterController.height = normalHeight * crouchHeightPercent;
+                    isSliding = true;
+                    currentSlideTime = Time.time;
+                    slideParticles.SetActive(true);
+                }
             }
-        }
-        else
-        {
-            characterController.height = normalHeight;
-            isSliding = false;
-            slideParticles.SetActive(false);
+            else
+            {
+                characterController.height = normalHeight;
+                isSliding = false;
+                slideParticles.SetActive(false);
+            }
         }
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time && !OnWall && !isSliding)
+        if(canMove && context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time && !OnWall && !isSliding)
         {
             currentDashTime = Time.time;
             //If no direction dash forward.
@@ -464,20 +474,23 @@ public class PlayerController : MonoBehaviour
     
     public void OnFire(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (canMove)
         {
-            if (HoldFire)
+            if (context.performed)
             {
-                isFiring = true;
+                if (HoldFire)
+                {
+                    isFiring = true;
+                }
+                else
+                {
+                    currentWeapon.UseWeapon();
+                }
             }
             else
             {
-                currentWeapon.UseWeapon();
+                isFiring = false;
             }
-        }
-        else
-        {
-            isFiring = false;
         }
     }
 
@@ -534,9 +547,11 @@ public class PlayerController : MonoBehaviour
     {
         movementVector = Vector3.zero;
         characterController.enabled = false;
+        canMove = false;
     }
     public void ResumeMovement()
     {
         characterController.enabled = true;
+        canMove = true;
     }
 }
