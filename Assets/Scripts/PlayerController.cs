@@ -138,8 +138,13 @@ public class PlayerController : MonoBehaviour
                     if (!firstFrameGrounded)
                     {
                         currentVelocity = ApplyFriction(friction);
+                        currentVelocity = AccelerateGround(accelerationGround);
                     }
-                    currentVelocity = Accelerate(accelerationGround);
+                    else
+                    {
+                        currentVelocity = AccelerateGround(accelerationGround);
+                    }
+                    
                     TiltHeadGround();
                 }
 
@@ -280,7 +285,7 @@ public class PlayerController : MonoBehaviour
                         }
                         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                         OnWall = false;
-                        currentVelocity = Accelerate(accelerationAir);
+                        currentVelocity = AccelerateAir(accelerationAir);
                         movementVector.y += gravity * Time.fixedDeltaTime;
                     }
                 }
@@ -304,7 +309,7 @@ public class PlayerController : MonoBehaviour
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
-                    currentVelocity = Accelerate(accelerationAir);
+                    currentVelocity = AccelerateAir(accelerationAir);
                     movementVector.y += gravity * Time.fixedDeltaTime;
                 }
             }
@@ -336,7 +341,7 @@ public class PlayerController : MonoBehaviour
 
     //Acceleration caluclations
     //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
-    private Vector2 Accelerate(float acceleration)
+    private Vector2 AccelerateAir(float acceleration)
     {
         float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
         float addSpeed = maxVelocity - projectedVelocity;
@@ -355,6 +360,28 @@ public class PlayerController : MonoBehaviour
         else
         {
             return currentVelocity + wishDirection.normalized * addSpeed;
+        }
+    }
+
+    //Acceleration caluclations
+    //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
+    private Vector2 AccelerateGround(float acceleration)
+    {
+        float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
+        float acceleratedVelocity = acceleration * Time.fixedDeltaTime;
+
+        if (acceleratedVelocity + projectedVelocity > maxVelocity)
+        {
+            acceleratedVelocity = maxVelocity - projectedVelocity;
+        }
+        //Trying changing this to always be in the wishdirection, but now always caps at max velocity, and stops too abrubtly. 
+        if (wishDirection.magnitude == 0)
+        {
+            return ApplyFriction(airResistance);
+        }
+        else
+        {
+            return currentVelocity + wishDirection.normalized * acceleratedVelocity;
         }
     }
 
