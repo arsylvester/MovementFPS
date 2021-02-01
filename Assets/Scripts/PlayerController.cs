@@ -339,12 +339,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 Accelerate(float acceleration)
     {
         float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
-        float acceleratedVelocity = acceleration * Time.fixedDeltaTime;
+        float addSpeed = maxVelocity - projectedVelocity;
+        addSpeed = Mathf.Max(Mathf.Min(addSpeed, maxVelocity * Time.fixedDeltaTime), 0);
+        /*float acceleratedVelocity = acceleration * Time.fixedDeltaTime;
 
         if (acceleratedVelocity + projectedVelocity > maxVelocity)
         {
             acceleratedVelocity = maxVelocity - projectedVelocity;
-        }
+        }*/
         //Trying changing this to always be in the wishdirection, but now always caps at max velocity, and stops too abrubtly. 
         if (wishDirection.magnitude == 0)
         {
@@ -352,7 +354,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            return currentVelocity + wishDirection.normalized * acceleratedVelocity;
+            return currentVelocity + wishDirection.normalized * addSpeed;
         }
     }
 
