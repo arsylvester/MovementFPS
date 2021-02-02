@@ -183,12 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdeb5217c10ccf74697cd09295e350dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationAir: 3
-  accelerationGround: 5
+  accelerationAir: 1
+  accelerationGround: 6
   maxVelocity: 1
   friction: 6
   airResistance: 8
-  mouseSensitivity: 0.2
   lookVerticalMin: 85
   lookVerticalMax: 280
   gravity: -2
@@ -206,8 +205,9 @@ MonoBehaviour:
   slideParticles: {fileID: 6833140820833710864}
   groundTiltAngle: 2
   currentWeapon: {fileID: 692650927441393475}
-  tiltHead: 1
   tiltHeadGround: 0
+  HoldJump: 1
+  HoldFire: 1
 --- !u!114 &6833140820308169541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +400,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6833140820308169538}
     m_Modifications:
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: throwSpeed
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: lifeTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6289552883243086388, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
         type: 3}
       propertyPath: m_Name
