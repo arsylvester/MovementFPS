@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        currentVelocity = AccelerateGround(accelerationGround);
+                        currentVelocity = AccelerateAir(accelerationAir);
                     }
                     
                     TiltHeadGround();
