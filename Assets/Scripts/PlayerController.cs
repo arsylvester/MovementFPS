@@ -60,12 +60,14 @@ public class PlayerController : MonoBehaviour
     bool firstFrameGrounded = true;
     bool wallRight;
     bool OnWall;
+    bool isDashing;
     bool isFiring;
     bool canMove = true;
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
     float lastInput;
+    float beforeDashVelocity;
     RaycastHit hitRight;
     RaycastHit hitLeft;
 
@@ -108,11 +110,16 @@ public class PlayerController : MonoBehaviour
         {
             GetWishDirection();
 
+            if (isDashing)
+            {
+                isDashing = false;
+                movementVector = movementVector.normalized * beforeDashVelocity;
+                dashParticles.SetActive(false);
+            }
+
             //Going using a Vector 2 for most calculations as y axis is not needed.
             currentVelocity.x = movementVector.x;
             currentVelocity.y = movementVector.z;
-
-            dashParticles.SetActive(false);
 
             if (isGrounded)
             {
@@ -468,6 +475,8 @@ public class PlayerController : MonoBehaviour
                 GetWishDirection();
             }
             movementVector.y = 0;
+            beforeDashVelocity = movementVector.magnitude;
+            isDashing = true;
             dashParticles.SetActive(true);
         }
     }
