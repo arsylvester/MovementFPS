@@ -232,8 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 0.5
+  damage: 5
   objectAtEnd: {fileID: 6289552883243086388}
-  throwSpeed: 100
+  throwSpeed: 120
   lifeTime: 3
   projectileToSpawn: {fileID: 6289552883243086388, guid: 4d88c86238f51924b811eb9e097f1002,
     type: 3}
