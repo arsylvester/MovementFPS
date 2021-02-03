@@ -61,6 +61,10 @@ public class UI : MonoBehaviour
         {
             TimeText.text = "Time: " + timedCourse.GetCurrentTime().ToString("F2");
             EnemiesText.text = "Targets Destroyed: " + timedCourse.GetCurrentEnemyCount() + "/" + timedCourse.GetEnemyMax();
+            if(timedCourse.GetCurrentEnemyCount() == timedCourse.GetEnemyMax())
+            {
+                EnemiesText.color = Color.green;
+            }
         }
     }
 
@@ -84,6 +88,10 @@ public class UI : MonoBehaviour
         {
             bestTimeText.text = "Best Time: " + timedCourse.GetBestTime().ToString("F2");
             bestTimeChalText.text = "Best Challenge Time: " + timedCourse.GetBestChallengeTime().ToString("F2");
+        }
+        else
+        {
+            EnemiesText.color = Color.black;
         }
         //TimeText.gameObject.SetActive(timing);
         //bestTimeTest.gameObject.SetActive(timing);

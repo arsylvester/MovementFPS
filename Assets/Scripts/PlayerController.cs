@@ -251,8 +251,12 @@ public class PlayerController : MonoBehaviour
                         //Jump off wall using the normal of the wall and an upwards force.
                         if (isJump)
                         {
+                            //GetDirectionLooking();
                             if (wallRight)
                             {
+                                /*float jumpPercentX = wishDirection.normalized.x / hitRight.normal.x;
+                                float jumpPercentY = wishDirection.normalized.y / hitRight.normal.z;
+                                float jumpPercentTotal = Mathf.Abs(jumpPercentX + jumpPercentY / 2);*/
                                 currentVelocity.x = hitRight.normal.x * wallJumpForce;
                                 currentVelocity.y = hitRight.normal.z * wallJumpForce;
                             }
