@@ -113,7 +113,11 @@ public class PlayerController : MonoBehaviour
             if (isDashing)
             {
                 isDashing = false;
-                movementVector = movementVector.normalized * beforeDashVelocity;
+                //Allow dash into slide to maintain speed, espically on walls.
+                if (!isSliding)
+                {
+                    movementVector = movementVector.normalized * beforeDashVelocity;
+                }
                 dashParticles.SetActive(false);
             }
 
