@@ -127,6 +127,12 @@ public class PlayerController : MonoBehaviour
 
             if (isGrounded)
             {
+                if(OnWall)
+                {
+                    StartCoroutine(TiltHead(0));
+                    OnWall = false;
+                }
+
                 //Sliding on ground
                 if (isSliding)
                 {
@@ -156,7 +162,6 @@ public class PlayerController : MonoBehaviour
 
                 firstFrameGrounded = false;
                 movementVector.y += gravity * Time.fixedDeltaTime;
-                OnWall = false;
             }
             else
             {
