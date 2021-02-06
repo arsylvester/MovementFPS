@@ -188,11 +188,11 @@ MonoBehaviour:
   maxVelocity: 1
   friction: 6
   airResistance: 8
-  mouseSensitivity: 0.2
   lookVerticalMin: 85
   lookVerticalMax: 280
   gravity: -2
   jumpHeight: 0.07
+  CoyoteTime: 0.07
   dashLength: 0.1
   dashCoolDown: 1
   DashVelocity: 4
@@ -206,8 +206,9 @@ MonoBehaviour:
   slideParticles: {fileID: 6833140820833710864}
   groundTiltAngle: 2
   currentWeapon: {fileID: 692650927441393475}
-  tiltHead: 1
   tiltHeadGround: 0
+  HoldJump: 0
+  HoldFire: 1
 --- !u!114 &6833140820308169541
 MonoBehaviour:
   m_ObjectHideFlags: 0

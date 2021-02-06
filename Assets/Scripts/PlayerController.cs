@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float lookVerticalMax = 85;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float jumpHeight = 1.0f;
+    [SerializeField] float CoyoteTime = .1f;
     [Header("Dash")]
     [SerializeField] float dashLength = 1.0f;
     [SerializeField] float dashCoolDown = 1.0f;
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
     PlayerInput playerInput;
     CharacterController characterController;
     bool isGrounded;
+    bool wasGrounded;
     bool isJump;
     bool isSliding;
     bool firstFrameGrounded = true;
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
     float currentSlideTime;
     float lastInput;
     float beforeDashVelocity;
+    float timeFromGround;
     RaycastHit hitRight;
     RaycastHit hitLeft;
 
@@ -94,8 +97,14 @@ public class PlayerController : MonoBehaviour
             movementVector.y = 0;
         }
 
+        if(wasGrounded != isGrounded && !isJump)
+        {
+            timeFromGround = Time.time;
+        }
+        wasGrounded = isGrounded;
+
         //Check to jump
-        if(isJump && isGrounded)
+        if (isJump && (isGrounded || timeFromGround + CoyoteTime >= Time.time))
         {
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             firstFrameGrounded = true;
