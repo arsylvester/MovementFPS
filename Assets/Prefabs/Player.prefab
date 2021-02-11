@@ -187,6 +187,7 @@ MonoBehaviour:
   accelerationGround: 5
   maxVelocity: 1
   friction: 6
+  frictionStopped: 10
   airResistance: 8
   lookVerticalMin: 85
   lookVerticalMax: 280
@@ -401,6 +402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6833140820308169538}
     m_Modifications:
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: lifeTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6289552883243086388, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
         type: 3}
       propertyPath: m_Name

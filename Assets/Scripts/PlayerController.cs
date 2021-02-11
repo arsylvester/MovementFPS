@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxVelocity = 10;
     [Tooltip("Ground friction")]
     [SerializeField] float friction = 1;
+    [Tooltip("Ground friction increased")]
+    [SerializeField] float frictionStopped = 2;
     [Tooltip("Slows down player if no input while in the air.")]
     [SerializeField] float airResistance = 1;
     public static float mouseSensitivity = .2f;
@@ -163,7 +165,14 @@ public class PlayerController : MonoBehaviour
                     //Only apply friction after the first frame, to allow speed to be reserved while bhopping
                     if (!firstFrameGrounded)
                     {
-                        currentVelocity = ApplyFriction(friction);
+                        if (wishDirection.magnitude == 0)
+                        {
+                            currentVelocity = ApplyFriction(frictionStopped);
+                        }
+                        else
+                        {
+                            currentVelocity = ApplyFriction(friction);
+                        }
                     }
                     currentVelocity = Accelerate(accelerationGround);
                     TiltHeadGround();
@@ -333,7 +342,14 @@ public class PlayerController : MonoBehaviour
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
-                    currentVelocity = Accelerate(accelerationAir);
+                    if (wishDirection.magnitude == 0)
+                    {
+                        currentVelocity = ApplyFriction(airResistance);
+                    }
+                    else
+                    {
+                        currentVelocity = Accelerate(accelerationAir);
+                    }
                     movementVector.y += gravity * Time.fixedDeltaTime;
                 }
             }
@@ -374,15 +390,7 @@ public class PlayerController : MonoBehaviour
         {
             acceleratedVelocity = maxVelocity - projectedVelocity;
         }
-        //Trying changing this to always be in the wishdirection, but now always caps at max velocity, and stops too abrubtly. 
-        if (wishDirection.magnitude == 0)
-        {
-            return ApplyFriction(airResistance);
-        }
-        else
-        {
-            return currentVelocity + wishDirection.normalized * acceleratedVelocity;
-        }
+        return currentVelocity + wishDirection.normalized * acceleratedVelocity;
     }
 
     //Slow player based on either ground friction or air resistance passed in.

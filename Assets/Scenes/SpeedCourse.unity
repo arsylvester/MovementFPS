@@ -16679,21 +16679,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: damage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: throwSpeed
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: lifeTime
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169538, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16747,11 +16732,6 @@ PrefabInstance:
     - target: {fileID: 6833140820308169538, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: HoldJump
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169551, guid: c5b1151227bac3842b5630cdaec451c4,
