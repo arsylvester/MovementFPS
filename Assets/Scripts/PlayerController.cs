@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     Vector3 movementVector;
     Vector2 cameraMovement;
     Vector2 currentVelocity;
+    Vector2 prevSlideVelocity;
     PlayerInput playerInput;
     CharacterController characterController;
     bool isGrounded;
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
     bool isDashing;
     bool isFiring;
     bool canMove = true;
+    bool crouchJump = false;
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
         if(isGrounded && movementVector.y < 0)
         {
             movementVector.y = 0;
+            crouchJump = false;
         }
 
         if(wasGrounded != isGrounded && !isJump)
@@ -113,6 +116,11 @@ public class PlayerController : MonoBehaviour
             if(!HoldJump)
             {
                 isJump = false;
+            }
+
+            if(isSliding)
+            {
+                crouchJump = true;
             }
         }
 
@@ -342,7 +350,7 @@ public class PlayerController : MonoBehaviour
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
-                    if (wishDirection.magnitude == 0)
+                    if (wishDirection.magnitude == 0 && !crouchJump)
                     {
                         currentVelocity = ApplyFriction(airResistance);
                     }
