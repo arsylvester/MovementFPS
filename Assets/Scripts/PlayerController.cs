@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     bool wasGrounded;
     bool isJump;
     bool isSliding;
+    bool startSliding;
     bool firstFrameGrounded = true;
     bool wallRight;
     bool OnWall;
@@ -156,8 +157,9 @@ public class PlayerController : MonoBehaviour
                 if (isSliding)
                 {
                     //Provide speed boost in direction looking if standing still
-                    if(currentVelocity.magnitude <= .01f)
+                    if(startSliding)
                     {
+                        startSliding = false;
                         GetDirectionLooking();
                         currentVelocity = wishDirection.normalized * slideSpeed;
                     }
@@ -485,6 +487,7 @@ public class PlayerController : MonoBehaviour
                 {
                     characterController.height = normalHeight * crouchHeightPercent;
                     isSliding = true;
+                    startSliding = true;
                     currentSlideTime = Time.time;
                     slideParticles.SetActive(true);
                 }
