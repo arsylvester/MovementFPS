@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     bool wasGrounded;
     bool isJump;
+    bool hasJumped;
     bool isSliding;
     bool startSliding;
     bool firstFrameGrounded = true;
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour
         {
             movementVector.y = 0;
             crouchJump = false;
+            hasJumped = false;
         }
 
         if(wasGrounded != isGrounded && !isJump)
@@ -110,10 +112,11 @@ public class PlayerController : MonoBehaviour
         wasGrounded = isGrounded;
 
         //Check to jump
-        if (isJump && (isGrounded || timeFromGround + CoyoteTime >= Time.time))
+        if (isJump && !hasJumped && (isGrounded || timeFromGround + CoyoteTime >= Time.time))
         {
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             firstFrameGrounded = true;
+            hasJumped = true;
             if(!HoldJump)
             {
                 isJump = false;
