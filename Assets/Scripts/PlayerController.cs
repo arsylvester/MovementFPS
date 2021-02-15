@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Angle to tilt at while on ground moving.")]
     [SerializeField] int groundTiltAngle = 5;
     [SerializeField] Weapon currentWeapon;
+    public static float fovValue = 90;
     [Header("Options")]
     [Tooltip("Enables tilting head at all, wall or ground.")]
     public static bool tiltHead = true;
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
         normalHeight = characterController.height;
+        SetFOV(fovValue);
     }
     private void Update()
     {
@@ -606,5 +608,11 @@ public class PlayerController : MonoBehaviour
     {
         characterController.enabled = true;
         canMove = true;
+    }
+
+    public static void SetFOV(float value)
+    {
+        fovValue = value;
+        Camera.main.fieldOfView = value;
     }
 }
