@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
     bool firstFrameGrounded = true;
     bool wallRight;
     bool OnWall;
+    bool jumpedOffWall;
     bool isDashing;
     bool isFiring;
     bool canMove = true;
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
             movementVector.y = 0;
             crouchJump = false;
             hasJumped = false;
+            jumpedOffWall = false;
         }
 
         if(wasGrounded != isGrounded && !isJump)
@@ -309,6 +311,7 @@ public class PlayerController : MonoBehaviour
                             }
                             StartCoroutine(TiltHead(0));
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                            jumpedOffWall = true;
                         }
 
                         OnWall = true;
@@ -357,7 +360,7 @@ public class PlayerController : MonoBehaviour
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
-                    if (wishDirection.magnitude == 0 && !crouchJump)
+                    if (wishDirection.magnitude == 0 && !crouchJump && !jumpedOffWall)
                     {
                         currentVelocity = ApplyFriction(airResistance);
                     }
