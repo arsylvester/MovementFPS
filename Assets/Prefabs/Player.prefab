@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationAir: 3
-  accelerationGround: 5
+  accelerationGround: 6
   maxVelocity: 1
-  friction: 6
+  friction: 7
   frictionStopped: 10
   airResistance: 8
   lookVerticalMin: 85

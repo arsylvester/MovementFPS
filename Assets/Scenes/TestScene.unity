@@ -902,6 +902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfae62ff358d76468309a10f28e7c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: 
+  resetScene: 1
 --- !u!65 &295138362
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2092,7 +2094,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedText: {fileID: 1448840505}
   EnemiesText: {fileID: 148905405}
-  bestTimeText: {fileID: 2092639722}
+  bestTimeText: {fileID: 0}
+  bestTimeChalText: {fileID: 0}
   TimeText: {fileID: 1061320416}
   dashSlider: {fileID: 195850437}
   dashFill: {fileID: 1547263627}
@@ -4338,11 +4341,6 @@ PrefabInstance:
     - target: {fileID: 6833140820308169538, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: HoldJump
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169551, guid: c5b1151227bac3842b5630cdaec451c4,

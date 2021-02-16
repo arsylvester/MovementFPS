@@ -403,13 +403,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 Accelerate(float acceleration)
     {
         //float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
-        float acceleratedVelocity = acceleration * Time.fixedDeltaTime;
+        Vector2 acceleratedVelocity = ((acceleration * Time.fixedDeltaTime) * wishDirection.normalized) + currentVelocity;
 
-        if (acceleratedVelocity + currentVelocity.magnitude > maxVelocity)
+        if (acceleratedVelocity.magnitude > maxVelocity)
         {
-            acceleratedVelocity = maxVelocity - currentVelocity.magnitude;
+            acceleratedVelocity = acceleratedVelocity.normalized * maxVelocity;
         }
-        return wishDirection.normalized * (currentVelocity.magnitude + acceleratedVelocity);
+        return acceleratedVelocity;
     }
 
     //Slow player based on either ground friction or air resistance passed in.
