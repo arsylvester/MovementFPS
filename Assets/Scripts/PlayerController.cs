@@ -189,9 +189,10 @@ public class PlayerController : MonoBehaviour
                         else
                         {
                             currentVelocity = ApplyFriction(friction);
+                            currentVelocity = Accelerate(accelerationGround);
                         }
                     }
-                    currentVelocity = Accelerate(accelerationGround);
+                    
                     TiltHeadGround();
                 }
 
@@ -360,7 +361,7 @@ public class PlayerController : MonoBehaviour
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
-                    if (wishDirection.magnitude == 0 && !crouchJump && !jumpedOffWall)
+                    if (wishDirection.magnitude == 0)// && !crouchJump && !jumpedOffWall)
                     {
                         currentVelocity = ApplyFriction(airResistance);
                     }
@@ -401,14 +402,14 @@ public class PlayerController : MonoBehaviour
     //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
     private Vector2 Accelerate(float acceleration)
     {
-        float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
-        float acceleratedVelocity = acceleration * Time.fixedDeltaTime;
+        //float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
+        Vector2 acceleratedVelocity = ((acceleration * Time.fixedDeltaTime) * wishDirection.normalized) + currentVelocity;
 
-        if (acceleratedVelocity + projectedVelocity > maxVelocity)
+        if (acceleratedVelocity.magnitude > maxVelocity)
         {
-            acceleratedVelocity = maxVelocity - projectedVelocity;
+            acceleratedVelocity = acceleratedVelocity.normalized * maxVelocity;
         }
-        return currentVelocity + wishDirection.normalized * acceleratedVelocity;
+        return acceleratedVelocity;
     }
 
     //Slow player based on either ground friction or air resistance passed in.
