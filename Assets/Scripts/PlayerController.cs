@@ -596,9 +596,10 @@ public class PlayerController : MonoBehaviour
     //A way to get the wish direction with just the camera rotation.
     private void GetDirectionLooking()
     {
+        float oldYInput = inputVector.y;
         inputVector.y = 1;
         GetWishDirection();
-        inputVector.y = 0;
+        inputVector.y = oldYInput;
     }
 
     //Used for UI
