@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     Vector2 cameraMovement;
     Vector2 currentVelocity;
     Vector2 prevSlideVelocity;
+    Vector2 wallPositionLast;
     PlayerInput playerInput;
     CharacterController characterController;
     bool isGrounded;
@@ -260,6 +261,15 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
+                            Vector2 wallDirection;
+                            if (OnWall)
+                            {
+                                wallDirection = (new Vector2(transform.position.x, transform.position.z) - wallPositionLast).normalized;
+                            }
+                            else
+                            {
+                                wallDirection = currentVelocity.normalized;
+                            }
                             if (wallRight)
                             {
                                 currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
@@ -270,6 +280,7 @@ public class PlayerController : MonoBehaviour
                                 currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
                                 currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap ;
                             }
+                            wallPositionLast = new Vector2(transform.position.x, transform.position.z);
                         }
 
                         //To check if need to tilt to other side. Will remove if I decide not to be able to look the opposite way of running.
@@ -302,13 +313,13 @@ public class PlayerController : MonoBehaviour
                                 /*float jumpPercentX = wishDirection.normalized.x / hitRight.normal.x;
                                 float jumpPercentY = wishDirection.normalized.y / hitRight.normal.z;
                                 float jumpPercentTotal = Mathf.Abs(jumpPercentX + jumpPercentY / 2);*/
-                                currentVelocity.x = hitRight.normal.x * wallJumpForce;
-                                currentVelocity.y = hitRight.normal.z * wallJumpForce;
+                                currentVelocity.x += hitRight.normal.x * wallJumpForce;
+                                currentVelocity.y += hitRight.normal.z * wallJumpForce;
                             }
                             else
                             {
-                                currentVelocity.x = hitLeft.normal.x * wallJumpForce;
-                                currentVelocity.y = hitLeft.normal.z * wallJumpForce;
+                                currentVelocity.x += hitLeft.normal.x * wallJumpForce;
+                                currentVelocity.y += hitLeft.normal.z * wallJumpForce;
                             }
                             StartCoroutine(TiltHead(0));
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
@@ -348,7 +359,7 @@ public class PlayerController : MonoBehaviour
                     if (OnWall)
                     {
                         StartCoroutine(TiltHead(0));
-                        if (wallRight)
+                        /*if (wallRight)
                         {
                             currentVelocity.x = hitRight.normal.x * wallJumpForce;
                             currentVelocity.y = hitRight.normal.z * wallJumpForce;
@@ -357,11 +368,11 @@ public class PlayerController : MonoBehaviour
                         {
                             currentVelocity.x = hitLeft.normal.x * wallJumpForce;
                             currentVelocity.y = hitLeft.normal.z * wallJumpForce;
-                        }
+                        }*/
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
-                    if (wishDirection.magnitude == 0)// && !crouchJump && !jumpedOffWall)
+                    if (wishDirection.magnitude == 0 && !crouchJump && !jumpedOffWall)
                     {
                         currentVelocity = ApplyFriction(airResistance);
                     }

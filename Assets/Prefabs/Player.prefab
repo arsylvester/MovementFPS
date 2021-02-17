@@ -198,7 +198,7 @@ MonoBehaviour:
   dashCoolDown: 1
   DashVelocity: 4
   dashParticles: {fileID: 5565560632834577644}
-  wallJumpForce: 1
+  wallJumpForce: 1.5
   wallRunSpeedCap: 1
   wallRunTiltAngle: 5
   slideSpeed: 1
