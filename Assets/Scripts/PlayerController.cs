@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     [Tooltip("Angle to tilt at while on ground moving.")]
     [SerializeField] int groundTiltAngle = 5;
+    [SerializeField] float tiltHeadSpeed = 1;
+    [SerializeField] float headTiltAdditive = .5f;
     [SerializeField] Weapon currentWeapon;
     public static float fovValue = 90;
     [Header("Options")]
@@ -57,6 +59,7 @@ public class PlayerController : MonoBehaviour
     Vector2 cameraMovement;
     Vector2 currentVelocity;
     Vector2 prevSlideVelocity;
+    Vector2 wallPositionLast;
     PlayerInput playerInput;
     CharacterController characterController;
     bool isGrounded;
@@ -260,6 +263,15 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
+                            Vector2 wallDirection;
+                            if (OnWall)
+                            {
+                                wallDirection = (new Vector2(transform.position.x, transform.position.z) - wallPositionLast).normalized;
+                            }
+                            else
+                            {
+                                wallDirection = currentVelocity.normalized;
+                            }
                             if (wallRight)
                             {
                                 currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
@@ -270,6 +282,7 @@ public class PlayerController : MonoBehaviour
                                 currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
                                 currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap ;
                             }
+                            wallPositionLast = new Vector2(transform.position.x, transform.position.z);
                         }
 
                         //To check if need to tilt to other side. Will remove if I decide not to be able to look the opposite way of running.
@@ -302,13 +315,13 @@ public class PlayerController : MonoBehaviour
                                 /*float jumpPercentX = wishDirection.normalized.x / hitRight.normal.x;
                                 float jumpPercentY = wishDirection.normalized.y / hitRight.normal.z;
                                 float jumpPercentTotal = Mathf.Abs(jumpPercentX + jumpPercentY / 2);*/
-                                currentVelocity.x = hitRight.normal.x * wallJumpForce;
-                                currentVelocity.y = hitRight.normal.z * wallJumpForce;
+                                currentVelocity.x += hitRight.normal.x * wallJumpForce;
+                                currentVelocity.y += hitRight.normal.z * wallJumpForce;
                             }
                             else
                             {
-                                currentVelocity.x = hitLeft.normal.x * wallJumpForce;
-                                currentVelocity.y = hitLeft.normal.z * wallJumpForce;
+                                currentVelocity.x += hitLeft.normal.x * wallJumpForce;
+                                currentVelocity.y += hitLeft.normal.z * wallJumpForce;
                             }
                             StartCoroutine(TiltHead(0));
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
@@ -348,7 +361,7 @@ public class PlayerController : MonoBehaviour
                     if (OnWall)
                     {
                         StartCoroutine(TiltHead(0));
-                        if (wallRight)
+                        /*if (wallRight)
                         {
                             currentVelocity.x = hitRight.normal.x * wallJumpForce;
                             currentVelocity.y = hitRight.normal.z * wallJumpForce;
@@ -357,11 +370,11 @@ public class PlayerController : MonoBehaviour
                         {
                             currentVelocity.x = hitLeft.normal.x * wallJumpForce;
                             currentVelocity.y = hitLeft.normal.z * wallJumpForce;
-                        }
+                        }*/
                     }
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                     OnWall = false;
-                    if (wishDirection.magnitude == 0)// && !crouchJump && !jumpedOffWall)
+                    if (wishDirection.magnitude == 0 && !crouchJump && !jumpedOffWall)
                     {
                         currentVelocity = ApplyFriction(airResistance);
                     }
@@ -556,38 +569,52 @@ public class PlayerController : MonoBehaviour
     //Used to tilt heads for when on a wall or moving on ground if enabled. Currently a little too course as it moves the camera in ints over fixed time. If using ground camera tilt then need to smooth, but on the wall its okay.
     public IEnumerator TiltHead(float angleToTilt)
     {
-        int currentTilt = (int)transform.localEulerAngles.z;
+        float currentTilt = transform.localEulerAngles.z;
+        if(currentTilt > 300)
+        {
+            currentTilt -= 360;
+        }
+        print(currentTilt);
+        bool directionTilting = false;
+        //Tilt right
+        if(currentTilt < angleToTilt)
+        {
+            directionTilting = true;
+        }
+
         while(currentTilt != angleToTilt && tiltHead)
         {
-            if(currentTilt > 300)
+            //tilt right
+            if (directionTilting)
             {
-                currentTilt++;
+                currentTilt += headTiltAdditive;
             }
-            else if(currentTilt < angleToTilt)
+            //tilt left
+            else
             {
-                currentTilt++;
+                currentTilt -= headTiltAdditive;
+            }
+
+            if ((directionTilting && currentTilt >= angleToTilt) || (!directionTilting && currentTilt <= angleToTilt))
+            {
+                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, angleToTilt);
+                break;
             }
             else
             {
-                currentTilt--;
+                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, currentTilt);
             }
-
-            if (currentTilt >= 360)
-            {
-                currentTilt = 0;
-            }
-
-            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, currentTilt);
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(tiltHeadSpeed);
         }
     }
 
     //A way to get the wish direction with just the camera rotation.
     private void GetDirectionLooking()
     {
+        float oldYInput = inputVector.y;
         inputVector.y = 1;
         GetWishDirection();
-        inputVector.y = 0;
+        inputVector.y = oldYInput;
     }
 
     //Used for UI
