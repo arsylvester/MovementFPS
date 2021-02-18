@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     [Tooltip("Angle to tilt at while on ground moving.")]
     [SerializeField] int groundTiltAngle = 5;
+    [SerializeField] float tiltHeadSpeed = 1;
+    [SerializeField] float headTiltAdditive = .5f;
     [SerializeField] Weapon currentWeapon;
     public static float fovValue = 90;
     [Header("Options")]
@@ -567,29 +569,42 @@ public class PlayerController : MonoBehaviour
     //Used to tilt heads for when on a wall or moving on ground if enabled. Currently a little too course as it moves the camera in ints over fixed time. If using ground camera tilt then need to smooth, but on the wall its okay.
     public IEnumerator TiltHead(float angleToTilt)
     {
-        int currentTilt = (int)transform.localEulerAngles.z;
+        float currentTilt = transform.localEulerAngles.z;
+        if(currentTilt > 300)
+        {
+            currentTilt -= 360;
+        }
+        print(currentTilt);
+        bool directionTilting = false;
+        //Tilt right
+        if(currentTilt < angleToTilt)
+        {
+            directionTilting = true;
+        }
+
         while(currentTilt != angleToTilt && tiltHead)
         {
-            if(currentTilt > 300)
+            //tilt right
+            if (directionTilting)
             {
-                currentTilt++;
+                currentTilt += headTiltAdditive;
             }
-            else if(currentTilt < angleToTilt)
+            //tilt left
+            else
             {
-                currentTilt++;
+                currentTilt -= headTiltAdditive;
+            }
+
+            if ((directionTilting && currentTilt >= angleToTilt) || (!directionTilting && currentTilt <= angleToTilt))
+            {
+                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, angleToTilt);
+                break;
             }
             else
             {
-                currentTilt--;
+                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, currentTilt);
             }
-
-            if (currentTilt >= 360)
-            {
-                currentTilt = 0;
-            }
-
-            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, currentTilt);
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(tiltHeadSpeed);
         }
     }
 
