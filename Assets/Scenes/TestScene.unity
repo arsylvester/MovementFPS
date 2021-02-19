@@ -4383,6 +4383,16 @@ PrefabInstance:
       propertyPath: headTiltAdditiveGround
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
+        type: 3}
+      propertyPath: weaponBobHeight
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
+        type: 3}
+      propertyPath: weaponBobSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169551, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_Name

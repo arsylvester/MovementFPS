@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float headTiltAdditiveWall = .5f;
     [Header("Other")]
     [SerializeField] Weapon currentWeapon;
+    [SerializeField] float weaponBobHeight;
+    [SerializeField] float weaponBobSpeed;
     public static float fovValue = 90;
     [Header("Options")]
     public bool HoldJump = false;
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
     float lastInput;
     float beforeDashVelocity;
     float timeFromGround;
+    Vector3 WeaponBobOrignalPostion;
     RaycastHit hitRight;
     RaycastHit hitLeft;
 
@@ -94,6 +97,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         normalHeight = characterController.height;
         SetFOV(fovValue);
+        WeaponBobOrignalPostion = currentWeapon.transform.localPosition;
     }
     private void Update()
     {
@@ -389,6 +393,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            print(currentVelocity.magnitude);
+            if (currentVelocity.magnitude >= .01f)
+            {
+                bobWeapon();
+            }
             movementVector.x = currentVelocity.x;
             movementVector.z = currentVelocity.y;
 
@@ -446,7 +455,6 @@ public class PlayerController : MonoBehaviour
     {
         if (tiltHeadGround)
         {
-            print(inputVector);
             if (inputVector.x > 0 && lastInput <= 0)
             {
                 TiltHead(-groundTiltAngle, headTiltAdditiveGround, tiltHeadSpeedGround);
@@ -470,6 +478,13 @@ public class PlayerController : MonoBehaviour
     {
         StopCoroutine(TiltHeadCore(0,0,0));
         StartCoroutine(TiltHeadCore(tiltAngle, tiltAdd, tiltSpeed));
+    }
+
+    private void bobWeapon()
+    {
+        float x = currentWeapon.transform.localPosition.x;
+        float z = currentWeapon.transform.localPosition.z;
+        currentWeapon.transform.localPosition = new Vector3(WeaponBobOrignalPostion.x + (Mathf.Sin(Time.time * weaponBobSpeed * .5f) * weaponBobHeight), WeaponBobOrignalPostion.y + (Mathf.Sin(Time.time * weaponBobSpeed) * weaponBobHeight), z);
     }
 
     //Move input action
