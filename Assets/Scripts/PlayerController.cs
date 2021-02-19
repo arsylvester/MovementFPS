@@ -32,25 +32,28 @@ public class PlayerController : MonoBehaviour
     [Header("Wall Running")]
     [SerializeField] float wallJumpForce = 1;
     [SerializeField] float wallRunSpeedCap = 1;
-    [Tooltip("How much the camera should tilt while on a wall.")]
-    [SerializeField] int wallRunTiltAngle = 10;
     [Header("Sliding")]
     [SerializeField] float slideSpeed = 1;
     [SerializeField] float slideFastLength = 1f;
     [SerializeField] float crouchHeightPercent = .5f;
     [SerializeField] GameObject slideParticles;
-    [Header("Other")]
+    [Header("Head Tilt")]
+    [Tooltip("Enables tilting of head on ground during movement. NOTE: Must have Tilt Head enabled as well.")]
+    public bool tiltHeadGround = false;
+    [Tooltip("Enables tilting head at all, wall or ground.")]
+    public static bool tiltHead = true;
     [Tooltip("Angle to tilt at while on ground moving.")]
     [SerializeField] int groundTiltAngle = 5;
-    [SerializeField] float tiltHeadSpeed = 1;
-    [SerializeField] float headTiltAdditive = .5f;
+    [Tooltip("How much the camera should tilt while on a wall.")]
+    [SerializeField] int wallRunTiltAngle = 10;
+    [SerializeField] float tiltHeadSpeedGround = 1;
+    [SerializeField] float tiltHeadSpeedWall = 1;
+    [SerializeField] float headTiltAdditiveGround = .5f;
+    [SerializeField] float headTiltAdditiveWall = .5f;
+    [Header("Other")]
     [SerializeField] Weapon currentWeapon;
     public static float fovValue = 90;
     [Header("Options")]
-    [Tooltip("Enables tilting head at all, wall or ground.")]
-    public static bool tiltHead = true;
-    [Tooltip("Enables tilting of head on ground during movement. NOTE: Must have Tilt Head enabled as well.")]
-    public bool tiltHeadGround = false;
     public bool HoldJump = false;
     public bool HoldFire = true;
     Vector2 inputVector;
@@ -159,7 +162,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(OnWall)
                 {
-                    StartCoroutine(TiltHead(0));
+                    //StartCoroutine(TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall));
                     OnWall = false;
                 }
 
@@ -294,7 +297,7 @@ public class PlayerController : MonoBehaviour
                             //On initial wall run
                             if (!OnWall || oldWallRight != wallRight)
                             {
-                                StartCoroutine(TiltHead(wallRunTiltAngle));
+                                TiltHead(wallRunTiltAngle, headTiltAdditiveWall, tiltHeadSpeedWall);
                             }
                         }
                         else
@@ -302,7 +305,7 @@ public class PlayerController : MonoBehaviour
                             //On initial wall run
                             if (!OnWall || oldWallRight != wallRight)
                             {
-                                StartCoroutine(TiltHead(-wallRunTiltAngle));
+                                TiltHead(-wallRunTiltAngle, headTiltAdditiveWall, tiltHeadSpeedWall);
                             }
                         }
 
@@ -323,7 +326,7 @@ public class PlayerController : MonoBehaviour
                                 currentVelocity.x += hitLeft.normal.x * wallJumpForce;
                                 currentVelocity.y += hitLeft.normal.z * wallJumpForce;
                             }
-                            StartCoroutine(TiltHead(0));
+                            TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                             jumpedOffWall = true;
                         }
@@ -336,7 +339,7 @@ public class PlayerController : MonoBehaviour
                         //likely should change from wallJumpForce, but it seems to work for now.
                         if (OnWall)
                         {
-                            StartCoroutine(TiltHead(0));
+                            TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
                             if (wallRight)
                             {
                                 currentVelocity.x = hitRight.normal.x * wallJumpForce;
@@ -348,7 +351,7 @@ public class PlayerController : MonoBehaviour
                                 currentVelocity.y = hitLeft.normal.z * wallJumpForce;
                             }
                         }
-                        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+                        //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                         OnWall = false;
                         currentVelocity = Accelerate(accelerationAir);
                         movementVector.y += gravity * Time.fixedDeltaTime;
@@ -360,7 +363,7 @@ public class PlayerController : MonoBehaviour
                     //If jumped off wall tilt head back and counter velocity that was going into wall.
                     if (OnWall)
                     {
-                        StartCoroutine(TiltHead(0));
+                       // StartCoroutine(TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall));
                         /*if (wallRight)
                         {
                             currentVelocity.x = hitRight.normal.x * wallJumpForce;
@@ -372,7 +375,7 @@ public class PlayerController : MonoBehaviour
                             currentVelocity.y = hitLeft.normal.z * wallJumpForce;
                         }*/
                     }
-                    transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+                    //TiltHeadGround(); //Allows head tilt change with air direction, But causes issues with wall running head tilts for some reason.
                     OnWall = false;
                     if (wishDirection.magnitude == 0 && !crouchJump && !jumpedOffWall)
                     {
@@ -443,20 +446,30 @@ public class PlayerController : MonoBehaviour
     {
         if (tiltHeadGround)
         {
+            print(inputVector);
             if (inputVector.x > 0 && lastInput <= 0)
             {
-                StartCoroutine(TiltHead(-groundTiltAngle));
+                TiltHead(-groundTiltAngle, headTiltAdditiveGround, tiltHeadSpeedGround);
+                lastInput = inputVector.x;
             }
             else if (inputVector.x < 0 && lastInput >= 0)
             {
-                StartCoroutine(TiltHead(groundTiltAngle));
+                TiltHead(groundTiltAngle, headTiltAdditiveGround, tiltHeadSpeedGround);
+                lastInput = inputVector.x;
             }
             else if (inputVector.x == 0 && lastInput != 0)
             {
-                StartCoroutine(TiltHead(0));
+                TiltHead(0, headTiltAdditiveGround, tiltHeadSpeedGround);
+                lastInput = inputVector.x;
             }
-            lastInput = inputVector.x;
+            
         }
+    }
+
+    private void TiltHead(float tiltAngle, float tiltAdd, float tiltSpeed)
+    {
+        StopCoroutine(TiltHeadCore(0,0,0));
+        StartCoroutine(TiltHeadCore(tiltAngle, tiltAdd, tiltSpeed));
     }
 
     //Move input action
@@ -567,7 +580,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Used to tilt heads for when on a wall or moving on ground if enabled. Currently a little too course as it moves the camera in ints over fixed time. If using ground camera tilt then need to smooth, but on the wall its okay.
-    public IEnumerator TiltHead(float angleToTilt)
+    public IEnumerator TiltHeadCore(float angleToTilt, float tiltToAdd, float tiltSpeed)
     {
         float currentTilt = transform.localEulerAngles.z;
         if(currentTilt > 300)
@@ -587,12 +600,12 @@ public class PlayerController : MonoBehaviour
             //tilt right
             if (directionTilting)
             {
-                currentTilt += headTiltAdditive;
+                currentTilt += tiltToAdd;
             }
             //tilt left
             else
             {
-                currentTilt -= headTiltAdditive;
+                currentTilt -= tiltToAdd;
             }
 
             if ((directionTilting && currentTilt >= angleToTilt) || (!directionTilting && currentTilt <= angleToTilt))
@@ -604,7 +617,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, currentTilt);
             }
-            yield return new WaitForSeconds(tiltHeadSpeed);
+            yield return new WaitForSeconds(tiltSpeed);
         }
     }
 
