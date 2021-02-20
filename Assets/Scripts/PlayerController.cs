@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
     Vector3 WeaponBobOrignalPostion;
     RaycastHit hitRight;
     RaycastHit hitLeft;
+    Coroutine headtiltCoroutine;
 
     void Start()
     {
@@ -393,7 +394,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            print(currentVelocity.magnitude);
             if (currentVelocity.magnitude >= .01f)
             {
                 bobWeapon();
@@ -476,8 +476,9 @@ public class PlayerController : MonoBehaviour
 
     private void TiltHead(float tiltAngle, float tiltAdd, float tiltSpeed)
     {
-        StopCoroutine(TiltHeadCore(0,0,0));
-        StartCoroutine(TiltHeadCore(tiltAngle, tiltAdd, tiltSpeed));
+        if(headtiltCoroutine != null)
+            StopCoroutine(headtiltCoroutine);
+        headtiltCoroutine = StartCoroutine(TiltHeadCore(tiltAngle, tiltAdd, tiltSpeed));
     }
 
     private void bobWeapon()
@@ -602,7 +603,6 @@ public class PlayerController : MonoBehaviour
         {
             currentTilt -= 360;
         }
-        print(currentTilt);
         bool directionTilting = false;
         //Tilt right
         if(currentTilt < angleToTilt)
