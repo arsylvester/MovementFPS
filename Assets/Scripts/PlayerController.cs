@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     [Header("Wall Running")]
     [SerializeField] float wallJumpForce = 1;
     [SerializeField] float wallRunSpeedCap = 1;
+    [SerializeField] float wallRunSpeedMin = 1;
+    [SerializeField] float wallRunSpeedMinBoost = 1;
     [Header("Sliding")]
     [SerializeField] float slideSpeed = 1;
     [SerializeField] float slideFastLength = 1f;
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour
     bool firstFrameGrounded = true;
     bool wallRight;
     bool OnWall;
+    bool wallDetected;
     bool jumpedOffWall;
     bool isDashing;
     bool isFiring;
@@ -203,7 +206,11 @@ public class PlayerController : MonoBehaviour
                             currentVelocity = Accelerate(accelerationGround);
                         }
                     }
-                    
+
+                    if (currentVelocity.magnitude >= .01f && !isSliding)
+                    {
+                        bobWeapon();
+                    }
                     TiltHeadGround();
                 }
 
@@ -213,15 +220,15 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //Wall running
-                if ((characterController.collisionFlags & CollisionFlags.CollidedSides) != 0)
+                if ((characterController.collisionFlags & CollisionFlags.CollidedSides) != 0 || wallDetected)
                 {
 
                     //Raycast to see if running on wall to right or left.
 
                     Transform wallHit = null;
-                    if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hitRight, 10))
+                    if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hitRight, 1))
                     {
-                        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 10))
+                        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 1))
                         {
                             if(hitLeft.distance < hitRight.distance)
                             {
@@ -239,11 +246,17 @@ public class PlayerController : MonoBehaviour
                             wallRight = true;
                             wallHit = hitRight.transform;
                         }
+                        wallDetected = true;
                     }
-                    else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 10))
+                    else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 1))
                     {
                         wallRight = false;
                         wallHit = hitLeft.transform;
+                        wallDetected = true;
+                    }
+                    else
+                    {
+                        wallDetected = false;
                     }
 
                     bool canWallRun = true;
@@ -271,25 +284,33 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
-                            Vector2 wallDirection;
-                            if (OnWall)
+                            if(wallRight)
                             {
-                                wallDirection = (new Vector2(transform.position.x, transform.position.z) - wallPositionLast).normalized;
+                                currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x) ;
+                                print(hitRight.normal);
+                                Debug.DrawRay(transform.position, new Vector3(hitRight.normal.z, 0, -hitRight.normal.x), Color.red);
+                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
+                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
                             }
                             else
                             {
-                                wallDirection = currentVelocity.normalized;
+                                currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
+                                print(hitLeft.normal);
+                                Debug.DrawRay(transform.position, new Vector3(-hitLeft.normal.z, 0, hitLeft.normal.x), Color.red);
+                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
+                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
                             }
-                            if (wallRight)
+                            /*
+                            if (characterController.velocity.magnitude < wallRunSpeedMin)
                             {
-                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
-                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap ;
+                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedMinBoost ;
+                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedMinBoost;
                             }
                             else
                             {
                                 currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
                                 currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap ;
-                            }
+                            }*/
                             wallPositionLast = new Vector2(transform.position.x, transform.position.z);
                         }
 
@@ -314,6 +335,12 @@ public class PlayerController : MonoBehaviour
                             }
                         }
 
+
+                        if (currentVelocity.magnitude >= .01f && !isSliding && OnWall && !isJump)
+                        {
+                            bobWeapon();
+                        }
+
                         //Jump off wall using the normal of the wall and an upwards force.
                         if (isJump)
                         {
@@ -331,6 +358,7 @@ public class PlayerController : MonoBehaviour
                                 currentVelocity.x += hitLeft.normal.x * wallJumpForce;
                                 currentVelocity.y += hitLeft.normal.z * wallJumpForce;
                             }
+                            wallDetected = false;
                             TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                             jumpedOffWall = true;
@@ -394,10 +422,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (currentVelocity.magnitude >= .01f)
-            {
-                bobWeapon();
-            }
             movementVector.x = currentVelocity.x;
             movementVector.z = currentVelocity.y;
 
@@ -410,6 +434,8 @@ public class PlayerController : MonoBehaviour
 
         //Move the player dependent on code above.
         characterController.Move(movementVector);
+        print("Move Vector: " + movementVector.magnitude);
+        //print("Char Control: " + characterController.velocity.magnitude);
     }
 
     private void GetWishDirection()
