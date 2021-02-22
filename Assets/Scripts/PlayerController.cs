@@ -226,9 +226,9 @@ public class PlayerController : MonoBehaviour
                     //Raycast to see if running on wall to right or left.
 
                     Transform wallHit = null;
-                    if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hitRight, 1))
+                    if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hitRight, 2))
                     {
-                        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 1))
+                        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 2))
                         {
                             if(hitLeft.distance < hitRight.distance)
                             {
@@ -248,7 +248,7 @@ public class PlayerController : MonoBehaviour
                         }
                         wallDetected = true;
                     }
-                    else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 1))
+                    else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hitLeft, 2))
                     {
                         wallRight = false;
                         wallHit = hitLeft.transform;
@@ -286,19 +286,51 @@ public class PlayerController : MonoBehaviour
                         {
                             if(wallRight)
                             {
-                                currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x) ;
-                                print(hitRight.normal);
-                                Debug.DrawRay(transform.position, new Vector3(hitRight.normal.z, 0, -hitRight.normal.x), Color.red);
-                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
-                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                                //print(hitRight.normal);
+                                //Debug.DrawRay(transform.position, new Vector3(hitRight.normal.z, 0, -hitRight.normal.x), Color.red);
+                                if (currentVelocity.magnitude < wallRunSpeedMin)
+                                {
+                                    currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x);
+                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedMin;
+                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedMin;
+                                }
+                                else if (currentVelocity.magnitude > wallRunSpeedCap)
+                                {
+                                    currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x);
+                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
+                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                                }
+                                else
+                                {
+                                    float magnitude = currentVelocity.magnitude;
+                                    currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x);
+                                    currentVelocity.x = currentVelocity.normalized.x * magnitude;
+                                    currentVelocity.y = currentVelocity.normalized.y * magnitude;
+                                }
                             }
                             else
                             {
-                                currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
-                                print(hitLeft.normal);
-                                Debug.DrawRay(transform.position, new Vector3(-hitLeft.normal.z, 0, hitLeft.normal.x), Color.red);
-                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
-                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                                //print(hitLeft.normal);
+                                //Debug.DrawRay(transform.position, new Vector3(-hitLeft.normal.z, 0, hitLeft.normal.x), Color.red);
+                                if (currentVelocity.magnitude < wallRunSpeedMin)
+                                {
+                                    currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
+                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedMinBoost;
+                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedMinBoost;
+                                }
+                                else if(currentVelocity.magnitude > wallRunSpeedCap)
+                                {
+                                    currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
+                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
+                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                                }
+                                else
+                                {
+                                    float magnitude = currentVelocity.magnitude;
+                                    currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
+                                    currentVelocity.x = currentVelocity.normalized.x * magnitude;
+                                    currentVelocity.y = currentVelocity.normalized.y * magnitude;
+                                }
                             }
                             /*
                             if (characterController.velocity.magnitude < wallRunSpeedMin)
@@ -373,6 +405,7 @@ public class PlayerController : MonoBehaviour
                         if (OnWall)
                         {
                             TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
+                            /*
                             if (wallRight)
                             {
                                 currentVelocity.x = hitRight.normal.x * wallJumpForce;
@@ -382,7 +415,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 currentVelocity.x = hitLeft.normal.x * wallJumpForce;
                                 currentVelocity.y = hitLeft.normal.z * wallJumpForce;
-                            }
+                            }*/
                         }
                         //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                         OnWall = false;
