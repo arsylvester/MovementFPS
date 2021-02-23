@@ -21,4 +21,14 @@ public class Weapon : MonoBehaviour
     {
 
     }
+
+    public virtual void UseAltFireWeapon()
+    {
+
+    }
+
+    public virtual void AltFireWeaponRelease()
+    {
+
+    }
 }

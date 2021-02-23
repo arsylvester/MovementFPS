@@ -42,6 +42,11 @@ public class Kunai : ProjectileWeapon
         }
     }
 
+    public override void UseAltFireWeapon()
+    {
+        base.UseAltFireWeapon();
+    }
+
     private void ToggleAllRenderers(bool enable)
     {
         foreach(Renderer rend in rends)

@@ -467,7 +467,7 @@ public class PlayerController : MonoBehaviour
 
         //Move the player dependent on code above.
         characterController.Move(movementVector);
-        print("Move Vector: " + movementVector.magnitude);
+        //print("Move Vector: " + movementVector.magnitude);
         //print("Char Control: " + characterController.velocity.magnitude);
     }
 
@@ -650,6 +650,24 @@ public class PlayerController : MonoBehaviour
             else
             {
                 isFiring = false;
+            }
+        }
+    }
+
+    bool holdAlt = false;
+    public void OnAltFire(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            if (context.performed && !holdAlt)
+            {
+                currentWeapon.UseAltFireWeapon();
+                holdAlt = true;
+            }
+            else if(holdAlt == true)
+            {
+                currentWeapon.AltFireWeaponRelease();
+                holdAlt = false;
             }
         }
     }
