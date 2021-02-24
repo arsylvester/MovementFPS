@@ -91,7 +91,8 @@ public class PlayerController : MonoBehaviour
     float beforeDashVelocity;
     float timeFromGround;
     Vector3 WeaponBobOrignalPostion;
-    RaycastHit hitRight;
+    Vector2 originalWallVelocity;
+RaycastHit hitRight;
     RaycastHit hitLeft;
     Coroutine headtiltCoroutine;
 
@@ -284,52 +285,62 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
+                            //Get inital velocity
+                            if(!OnWall)
+                            {
+                                originalWallVelocity = currentVelocity;
+                            }
+
                             if(wallRight)
                             {
+                                Vector2 rotatedWallNormal = new Vector2(hitRight.normal.z, -hitRight.normal.x);
+                                float initialAnglePercent = Vector2.Dot(originalWallVelocity.normalized, rotatedWallNormal);
+                                initialAnglePercent = Mathf.Acos(initialAnglePercent);
+                                initialAnglePercent = (Mathf.PI - initialAnglePercent)/Mathf.PI;
+                                print("Angle on wall: " + initialAnglePercent);
                                 //print(hitRight.normal);
                                 //Debug.DrawRay(transform.position, new Vector3(hitRight.normal.z, 0, -hitRight.normal.x), Color.red);
                                 if (currentVelocity.magnitude < wallRunSpeedMin)
                                 {
-                                    currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x);
-                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedMin;
-                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedMin;
+                                    currentVelocity.x = rotatedWallNormal.normalized.x * wallRunSpeedMin;
+                                    currentVelocity.y = rotatedWallNormal.normalized.y * wallRunSpeedMin;
                                 }
                                 else if (currentVelocity.magnitude > wallRunSpeedCap)
                                 {
-                                    currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x);
-                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
-                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                                    currentVelocity.x = rotatedWallNormal.normalized.x * wallRunSpeedCap;
+                                    currentVelocity.y = rotatedWallNormal.normalized.y * wallRunSpeedCap;
                                 }
                                 else
                                 {
                                     float magnitude = currentVelocity.magnitude;
-                                    currentVelocity = new Vector2(hitRight.normal.z, -hitRight.normal.x);
-                                    currentVelocity.x = currentVelocity.normalized.x * magnitude;
-                                    currentVelocity.y = currentVelocity.normalized.y * magnitude;
+                                    currentVelocity.x = rotatedWallNormal.normalized.x * magnitude;
+                                    currentVelocity.y = rotatedWallNormal.normalized.y * magnitude;
                                 }
                             }
                             else
                             {
+                                Vector2 rotatedWallNormal = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
+                                float initialAnglePercent = Vector2.Dot(originalWallVelocity.normalized, rotatedWallNormal);
+                                initialAnglePercent = Mathf.Acos(initialAnglePercent);
+                                initialAnglePercent = (Mathf.PI - initialAnglePercent) / Mathf.PI;
+                                print("Angle on wall: " + initialAnglePercent);
                                 //print(hitLeft.normal);
                                 //Debug.DrawRay(transform.position, new Vector3(-hitLeft.normal.z, 0, hitLeft.normal.x), Color.red);
                                 if (currentVelocity.magnitude < wallRunSpeedMin)
                                 {
-                                    currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
-                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedMinBoost;
-                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedMinBoost;
+                                    currentVelocity.x = rotatedWallNormal.normalized.x * wallRunSpeedMinBoost;
+                                    currentVelocity.y = rotatedWallNormal.normalized.y * wallRunSpeedMinBoost;
                                 }
                                 else if(currentVelocity.magnitude > wallRunSpeedCap)
                                 {
-                                    currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
-                                    currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap;
-                                    currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap;
+                                    currentVelocity.x = rotatedWallNormal.normalized.x * wallRunSpeedCap;
+                                    currentVelocity.y = rotatedWallNormal.normalized.y * wallRunSpeedCap;
                                 }
                                 else
                                 {
                                     float magnitude = currentVelocity.magnitude;
-                                    currentVelocity = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
-                                    currentVelocity.x = currentVelocity.normalized.x * magnitude;
-                                    currentVelocity.y = currentVelocity.normalized.y * magnitude;
+                                    currentVelocity.x = rotatedWallNormal.normalized.x * magnitude;
+                                    currentVelocity.y = rotatedWallNormal.normalized.y * magnitude;
                                 }
                             }
                             /*
