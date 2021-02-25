@@ -2003,18 +2003,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871727292}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &992112430 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6833140820397201721}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdeb5217c10ccf74697cd09295e350dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1061320414
 GameObject:
   m_ObjectHideFlags: 0
@@ -4393,31 +4381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: damage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: throwSpeed
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: lifeTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: zoomAmount
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: zoomSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169538, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4472,116 +4435,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
-      value: 268be484-62db-4b95-95a8-f3ecb745b1e1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
-      value: Player/Alt Fire[/Mouse/rightButton]
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 992112430}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAltFire
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: tiltHeadSpeed
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: headTiltAdditive
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: tiltHeadGround
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: tiltHeadSpeedWall
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: tiltHeadSpeedGround
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: headTiltAdditiveWall
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: groundTiltAngle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: headTiltAdditiveGround
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: weaponBobHeight
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: weaponBobSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: wallRunSpeedMin
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: wallRunSpeedMinBoost
-      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169551, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}

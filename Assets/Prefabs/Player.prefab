@@ -200,14 +200,22 @@ MonoBehaviour:
   dashParticles: {fileID: 5565560632834577644}
   wallJumpForce: 1.5
   wallRunSpeedCap: 1
-  wallRunTiltAngle: 5
+  wallRunSpeedMin: 0.5
+  wallRunSpeedMinBoost: 0.5
   slideSpeed: 1
   slideFastLength: 1.5
   crouchHeightPercent: 0.4
   slideParticles: {fileID: 6833140820833710864}
-  groundTiltAngle: 2
+  tiltHeadGround: 1
+  groundTiltAngle: 1
+  wallRunTiltAngle: 5
+  tiltHeadSpeedGround: 0.02
+  tiltHeadSpeedWall: 0.01
+  headTiltAdditiveGround: 0.1
+  headTiltAdditiveWall: 0.8
   currentWeapon: {fileID: 692650927441393475}
-  tiltHeadGround: 0
+  weaponBobHeight: 0.015
+  weaponBobSpeed: 12
   HoldJump: 0
   HoldFire: 1
 --- !u!114 &6833140820308169541
@@ -372,6 +380,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 12203c3a-3c3c-477f-ae1c-0867a580df28
     m_ActionName: Player/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6833140820308169550}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAltFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 268be484-62db-4b95-95a8-f3ecb745b1e1
+    m_ActionName: Player/Alt Fire[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -405,6 +429,14 @@ PrefabInstance:
     - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
       propertyPath: lifeTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: zoomAmount
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: zoomSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6289552883243086388, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
         type: 3}

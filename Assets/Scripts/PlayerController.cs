@@ -294,12 +294,6 @@ RaycastHit hitRight;
                             if(wallRight)
                             {
                                 Vector2 rotatedWallNormal = new Vector2(hitRight.normal.z, -hitRight.normal.x);
-                                float initialAnglePercent = Vector2.Dot(originalWallVelocity.normalized, rotatedWallNormal);
-                                initialAnglePercent = Mathf.Acos(initialAnglePercent);
-                                initialAnglePercent = (Mathf.PI - initialAnglePercent)/Mathf.PI;
-                                print("Angle on wall: " + initialAnglePercent);
-                                //print(hitRight.normal);
-                                //Debug.DrawRay(transform.position, new Vector3(hitRight.normal.z, 0, -hitRight.normal.x), Color.red);
                                 if (currentVelocity.magnitude < wallRunSpeedMin)
                                 {
                                     currentVelocity.x = rotatedWallNormal.normalized.x * wallRunSpeedMin;
@@ -320,12 +314,6 @@ RaycastHit hitRight;
                             else
                             {
                                 Vector2 rotatedWallNormal = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
-                                float initialAnglePercent = Vector2.Dot(originalWallVelocity.normalized, rotatedWallNormal);
-                                initialAnglePercent = Mathf.Acos(initialAnglePercent);
-                                initialAnglePercent = (Mathf.PI - initialAnglePercent) / Mathf.PI;
-                                print("Angle on wall: " + initialAnglePercent);
-                                //print(hitLeft.normal);
-                                //Debug.DrawRay(transform.position, new Vector3(-hitLeft.normal.z, 0, hitLeft.normal.x), Color.red);
                                 if (currentVelocity.magnitude < wallRunSpeedMin)
                                 {
                                     currentVelocity.x = rotatedWallNormal.normalized.x * wallRunSpeedMinBoost;
