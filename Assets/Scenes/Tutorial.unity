@@ -1666,7 +1666,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Left Control or Q to slide.
+  m_Text: Press <b>Left Control</b> or <b>Q</b> to slide.
 --- !u!222 &398420325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1980,8 +1980,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -775.93, y: -431.2}
-  m_SizeDelta: {x: 667.89246, y: 105.32178}
+  m_AnchoredPosition: {x: -775.93, y: -432.271}
+  m_SizeDelta: {x: 667.89246, y: 158.35849}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &576945516
 MonoBehaviour:
@@ -2016,7 +2016,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Throw Kunai with <b>Left Mouse Button</b>.
+  m_Text: 'Throw Kunai with <b>Left Mouse Button</b>.
+
+    Zoom with the <b>Right
+    Mouse Button</b>.'
 --- !u!222 &576945517
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6476,7 +6479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Space to jump.
+  m_Text: Press <b>Space</b> to jump.
 --- !u!222 &1953186167
 CanvasRenderer:
   m_ObjectHideFlags: 0
