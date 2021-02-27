@@ -5,6 +5,8 @@ using UnityEngine;
 public class KunaiProjectile : MonoBehaviour
 {
     [SerializeField] float renderDelay = .5f;
+    [SerializeField] GameObject hitParticle;
+    [SerializeField] GameObject enemyHitParticle;
     private float throwSpeed;
     private bool shouldMove = true;
     private int damageToDeal;
@@ -40,6 +42,12 @@ public class KunaiProjectile : MonoBehaviour
                     {
                         hit.transform.GetComponent<IDamageable>().TakeDamage(damageToDeal);
                         ui.ShowHitMarker();
+                        Instantiate(enemyHitParticle, transform.position, transform.rotation);
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        Instantiate(hitParticle, transform.position, transform.rotation);
                     }
                 }
             }

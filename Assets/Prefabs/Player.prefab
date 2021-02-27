@@ -187,7 +187,7 @@ MonoBehaviour:
   accelerationGround: 6
   maxVelocity: 1
   friction: 7
-  frictionStopped: 10
+  frictionStopped: 12
   airResistance: 8
   lookVerticalMin: 85
   lookVerticalMax: 280
@@ -437,6 +437,10 @@ PrefabInstance:
     - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
       propertyPath: zoomSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: throwSpeed
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6289552883243086388, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
         type: 3}
