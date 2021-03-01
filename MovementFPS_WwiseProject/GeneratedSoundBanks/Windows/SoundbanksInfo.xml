@@ -16,5 +16,20 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
+		<SoundBank Id="3332220694" Language="SFX" Hash="1055361842">
+			<ObjectPath>\SoundBanks\Default Work Unit\Actions</ObjectPath>
+			<ShortName>Actions</ShortName>
+			<Path>Actions.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2984178003" Name="ProjectileHit" ObjectPath="\Events\Default Work Unit\ProjectileHit" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.803440" DurationMax="0.803440">
+					<IncludedMemoryFiles>
+						<File Id="422216445" Language="SFX">
+							<ShortName>57918__denalwa__metal-pole.wav</ShortName>
+							<Path>SFX\57918__denalwa__metal-pole_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

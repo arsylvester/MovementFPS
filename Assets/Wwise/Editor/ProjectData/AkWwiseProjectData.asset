@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 62a7ee14c5826f4aad783c982a30ae41
     GuidInternal: 
-    m_lastTime: -8585870613018185921
+    m_lastTime: -8585869710752144097
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,8 +49,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8efe7b24bfa097419596001d10e58852
     GuidInternal: 
-    m_lastTime: -8585870613017645804
-    List: []
+    m_lastTime: -8585869709053843251
+    List:
+    - name: Actions
+      guid: 33834fd17e5bcf449acbb7f39dfed595
+      id: 3332220694
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Actions
+        ObjectType: 7
+      Path: Default Work Unit\Actions
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -59,8 +68,20 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f7f043afe7995d46bd120b884c7cf6f1
     GuidInternal: 
-    m_lastTime: -8585870613018025888
-    List: []
+    m_lastTime: -8585869710752254112
+    List:
+    - name: ProjectileHit
+      guid: e28b8970b1aee647b19e37839afbc587
+      id: 2984178003
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: ProjectileHit
+        ObjectType: 3
+      Path: Default Work Unit\ProjectileHit
+      maxAttenuation: 100
+      maxDuration: 0.80344
+      minDuration: 0.80344
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -101,6 +122,11 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8585870613017545781
     List: []
-  ExpandedItems: []
+  ExpandedItems:
+  - /MovementFPS_WwiseProject
+  - /MovementFPS_WwiseProject/Events
+  - /MovementFPS_WwiseProject/Events/Default Work Unit
+  - /MovementFPS_WwiseProject/SoundBanks
+  - /MovementFPS_WwiseProject/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

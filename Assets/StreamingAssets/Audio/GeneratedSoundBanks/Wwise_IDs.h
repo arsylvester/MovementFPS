@@ -11,6 +11,17 @@
 
 namespace AK
 {
+    namespace EVENTS
+    {
+        static const AkUniqueID PROJECTILEHIT = 2984178003U;
+    } // namespace EVENTS
+
+    namespace BANKS
+    {
+        static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID ACTIONS = 3332220694U;
+    } // namespace BANKS
+
     namespace BUSSES
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;

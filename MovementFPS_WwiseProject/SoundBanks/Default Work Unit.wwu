@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{247BFE8E-A0BF-4197-9596-001D10E58852}" SchemaVersion="97">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{247BFE8E-A0BF-4197-9596-001D10E58852}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{247BFE8E-A0BF-4197-9596-001D10E58852}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Actions" ID="{D14F8333-5B7E-44CF-9ACB-B7F39DFED595}">
+					<ObjectInclusionList>
+						<ObjectRef Name="ProjectileHit" ID="{70898BE2-AEB1-47E6-B19E-37839AFBC587}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>

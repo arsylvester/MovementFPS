@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" SchemaVersion="97">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="ProjectileHit" ID="{70898BE2-AEB1-47E6-B19E-37839AFBC587}">
+					<ChildrenList>
+						<Action Name="" ID="{08E65DB2-645F-4147-92AC-FF7FFE8DAD98}" ShortID="437634766">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="57918__denalwa__metal-pole" ID="{F0ADAAB7-0E38-4849-BBE0-DB6E862C2DD9}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

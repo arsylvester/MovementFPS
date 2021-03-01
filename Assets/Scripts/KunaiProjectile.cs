@@ -47,6 +47,7 @@ public class KunaiProjectile : MonoBehaviour
                     }
                     else
                     {
+                        AkSoundEngine.PostEvent("ProjectileHit", gameObject);
                         Instantiate(hitParticle, transform.position, transform.rotation);
                     }
                 }
