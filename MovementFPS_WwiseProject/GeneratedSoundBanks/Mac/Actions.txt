@@ -1,6 +1,17 @@
 Event	ID	Name			Wwise Object Path	Notes
+	745179803	Throw			\Default Work Unit\Throw	
+	1942692385	Dash			\Default Work Unit\Dash	
 	2984178003	ProjectileHit			\Default Work Unit\ProjectileHit	
+	3822001633	TargetHit			\Default Work Unit\TargetHit	
+	3833651337	Jump			\Default Work Unit\Jump	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	398866401	406276__anthousai__hit-wooden-06	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\406276__anthousai__hit-wooden-06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\406276__anthousai__hit-wooden-06		143264
 	422216445	57918__denalwa__metal-pole	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\57918__denalwa__metal-pole_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\57918__denalwa__metal-pole		200496
+	475658436	Woosh3	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_4EE3EC66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh3		95088
+	711272431	Woosh1	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_25F651FD.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh1		67580
+	747231857	Woosh4	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_35570CCB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh4		97584
+	770281973	DashWoosh	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_4ABEFD1C.wem		\Actor-Mixer Hierarchy\Default Work Unit\DashWoosh		75084
+	816306043	386572__shanef91__jumping-1	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\386572__shanef91__jumping-1_F2334A77.wem		\Actor-Mixer Hierarchy\Default Work Unit\386572__shanef91__jumping-1		40340
+	1025493548	Woosh2	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_8522301F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh2		60076
 

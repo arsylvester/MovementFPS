@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8efe7b24bfa097419596001d10e58852
     GuidInternal: 
-    m_lastTime: -8585869709053843251
+    m_lastTime: -8585869020248838367
     List:
     - name: Actions
       guid: 33834fd17e5bcf449acbb7f39dfed595
@@ -68,8 +68,32 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f7f043afe7995d46bd120b884c7cf6f1
     GuidInternal: 
-    m_lastTime: -8585869710752254112
+    m_lastTime: -8585869020248658341
     List:
+    - name: Dash
+      guid: 50c0f5a29ac413479c9cd828c68babb6
+      id: 1942692385
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Dash
+        ObjectType: 3
+      Path: Default Work Unit\Dash
+      maxAttenuation: 0
+      maxDuration: 0.390716
+      minDuration: 0.390716
+    - name: Jump
+      guid: 29074cd4fc7cdd4ba5c055d519c1f0b2
+      id: 3833651337
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Jump
+        ObjectType: 3
+      Path: Default Work Unit\Jump
+      maxAttenuation: 0
+      maxDuration: 0.222244
+      minDuration: 0.222244
     - name: ProjectileHit
       guid: e28b8970b1aee647b19e37839afbc587
       id: 2984178003
@@ -82,6 +106,30 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 0.80344
       minDuration: 0.80344
+    - name: TargetHit
+      guid: 0c4c227b87185a47acdd80e43c9120c6
+      id: 3822001633
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: TargetHit
+        ObjectType: 3
+      Path: Default Work Unit\TargetHit
+      maxAttenuation: 0
+      maxDuration: 0.745844
+      minDuration: 0.745844
+    - name: Throw
+      guid: 59f415e4bd0b914d9bc84a83e56b6583
+      id: 745179803
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Throw
+        ObjectType: 3
+      Path: Default Work Unit\Throw
+      maxAttenuation: 0
+      maxDuration: 0.507931
+      minDuration: 0.312573
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:

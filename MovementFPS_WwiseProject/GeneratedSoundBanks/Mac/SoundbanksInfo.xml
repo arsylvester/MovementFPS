@@ -16,16 +16,60 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3332220694" Language="SFX" Hash="1055361842">
+		<SoundBank Id="3332220694" Language="SFX" Hash="327741578">
 			<ObjectPath>\SoundBanks\Default Work Unit\Actions</ObjectPath>
 			<ShortName>Actions</ShortName>
 			<Path>Actions.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1942692385" Name="Dash" ObjectPath="\Events\Default Work Unit\Dash" DurationType="OneShot" DurationMin="0.390716" DurationMax="0.390716">
+					<IncludedMemoryFiles>
+						<File Id="770281973" Language="SFX">
+							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
+							<Path>SFX\512683__wavjunction-com__wooshes_4ABEFD1C.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3833651337" Name="Jump" ObjectPath="\Events\Default Work Unit\Jump" DurationType="OneShot" DurationMin="0.222244" DurationMax="0.222244">
+					<IncludedMemoryFiles>
+						<File Id="816306043" Language="SFX">
+							<ShortName>386572__shanef91__jumping-1.wav</ShortName>
+							<Path>SFX\386572__shanef91__jumping-1_F2334A77.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="2984178003" Name="ProjectileHit" ObjectPath="\Events\Default Work Unit\ProjectileHit" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.803440" DurationMax="0.803440">
 					<IncludedMemoryFiles>
 						<File Id="422216445" Language="SFX">
 							<ShortName>57918__denalwa__metal-pole.wav</ShortName>
 							<Path>SFX\57918__denalwa__metal-pole_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3822001633" Name="TargetHit" ObjectPath="\Events\Default Work Unit\TargetHit" DurationType="OneShot" DurationMin="0.745844" DurationMax="0.745844">
+					<IncludedMemoryFiles>
+						<File Id="398866401" Language="SFX">
+							<ShortName>406276__anthousai__hit-wooden-06.wav</ShortName>
+							<Path>SFX\406276__anthousai__hit-wooden-06_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="745179803" Name="Throw" ObjectPath="\Events\Default Work Unit\Throw" DurationType="OneShot" DurationMin="0.312573" DurationMax="0.507931">
+					<IncludedMemoryFiles>
+						<File Id="475658436" Language="SFX">
+							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
+							<Path>SFX\512683__wavjunction-com__wooshes_4EE3EC66.wem</Path>
+						</File>
+						<File Id="711272431" Language="SFX">
+							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
+							<Path>SFX\512683__wavjunction-com__wooshes_25F651FD.wem</Path>
+						</File>
+						<File Id="747231857" Language="SFX">
+							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
+							<Path>SFX\512683__wavjunction-com__wooshes_35570CCB.wem</Path>
+						</File>
+						<File Id="1025493548" Language="SFX">
+							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
+							<Path>SFX\512683__wavjunction-com__wooshes_8522301F.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

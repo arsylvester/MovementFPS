@@ -5,7 +5,11 @@
 			<ChildrenList>
 				<SoundBank Name="Actions" ID="{D14F8333-5B7E-44CF-9ACB-B7F39DFED595}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Dash" ID="{A2F5C050-C49A-4713-9C9C-D828C68BABB6}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="TargetHit" ID="{7B224C0C-1887-475A-ACDD-80E43C9120C6}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="ProjectileHit" ID="{70898BE2-AEB1-47E6-B19E-37839AFBC587}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Jump" ID="{D44C0729-7CFC-4BDD-A5C0-55D519C1F0B2}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Throw" ID="{E415F459-0BBD-4D91-9BC8-4A83E56B6583}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

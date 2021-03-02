@@ -90,6 +90,505 @@
 						<ActiveSource Name="57918__denalwa__metal-pole" ID="{020C1986-1A86-4657-BDDF-5A148181FC14}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="176146__swagmuffinplus__sliding-doors" ID="{DF43CF3D-5347-4636-B7B0-DD9D2BDF7F3B}" ShortID="1023482132">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="176146__swagmuffinplus__sliding-doors" ID="{8104BE7D-FE74-46B5-B6AC-F592B446C756}">
+							<Language>SFX</Language>
+							<AudioFile>176146__swagmuffinplus__sliding-doors.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="519156396"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="176146__swagmuffinplus__sliding-doors" ID="{8104BE7D-FE74-46B5-B6AC-F592B446C756}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="323417__sethroph__glass-slide-7" ID="{E07E5A06-6C03-437A-A4DF-7339576C382C}" ShortID="580691342">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="323417__sethroph__glass-slide-7" ID="{92B7983E-77D5-4342-8571-D7D8ECD49849}">
+							<Language>SFX</Language>
+							<AudioFile>323417__sethroph__glass-slide-7.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1005343190"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="323417__sethroph__glass-slide-7" ID="{92B7983E-77D5-4342-8571-D7D8ECD49849}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="380471__acebrian__jump" ID="{E88620B2-49DC-40DE-AA7D-F58C6F9F408B}" ShortID="255654974">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="380471__acebrian__jump" ID="{79D854D9-BDDA-4C28-8335-ABDABBC1F5F5}">
+							<Language>SFX</Language>
+							<AudioFile>380471__acebrian__jump.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="932215015"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="380471__acebrian__jump" ID="{79D854D9-BDDA-4C28-8335-ABDABBC1F5F5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="386572__shanef91__jumping-1" ID="{2DF3CBF0-9953-421C-8CD6-DD25F18EB77D}" ShortID="746537516">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="386572__shanef91__jumping-1" ID="{8B87FDBD-89C7-465A-9B24-C1938E3D58D3}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.120689655172414"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.330459770114943"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>386572__shanef91__jumping-1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="816306043"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="386572__shanef91__jumping-1" ID="{8B87FDBD-89C7-465A-9B24-C1938E3D58D3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="386691__laurenmg95__player-jump" ID="{1B90541F-3E2E-4E95-B166-5D188A5C7C6D}" ShortID="918546019">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="386691__laurenmg95__player-jump" ID="{A3DA5DE9-8FB5-442D-8F57-9E1F591C0CC6}">
+							<Language>SFX</Language>
+							<AudioFile>386691__laurenmg95__player-jump.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="607193126"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="386691__laurenmg95__player-jump" ID="{A3DA5DE9-8FB5-442D-8F57-9E1F591C0CC6}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="404394__eskimoneil__jump-thump" ID="{B8A6C85F-DC94-4937-BE99-C96065606061}" ShortID="759110935">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="404394__eskimoneil__jump-thump" ID="{B3F854BA-F2A4-48BF-9B88-4ADE8931DDED}">
+							<Language>SFX</Language>
+							<AudioFile>404394__eskimoneil__jump-thump.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="830084612"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="404394__eskimoneil__jump-thump" ID="{B3F854BA-F2A4-48BF-9B88-4ADE8931DDED}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="406276__anthousai__hit-wooden-06" ID="{43B3C73B-A8AF-4723-8A6F-66CEBAD152A4}" ShortID="1066428725">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="406276__anthousai__hit-wooden-06" ID="{75ED575C-1A23-49BC-85A1-C67F84F5FB14}">
+							<Language>SFX</Language>
+							<AudioFile>406276__anthousai__hit-wooden-06.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="398866401"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="406276__anthousai__hit-wooden-06" ID="{75ED575C-1A23-49BC-85A1-C67F84F5FB14}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="406562__anthousai__hit-metallic-01" ID="{46D73588-1B24-41D4-8563-4CC598763521}" ShortID="445690918">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="406562__anthousai__hit-metallic-01" ID="{725B8FC0-CD6E-4DB7-9646-B4FC71D0B225}">
+							<Language>SFX</Language>
+							<AudioFile>406562__anthousai__hit-metallic-01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1040319538"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="406562__anthousai__hit-metallic-01" ID="{725B8FC0-CD6E-4DB7-9646-B4FC71D0B225}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="422426__behansean__jumps-start" ID="{C0B0B73A-620B-48BE-9919-FC3CB429D6AB}" ShortID="340388341">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="422426__behansean__jumps-start" ID="{FDF781F7-9620-402F-BC48-A2602FBAD313}">
+							<Language>SFX</Language>
+							<AudioFile>422426__behansean__jumps-start.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="102520149"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="422426__behansean__jumps-start" ID="{FDF781F7-9620-402F-BC48-A2602FBAD313}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="422857__ipaddeh__jump-landing-wood-01" ID="{66FA0E09-A766-42FC-9246-2750738F4A78}" ShortID="515468484">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="422857__ipaddeh__jump-landing-wood-01" ID="{5C1DF378-9388-4A1D-B06C-059AD81AC1BF}">
+							<Language>SFX</Language>
+							<AudioFile>422857__ipaddeh__jump-landing-wood-01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="28297853"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="422857__ipaddeh__jump-landing-wood-01" ID="{5C1DF378-9388-4A1D-B06C-059AD81AC1BF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="470997__ganstmon__49-corderosaltando" ID="{C8CA5DD1-E677-4A70-ABE4-7EA876C3B246}" ShortID="448513835">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="470997__ganstmon__49-corderosaltando" ID="{17EBBDAF-A156-475E-919D-9E0066A6B814}">
+							<Language>SFX</Language>
+							<AudioFile>470997__ganstmon__49-corderosaltando.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="442605729"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="470997__ganstmon__49-corderosaltando" ID="{17EBBDAF-A156-475E-919D-9E0066A6B814}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="472119__claymorexx__26-salto1" ID="{FDB0805C-6344-430C-81B2-ECA7898A609F}" ShortID="96932092">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="472119__claymorexx__26-salto1" ID="{88FF2BBC-2241-4443-9CD7-BB1F36CF222C}">
+							<Language>SFX</Language>
+							<AudioFile>472119__claymorexx__26-salto1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="7402263"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="472119__claymorexx__26-salto1" ID="{88FF2BBC-2241-4443-9CD7-BB1F36CF222C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="512683__wavjunction-com__wooshes" ID="{944A6A8A-0CE4-4FB7-BA0D-A98CC1B5C99D}" ShortID="945858494">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="512683__wavjunction-com__wooshes" ID="{D06EEDCD-BBE5-4B57-9FF0-21B5A37018EC}">
+							<Language>SFX</Language>
+							<AudioFile>512683__wavjunction-com__wooshes.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="717587916"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="512683__wavjunction-com__wooshes" ID="{D06EEDCD-BBE5-4B57-9FF0-21B5A37018EC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="547414__ian-g__wood-hit" ID="{49AFE4F9-9F5B-4089-8A46-D228B186E786}" ShortID="14825106">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="547414__ian-g__wood-hit" ID="{CCA22432-8E6A-4DA4-A087-E57C02F9AAE7}">
+							<Language>SFX</Language>
+							<AudioFile>547414__ian-g__wood-hit.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="215406116"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="547414__ian-g__wood-hit" ID="{CCA22432-8E6A-4DA4-A087-E57C02F9AAE7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<RandomSequenceContainer Name="Wooshes" ID="{096AEDA6-BDB8-48D9-B8A2-79B44B693D62}" ShortID="78999898">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Woosh1" ID="{E4C70060-87E5-45CA-9E74-891723EC7A44}" ShortID="359127147">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="512683__wavjunction-com__wooshes" ID="{C8E279DC-57A7-4152-A261-5C495F0CB708}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.690264926564495"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.04190932311622"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>512683__wavjunction-com__wooshes.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="711272431"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="512683__wavjunction-com__wooshes" ID="{C8E279DC-57A7-4152-A261-5C495F0CB708}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Woosh2" ID="{62DBD9AD-3A29-4E4A-8B34-8459D4D5CE7B}" ShortID="565005524">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="512683__wavjunction-com__wooshes" ID="{DD244401-1DCB-4B8A-A079-BF387E90853C}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="5.89981154214559"/>
+										<Property Name="TrimEnd" Type="Real64" Value="6.21238433908046"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>512683__wavjunction-com__wooshes.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1025493548"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="512683__wavjunction-com__wooshes" ID="{DD244401-1DCB-4B8A-A079-BF387E90853C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Woosh3" ID="{3352C3DF-16C0-4C54-8107-2336393C091F}" ShortID="582401783">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="512683__wavjunction-com__wooshes" ID="{A18F9130-AA40-4B33-B424-4EF094157178}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="8.60877578224776"/>
+										<Property Name="TrimEnd" Type="Real64" Value="9.10368271072797"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>512683__wavjunction-com__wooshes.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="475658436"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="512683__wavjunction-com__wooshes" ID="{A18F9130-AA40-4B33-B424-4EF094157178}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Woosh4" ID="{33CF94F3-274E-42B7-AC7D-0353B5623AB9}" ShortID="245654425">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="512683__wavjunction-com__wooshes" ID="{C34E2C7D-340B-41A0-A5BB-9CB12ECA8641}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="12.2294106800766"/>
+										<Property Name="TrimEnd" Type="Real64" Value="12.7373414750958"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>512683__wavjunction-com__wooshes.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="747231857"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="512683__wavjunction-com__wooshes" ID="{C34E2C7D-340B-41A0-A5BB-9CB12ECA8641}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<Sound Name="DashWoosh" ID="{B87EA900-77A9-4107-8F97-89DBE2D30F23}" ShortID="824582419">
+					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<ValueList>
+								<Value>28</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-3</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0FA00994-C5A1-4877-AD3E-387B86782777}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14EEA762-82C5-4A6F-AD78-3C982A30AE41}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="512683__wavjunction-com__wooshes" ID="{5EDF02DF-AC52-429A-BF12-5DEC42C3F109}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="3.97227929438059"/>
+								<Property Name="TrimEnd" Type="Real64" Value="4.36299529054916"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>512683__wavjunction-com__wooshes.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="770281973"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="512683__wavjunction-com__wooshes" ID="{5EDF02DF-AC52-429A-BF12-5DEC42C3F109}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

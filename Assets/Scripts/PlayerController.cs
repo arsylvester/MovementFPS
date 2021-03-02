@@ -136,7 +136,8 @@ RaycastHit hitRight;
             movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             firstFrameGrounded = true;
             hasJumped = true;
-            if(!HoldJump)
+            AkSoundEngine.PostEvent("Jump", gameObject);
+            if (!HoldJump)
             {
                 isJump = false;
             }
@@ -393,6 +394,7 @@ RaycastHit hitRight;
                             TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                             jumpedOffWall = true;
+                            AkSoundEngine.PostEvent("Jump", gameObject);
                         }
 
                         OnWall = true;
@@ -628,6 +630,7 @@ RaycastHit hitRight;
             beforeDashVelocity = movementVector.magnitude;
             isDashing = true;
             dashParticles.SetActive(true);
+            AkSoundEngine.PostEvent("Dash", gameObject);
         }
     }
     
