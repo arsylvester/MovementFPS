@@ -58,6 +58,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Land" ID="{802FE7F1-EBC3-4E71-9AC5-B14198C0A3EC}">
+					<ChildrenList>
+						<Action Name="" ID="{2DE01456-5BB7-4AA9-B6D2-3C8DCD787E31}" ShortID="342341879">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="404394__eskimoneil__jump-thump" ID="{B8A6C85F-DC94-4937-BE99-C96065606061}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

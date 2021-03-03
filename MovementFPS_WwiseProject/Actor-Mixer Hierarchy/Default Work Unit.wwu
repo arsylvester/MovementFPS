@@ -228,6 +228,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="404394__eskimoneil__jump-thump" ID="{B3F854BA-F2A4-48BF-9B88-4ADE8931DDED}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.354375119731801"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.485939535440613"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>404394__eskimoneil__jump-thump.wav</AudioFile>
 							<MediaIDList>
@@ -235,6 +240,9 @@
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
+					<PositioningInfo>
+						<Panner Name="" ID="{861024FA-056E-4D31-960C-7431F1AB9A07}"/>
+					</PositioningInfo>
 					<ActiveSourceList>
 						<ActiveSource Name="404394__eskimoneil__jump-thump" ID="{B3F854BA-F2A4-48BF-9B88-4ADE8931DDED}" Platform="Linked"/>
 					</ActiveSourceList>

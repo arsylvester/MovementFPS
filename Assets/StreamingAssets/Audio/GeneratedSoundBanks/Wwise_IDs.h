@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID DASH = 1942692385U;
         static const AkUniqueID JUMP = 3833651337U;
+        static const AkUniqueID LAND = 674522502U;
         static const AkUniqueID PROJECTILEHIT = 2984178003U;
         static const AkUniqueID TARGETHIT = 3822001633U;
         static const AkUniqueID THROW = 745179803U;

@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3332220694" Language="SFX" Hash="327741578">
+		<SoundBank Id="3332220694" Language="SFX" Hash="1507276296">
 			<ObjectPath>\SoundBanks\Default Work Unit\Actions</ObjectPath>
 			<ShortName>Actions</ShortName>
 			<Path>Actions.bnk</Path>
@@ -25,7 +25,7 @@
 					<IncludedMemoryFiles>
 						<File Id="770281973" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
-							<Path>SFX\512683__wavjunction-com__wooshes_4ABEFD1C.wem</Path>
+							<Path>SFX\512683__wavjunction-com__wooshes_9C3F641C.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -33,7 +33,15 @@
 					<IncludedMemoryFiles>
 						<File Id="816306043" Language="SFX">
 							<ShortName>386572__shanef91__jumping-1.wav</ShortName>
-							<Path>SFX\386572__shanef91__jumping-1_F2334A77.wem</Path>
+							<Path>SFX\386572__shanef91__jumping-1_64271874.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="674522502" Name="Land" ObjectPath="\Events\Default Work Unit\Land" DurationType="OneShot" DurationMin="0.131564" DurationMax="0.131564">
+					<IncludedMemoryFiles>
+						<File Id="830084612" Language="SFX">
+							<ShortName>404394__eskimoneil__jump-thump.wav</ShortName>
+							<Path>SFX\404394__eskimoneil__jump-thump_A231A5DC.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -57,19 +65,19 @@
 					<IncludedMemoryFiles>
 						<File Id="475658436" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
-							<Path>SFX\512683__wavjunction-com__wooshes_4EE3EC66.wem</Path>
+							<Path>SFX\512683__wavjunction-com__wooshes_ADFF42E3.wem</Path>
 						</File>
 						<File Id="711272431" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
-							<Path>SFX\512683__wavjunction-com__wooshes_25F651FD.wem</Path>
+							<Path>SFX\512683__wavjunction-com__wooshes_22E445FC.wem</Path>
 						</File>
 						<File Id="747231857" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
-							<Path>SFX\512683__wavjunction-com__wooshes_35570CCB.wem</Path>
+							<Path>SFX\512683__wavjunction-com__wooshes_7A5B536C.wem</Path>
 						</File>
 						<File Id="1025493548" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
-							<Path>SFX\512683__wavjunction-com__wooshes_8522301F.wem</Path>
+							<Path>SFX\512683__wavjunction-com__wooshes_8BD1E3E7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

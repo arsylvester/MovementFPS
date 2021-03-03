@@ -10,6 +10,7 @@
 						<ObjectRef Name="ProjectileHit" ID="{70898BE2-AEB1-47E6-B19E-37839AFBC587}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Jump" ID="{D44C0729-7CFC-4BDD-A5C0-55D519C1F0B2}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Throw" ID="{E415F459-0BBD-4D91-9BC8-4A83E56B6583}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Land" ID="{802FE7F1-EBC3-4E71-9AC5-B14198C0A3EC}" WorkUnitID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

@@ -118,6 +118,11 @@ RaycastHit hitRight;
         isGrounded = characterController.isGrounded;
         if(isGrounded && movementVector.y < 0)
         {
+            //Land
+            if(hasJumped)
+            {
+                AkSoundEngine.PostEvent("Land", gameObject);
+            }
             movementVector.y = 0;
             crouchJump = false;
             hasJumped = false;
