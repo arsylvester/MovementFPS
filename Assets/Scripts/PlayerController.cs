@@ -606,6 +606,7 @@ RaycastHit hitRight;
                     startSliding = true;
                     currentSlideTime = Time.time;
                     slideParticles.SetActive(true);
+                    AkSoundEngine.PostEvent("SlideStart", gameObject);
                 }
             }
             else
@@ -613,6 +614,7 @@ RaycastHit hitRight;
                 characterController.height = normalHeight;
                 isSliding = false;
                 slideParticles.SetActive(false);
+                AkSoundEngine.PostEvent("SlideStop", gameObject);
             }
         }
     }

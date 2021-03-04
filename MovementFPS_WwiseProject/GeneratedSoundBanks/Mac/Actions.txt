@@ -1,6 +1,9 @@
 Event	ID	Name			Wwise Object Path	Notes
 	674522502	Land			\Default Work Unit\Land	
 	745179803	Throw			\Default Work Unit\Throw	
+	1117955668	SlideStart			\Default Work Unit\SlideStart	
+	1780160584	SlideStop			\Default Work Unit\SlideStop	
+	1866025847	FootStep			\Default Work Unit\FootStep	
 	1942692385	Dash			\Default Work Unit\Dash	
 	2984178003	ProjectileHit			\Default Work Unit\ProjectileHit	
 	3822001633	TargetHit			\Default Work Unit\TargetHit	
@@ -10,10 +13,11 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	398866401	406276__anthousai__hit-wooden-06	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\406276__anthousai__hit-wooden-06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\406276__anthousai__hit-wooden-06		143264
 	422216445	57918__denalwa__metal-pole	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\57918__denalwa__metal-pole_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\57918__denalwa__metal-pole		200496
 	475658436	Woosh3	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_ADFF42E3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh3		95088
+	519156396	176146__swagmuffinplus__sliding-doors	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\176146__swagmuffinplus__sliding-doors_F042ADE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\176146__swagmuffinplus__sliding-doors		49182
 	711272431	Woosh1	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_22E445FC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh1		67580
 	747231857	Woosh4	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_7A5B536C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh4		97584
 	770281973	DashWoosh	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_9C3F641C.wem		\Actor-Mixer Hierarchy\Default Work Unit\DashWoosh		75084
 	816306043	386572__shanef91__jumping-1	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\386572__shanef91__jumping-1_64271874.wem		\Actor-Mixer Hierarchy\Default Work Unit\386572__shanef91__jumping-1		40340
-	830084612	404394__eskimoneil__jump-thump	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\404394__eskimoneil__jump-thump_A231A5DC.wem		\Actor-Mixer Hierarchy\Default Work Unit\404394__eskimoneil__jump-thump		25324
+	830084612	Thump	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\404394__eskimoneil__jump-thump_5E3E6AAE.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Thump		25324
 	1025493548	Woosh2	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\512683__wavjunction-com__wooshes_8BD1E3E7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Wooshes\Woosh2		60076
 

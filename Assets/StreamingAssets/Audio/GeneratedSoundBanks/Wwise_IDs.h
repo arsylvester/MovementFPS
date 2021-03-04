@@ -14,9 +14,12 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID DASH = 1942692385U;
+        static const AkUniqueID FOOTSTEP = 1866025847U;
         static const AkUniqueID JUMP = 3833651337U;
         static const AkUniqueID LAND = 674522502U;
         static const AkUniqueID PROJECTILEHIT = 2984178003U;
+        static const AkUniqueID SLIDESTART = 1117955668U;
+        static const AkUniqueID SLIDESTOP = 1780160584U;
         static const AkUniqueID TARGETHIT = 3822001633U;
         static const AkUniqueID THROW = 745179803U;
     } // namespace EVENTS

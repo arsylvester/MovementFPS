@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 8efe7b24bfa097419596001d10e58852
     GuidInternal: 
-    m_lastTime: -8585867980824542781
+    m_lastTime: -8585867135434267183
     List:
     - name: Actions
       guid: 33834fd17e5bcf449acbb7f39dfed595
@@ -68,7 +68,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: f7f043afe7995d46bd120b884c7cf6f1
     GuidInternal: 
-    m_lastTime: -8585867980824622802
+    m_lastTime: -8585867135790852857
     List:
     - name: Dash
       guid: 50c0f5a29ac413479c9cd828c68babb6
@@ -82,6 +82,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.390716
       minDuration: 0.390716
+    - name: FootStep
+      guid: 8545fbbedec69b4ea98bc145b3290088
+      id: 1866025847
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: FootStep
+        ObjectType: 3
+      Path: Default Work Unit\FootStep
+      maxAttenuation: 0
+      maxDuration: 0.139388
+      minDuration: 0.12418
     - name: Jump
       guid: 29074cd4fc7cdd4ba5c055d519c1f0b2
       id: 3833651337
@@ -118,6 +130,30 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 0.80344
       minDuration: 0.80344
+    - name: SlideStart
+      guid: d40c7135da60be4792fa7e1a63367d59
+      id: 1117955668
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SlideStart
+        ObjectType: 3
+      Path: Default Work Unit\SlideStart
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: SlideStop
+      guid: d4d98db4b959a946a4acbccc64534eb6
+      id: 1780160584
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SlideStop
+        ObjectType: 3
+      Path: Default Work Unit\SlideStop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: TargetHit
       guid: 0c4c227b87185a47acdd80e43c9120c6
       id: 3822001633
