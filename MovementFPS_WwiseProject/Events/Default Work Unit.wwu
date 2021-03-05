@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{AF43F0F7-99E7-465D-BD12-0B884C7CF6F1}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="ProjectileHit" ID="{70898BE2-AEB1-47E6-B19E-37839AFBC587}">
+					<ChildrenList>
+						<Action Name="" ID="{08E65DB2-645F-4147-92AC-FF7FFE8DAD98}" ShortID="437634766">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="57918__denalwa__metal-pole" ID="{F0ADAAB7-0E38-4849-BBE0-DB6E862C2DD9}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Jump" ID="{D44C0729-7CFC-4BDD-A5C0-55D519C1F0B2}">
+					<ChildrenList>
+						<Action Name="" ID="{23356FF4-660E-48E4-B832-9278829A7B47}" ShortID="11686119">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="386572__shanef91__jumping-1" ID="{2DF3CBF0-9953-421C-8CD6-DD25F18EB77D}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Throw" ID="{E415F459-0BBD-4D91-9BC8-4A83E56B6583}">
+					<ChildrenList>
+						<Action Name="" ID="{59B894AA-EA6D-457D-9FB9-C1A20CBD1934}" ShortID="260294738">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Wooshes" ID="{096AEDA6-BDB8-48D9-B8A2-79B44B693D62}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dash" ID="{A2F5C050-C49A-4713-9C9C-D828C68BABB6}">
+					<ChildrenList>
+						<Action Name="" ID="{A1C96DC6-1A8A-47F1-941B-30553B359573}" ShortID="1053140609">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DashWoosh" ID="{B87EA900-77A9-4107-8F97-89DBE2D30F23}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="TargetHit" ID="{7B224C0C-1887-475A-ACDD-80E43C9120C6}">
+					<ChildrenList>
+						<Action Name="" ID="{0F8E7A88-AD72-4DF2-AF59-C56851DEF997}" ShortID="1056754021">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="406276__anthousai__hit-wooden-06" ID="{43B3C73B-A8AF-4723-8A6F-66CEBAD152A4}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Land" ID="{802FE7F1-EBC3-4E71-9AC5-B14198C0A3EC}">
+					<ChildrenList>
+						<Action Name="" ID="{2DE01456-5BB7-4AA9-B6D2-3C8DCD787E31}" ShortID="342341879">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Thump" ID="{B8A6C85F-DC94-4937-BE99-C96065606061}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="FootStep" ID="{BEFB4585-C6DE-4E9B-A98B-C145B3290088}">
+					<ChildrenList>
+						<Action Name="" ID="{A2F80825-A600-40EB-8F45-A7639B6DC461}" ShortID="444406123">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footsteps" ID="{5C9C84F6-51F9-44D0-A1CC-1041BA88141A}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SlideStart" ID="{35710CD4-60DA-47BE-92FA-7E1A63367D59}">
+					<ChildrenList>
+						<Action Name="" ID="{96FB959C-4716-4A88-B615-856E8C300AFF}" ShortID="924603035">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="176146__swagmuffinplus__sliding-doors" ID="{DF43CF3D-5347-4636-B7B0-DD9D2BDF7F3B}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SlideStop" ID="{B48DD9D4-59B9-46A9-A4AC-BCCC64534EB6}">
+					<ChildrenList>
+						<Action Name="" ID="{394DD345-5EBD-4ABA-8FC8-9F36D77E327B}" ShortID="767274229">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="176146__swagmuffinplus__sliding-doors" ID="{DF43CF3D-5347-4636-B7B0-DD9D2BDF7F3B}" WorkUnitID="{07A98D0A-6B63-41FC-8BEA-3E113B23EC10}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

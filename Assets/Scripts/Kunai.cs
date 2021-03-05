@@ -34,6 +34,7 @@ public class Kunai : ProjectileWeapon
             Destroy(kunaiProjectile, lifeTime);
             currentCoolDown = Time.time;
             ToggleAllRenderers(false);
+            AkSoundEngine.PostEvent("Throw", gameObject);
 
             if (isHit)
             {
