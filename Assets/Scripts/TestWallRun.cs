@@ -53,5 +53,6 @@ public class TestWallRun : MonoBehaviour
             Debug.DrawLine(transform.position, hitLeft.point, Color.green);
             Debug.DrawRay(transform.position, new Vector3(-hitLeft.normal.z, 0, hitLeft.normal.x), Color.red);
         }
+        //THIS IS TO TEST COMMIT
     }
 }
