@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3332220694" Language="SFX" Hash="1576557563">
+		<SoundBank Id="3332220694" Language="SFX" Hash="3630844049">
 			<ObjectPath>\SoundBanks\Default Work Unit\Actions</ObjectPath>
 			<ShortName>Actions</ShortName>
 			<Path>Actions.bnk</Path>
@@ -65,7 +65,7 @@
 					<IncludedMemoryFiles>
 						<File Id="519156396" Language="SFX">
 							<ShortName>176146__swagmuffinplus__sliding-doors.wav</ShortName>
-							<Path>SFX\176146__swagmuffinplus__sliding-doors_F042ADE9.wem</Path>
+							<Path>SFX\176146__swagmuffinplus__sliding-doors_C221900E.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

@@ -122,6 +122,10 @@ RaycastHit hitRight;
             if(hasJumped)
             {
                 AkSoundEngine.PostEvent("Land", gameObject);
+                if(isSliding)
+                {
+                    AkSoundEngine.PostEvent("SlideStart", gameObject);
+                }
             }
             movementVector.y = 0;
             crouchJump = false;
@@ -149,6 +153,7 @@ RaycastHit hitRight;
 
             if(isSliding)
             {
+                AkSoundEngine.PostEvent("SlideStop", gameObject);
                 crouchJump = true;
             }
         }
@@ -187,6 +192,7 @@ RaycastHit hitRight;
                     //Provide speed boost in direction looking if standing still
                     if(startSliding)
                     {
+                        AkSoundEngine.PostEvent("SlideStart", gameObject);
                         startSliding = false;
                         GetDirectionLooking();
                         currentVelocity = wishDirection.normalized * slideSpeed;
@@ -283,6 +289,10 @@ RaycastHit hitRight;
                         //Sliding on wall
                         if (isSliding)
                         {
+                            if (!OnWall)
+                            {
+                                AkSoundEngine.PostEvent("SlideStart", gameObject);
+                            }
                             //Give speed boost if speed is less than slideSpeed.
                             if (currentVelocity.magnitude < slideSpeed || currentSlideTime + slideFastLength < Time.time)
                             {
@@ -400,6 +410,7 @@ RaycastHit hitRight;
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                             jumpedOffWall = true;
                             AkSoundEngine.PostEvent("Jump", gameObject);
+                            AkSoundEngine.PostEvent("SlideStop", gameObject);
                         }
 
                         OnWall = true;
@@ -427,6 +438,7 @@ RaycastHit hitRight;
                         OnWall = false;
                         currentVelocity = Accelerate(accelerationAir);
                         movementVector.y += gravity * Time.fixedDeltaTime;
+                        AkSoundEngine.PostEvent("SlideStop", gameObject);
                     }
                 }
                 //Not on ground nor a wall
@@ -550,7 +562,13 @@ RaycastHit hitRight;
     {
         float x = currentWeapon.transform.localPosition.x;
         float z = currentWeapon.transform.localPosition.z;
-        currentWeapon.transform.localPosition = new Vector3(WeaponBobOrignalPostion.x + (Mathf.Sin(Time.time * weaponBobSpeed * .5f) * weaponBobHeight), WeaponBobOrignalPostion.y + (Mathf.Sin(Time.time * weaponBobSpeed) * weaponBobHeight), z);
+        float bobAmount = Mathf.Sin(Time.time * weaponBobSpeed);
+        currentWeapon.transform.localPosition = new Vector3(WeaponBobOrignalPostion.x + (Mathf.Sin(Time.time * weaponBobSpeed * .5f) * weaponBobHeight), WeaponBobOrignalPostion.y + (bobAmount * weaponBobHeight), z);
+        print(bobAmount);
+        if(bobAmount < -.95f)
+        {
+            AkSoundEngine.PostEvent("FootStep", gameObject);
+        }
     }
 
     //Move input action
@@ -606,7 +624,6 @@ RaycastHit hitRight;
                     startSliding = true;
                     currentSlideTime = Time.time;
                     slideParticles.SetActive(true);
-                    AkSoundEngine.PostEvent("SlideStart", gameObject);
                 }
             }
             else
