@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float lookVerticalMax = 85;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float jumpHeight = 1.0f;
+    [SerializeField] bool canDoubleJump = false;
+    [SerializeField] float doubleJumpHeight = .5f;
     [SerializeField] float CoyoteTime = .1f;
     [Header("Dash")]
     [SerializeField] float dashLength = 1.0f;
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
     bool wasGrounded;
     bool isJump;
     bool hasJumped;
+    bool hasDoublejumped;
     bool isSliding;
     bool startSliding;
     bool firstFrameGrounded = true;
@@ -84,6 +87,7 @@ public class PlayerController : MonoBehaviour
     bool isFiring;
     bool canMove = true;
     bool crouchJump = false;
+    bool jumpFirstPressed;
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
@@ -120,6 +124,7 @@ RaycastHit hitRight;
         {
             movementVector.y = 0;
             crouchJump = false;
+            hasDoublejumped = false;
             hasJumped = false;
             jumpedOffWall = false;
         }
@@ -131,20 +136,30 @@ RaycastHit hitRight;
         wasGrounded = isGrounded;
 
         //Check to jump
-        if (isJump && !hasJumped && (isGrounded || timeFromGround + CoyoteTime >= Time.time))
+        if (isJump && (isGrounded || timeFromGround + CoyoteTime >= Time.time))
         {
-            movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-            firstFrameGrounded = true;
-            hasJumped = true;
-            if(!HoldJump)
+            if (!hasJumped)
             {
-                isJump = false;
-            }
+                movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                firstFrameGrounded = true;
+                jumpFirstPressed = false;
+                hasJumped = true;
+                if (!HoldJump)
+                {
+                    isJump = false;
+                }
 
-            if(isSliding)
-            {
-                crouchJump = true;
+                if (isSliding)
+                {
+                    crouchJump = true;
+                }
             }
+        }
+        else if(canDoubleJump && isJump && !hasDoublejumped && jumpFirstPressed)
+        {
+            movementVector.y = Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
+            hasDoublejumped = true;
+            print("Double jump");
         }
 
         //Not Dashing
@@ -390,9 +405,14 @@ RaycastHit hitRight;
                                 currentVelocity.y += hitLeft.normal.z * wallJumpForce;
                             }
                             wallDetected = false;
+                            jumpFirstPressed = false;
+                            timeFromGround = Time.time;
+                            hasDoublejumped = false;
+                            hasJumped = true;
                             TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                             jumpedOffWall = true;
+                            print("Jumped off wall");
                         }
 
                         OnWall = true;
@@ -583,6 +603,7 @@ RaycastHit hitRight;
         if (canMove)
         {
             isJump = context.performed;
+            jumpFirstPressed = true;
         }
     }
 

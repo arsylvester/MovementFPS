@@ -193,6 +193,8 @@ MonoBehaviour:
   lookVerticalMax: 280
   gravity: -2
   jumpHeight: 0.07
+  canDoubleJump: 1
+  doubleJumpHeight: 0.05
   CoyoteTime: 0.1
   dashLength: 0.1
   dashCoolDown: 1
