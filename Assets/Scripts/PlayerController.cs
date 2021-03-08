@@ -96,8 +96,9 @@ public class PlayerController : MonoBehaviour
     float timeFromGround;
     Vector3 WeaponBobOrignalPostion;
     Vector2 originalWallVelocity;
-RaycastHit hitRight;
+    RaycastHit hitRight;
     RaycastHit hitLeft;
+    Transform currentWeaponModel;
     Coroutine headtiltCoroutine;
 
     void Start()
@@ -106,7 +107,8 @@ RaycastHit hitRight;
         characterController = GetComponent<CharacterController>();
         normalHeight = characterController.height;
         SetFOV(fovValue);
-        WeaponBobOrignalPostion = currentWeapon.transform.localPosition;
+        currentWeaponModel = currentWeapon.GetWeaponModel().transform;
+        WeaponBobOrignalPostion = currentWeaponModel.localPosition;
     }
     private void Update()
     {
@@ -561,9 +563,9 @@ RaycastHit hitRight;
 
     private void bobWeapon()
     {
-        float x = currentWeapon.transform.localPosition.x;
-        float z = currentWeapon.transform.localPosition.z;
-        currentWeapon.transform.localPosition = new Vector3(WeaponBobOrignalPostion.x + (Mathf.Sin(Time.time * weaponBobSpeed * .5f) * weaponBobHeight), WeaponBobOrignalPostion.y + (Mathf.Sin(Time.time * weaponBobSpeed) * weaponBobHeight), z);
+        float x = currentWeaponModel.transform.localPosition.x;
+        float z = currentWeaponModel.transform.localPosition.z;
+        currentWeaponModel.localPosition = new Vector3(WeaponBobOrignalPostion.x + (Mathf.Sin(Time.time * weaponBobSpeed * .5f) * weaponBobHeight), WeaponBobOrignalPostion.y + (Mathf.Sin(Time.time * weaponBobSpeed) * weaponBobHeight), z);
     }
 
     //Move input action

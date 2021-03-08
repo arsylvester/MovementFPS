@@ -6,6 +6,7 @@ public class MeleeWeapon : Weapon
 {
     //[SerializeField] protected bool hitScan;
     [SerializeField] float meleeRange = 1;
+    [SerializeField] ParticleSystem StrikeFVX;
     [SerializeField] GameObject hitParticle;
     [SerializeField] GameObject enemyHitParticle;
 
@@ -21,11 +22,12 @@ public class MeleeWeapon : Weapon
     {
         if (coolDown + currentCoolDown < Time.time)
         {
+            StrikeFVX.Play();
+            currentCoolDown = Time.time;
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, meleeRange))
             {
                 print("Melee hit : " + hit.transform);
                 isHit = true;
-                currentCoolDown = Time.time;
                 //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
                 if (hit.transform.GetComponent<IDamageable>() != null)
                 {

@@ -2099,18 +2099,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871727292}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &901204185 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 274398054273963826, guid: c5b1151227bac3842b5630cdaec451c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6833140820397201721}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fbf0607472d73409cb381f2a0bd4fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1061320414
 GameObject:
   m_ObjectHideFlags: 0
@@ -4585,23 +4573,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 274398054273963826, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: hitParticle
-      value: 
-      objectReference: {fileID: 728188833098558089, guid: 2c915e55f3f0a0341b7eab4f31d98025,
-        type: 3}
-    - target: {fileID: 274398054273963826, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: enemyHitParticle
-      value: 
-      objectReference: {fileID: 728188833098558089, guid: cc189c970fbdbdb48b551f3f955147b4,
-        type: 3}
-    - target: {fileID: 6833140818798083984, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169538, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4657,11 +4628,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: currentWeapon
-      value: 
-      objectReference: {fileID: 901204185}
     - target: {fileID: 6833140820308169551, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_Name

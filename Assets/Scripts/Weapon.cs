@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected float coolDown;
     [SerializeField] protected int damage = 1;
+    [SerializeField] protected GameObject WeaponModel;
     protected float currentCoolDown;
     protected Transform playerCamera;
     protected UI ui;
@@ -30,5 +31,10 @@ public class Weapon : MonoBehaviour
     public virtual void AltFireWeaponRelease()
     {
 
+    }
+
+    public GameObject GetWeaponModel()
+    {
+        return WeaponModel;
     }
 }

@@ -216,7 +216,7 @@ MonoBehaviour:
   tiltHeadSpeedWall: 0.01
   headTiltAdditiveGround: 0.1
   headTiltAdditiveWall: 0.8
-  currentWeapon: {fileID: 692650927441393475}
+  currentWeapon: {fileID: 274398054273963826}
   weaponBobHeight: 0.015
   weaponBobSpeed: 12
   HoldJump: 0
@@ -445,10 +445,19 @@ PrefabInstance:
       propertyPath: throwSpeed
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316, type: 3}
+      propertyPath: WeaponModel
+      value: 
+      objectReference: {fileID: 5784600959624565995}
     - target: {fileID: 6289552883243086388, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
         type: 3}
       propertyPath: m_Name
       value: Kunai
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289552883243086388, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6289552883243086391, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
         type: 3}
@@ -513,18 +522,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 692650926796869028}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &692650927441393475 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1584380647, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
+--- !u!1 &5784600959624565995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6474995069381040463, guid: fed0b2ba7ac71ff4aa97abcb9a722316,
     type: 3}
   m_PrefabInstance: {fileID: 692650926796869028}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d47d9349b8ab3ff4ebed67ad2008183a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2724249253865592349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -600,6 +603,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2724249253865592349}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &274398054273963826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2738366491795046703, guid: 03bc985a87e9619438539fc2a9bfbd8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2724249253865592349}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fbf0607472d73409cb381f2a0bd4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3057168033521432190
 PrefabInstance:
   m_ObjectHideFlags: 0
