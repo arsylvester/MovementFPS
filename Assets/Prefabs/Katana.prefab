@@ -54,6 +54,9 @@ MonoBehaviour:
     type: 3}
   enemyHitParticle: {fileID: 728188833098558089, guid: cc189c970fbdbdb48b551f3f955147b4,
     type: 3}
+  swordRenderers:
+  - {fileID: 8737419153029088614}
+  - {fileID: 960400645370969198}
 --- !u!1 &1039595951307196933
 GameObject:
   m_ObjectHideFlags: 0

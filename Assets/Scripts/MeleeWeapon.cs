@@ -9,6 +9,7 @@ public class MeleeWeapon : Weapon
     [SerializeField] ParticleSystem StrikeFVX;
     [SerializeField] GameObject hitParticle;
     [SerializeField] GameObject enemyHitParticle;
+    [SerializeField] Renderer[] swordRenderers;
 
     protected RaycastHit hit;
     protected bool isHit;
@@ -18,12 +19,21 @@ public class MeleeWeapon : Weapon
         base.Start();
     }
 
+    private void Update()
+    {
+        if (!(swordRenderers[0].enabled) && coolDown + currentCoolDown < Time.time)
+        {
+            ToggleAllRenderers(true);
+        }
+    }
+
     public override void UseWeapon()
     {
         if (coolDown + currentCoolDown < Time.time)
         {
             StrikeFVX.Play();
             currentCoolDown = Time.time;
+            ToggleAllRenderers(false);
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, meleeRange))
             {
                 print("Melee hit : " + hit.transform);
@@ -55,6 +65,14 @@ public class MeleeWeapon : Weapon
     public override void AltFireWeaponRelease()
     {
         //StartCoroutine(Zoom(zoomAmount, oldZoom));
+    }
+
+    private void ToggleAllRenderers(bool enable)
+    {
+        foreach (Renderer rend in swordRenderers)
+        {
+            rend.enabled = enable;
+        }
     }
 
 }
