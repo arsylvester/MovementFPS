@@ -60,6 +60,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Weapon Slot 1",
+                    "type": "Button",
+                    "id": "2a08b69d-87cf-4413-aab5-588200e98857",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Weapon Slot 2",
+                    "type": "Button",
+                    "id": "8baef19f-5e90-49e3-ba38-43ae6e7ef3c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -346,6 +362,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Alt Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12c5014d-7b94-44d1-8f00-31f7e0655f66",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Weapon Slot 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29cc7a3c-b83e-42ac-b60f-d6f2c98c36f7",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Weapon Slot 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

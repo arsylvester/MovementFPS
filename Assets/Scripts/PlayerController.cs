@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float headTiltAdditiveGround = .5f;
     [SerializeField] float headTiltAdditiveWall = .5f;
     [Header("Other")]
+    [SerializeField] Weapon[] weapons;
     [SerializeField] Weapon currentWeapon;
     [SerializeField] float weaponBobHeight;
     [SerializeField] float weaponBobSpeed;
@@ -772,5 +773,33 @@ public class PlayerController : MonoBehaviour
     {
         fovValue = value;
         Camera.main.fieldOfView = value;
+    }
+
+    public void OnWeaponSlotOne(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            if (context.performed && weapons[0] != null && currentWeapon != weapons[0])
+            {
+                currentWeapon.gameObject.SetActive(false);
+                currentWeapon = weapons[0];
+                currentWeapon.gameObject.SetActive(true);
+                currentWeaponModel = currentWeapon.GetWeaponModel().transform;
+            }
+        }
+    }
+
+    public void OnWeaponSlotTwo(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            if (context.performed && weapons[1] != null && currentWeapon != weapons[1])
+            {
+                currentWeapon.gameObject.SetActive(false);
+                currentWeapon = weapons[1];
+                currentWeapon.gameObject.SetActive(true);
+                currentWeaponModel = currentWeapon.GetWeaponModel().transform;
+            }
+        }
     }
 }
