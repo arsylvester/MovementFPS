@@ -6,13 +6,16 @@ public class MeleeWeapon : Weapon
 {
     //[SerializeField] protected bool hitScan;
     [SerializeField] float meleeRange = 1;
-    [SerializeField] ParticleSystem StrikeFVX;
+    [SerializeField] float holsterCoolDown = .5f;
+    [SerializeField] ParticleSystem[] StrikeFVXs;
     [SerializeField] GameObject hitParticle;
     [SerializeField] GameObject enemyHitParticle;
     [SerializeField] Renderer[] swordRenderers;
 
     protected RaycastHit hit;
     protected bool isHit;
+
+    private int strikeVFXIndex;
 
     protected override void Start()
     {
@@ -21,9 +24,10 @@ public class MeleeWeapon : Weapon
 
     private void Update()
     {
-        if (!(swordRenderers[0].enabled) && coolDown + currentCoolDown < Time.time)
+        if (!(swordRenderers[0].enabled) && coolDown + holsterCoolDown + currentCoolDown < Time.time)
         {
             ToggleAllRenderers(true);
+            strikeVFXIndex = 0;
         }
     }
 
@@ -31,7 +35,12 @@ public class MeleeWeapon : Weapon
     {
         if (coolDown + currentCoolDown < Time.time)
         {
-            StrikeFVX.Play();
+            StrikeFVXs[strikeVFXIndex].Play();
+            if(++strikeVFXIndex >= StrikeFVXs.Length)
+            {
+                strikeVFXIndex = 0;
+            }
+
             currentCoolDown = Time.time;
             ToggleAllRenderers(false);
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, meleeRange))
