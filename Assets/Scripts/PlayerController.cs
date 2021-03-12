@@ -785,6 +785,7 @@ public class PlayerController : MonoBehaviour
                 currentWeapon = weapons[0];
                 currentWeapon.gameObject.SetActive(true);
                 currentWeaponModel = currentWeapon.GetWeaponModel().transform;
+                WeaponBobOrignalPostion = currentWeaponModel.localPosition;
             }
         }
     }
@@ -799,6 +800,7 @@ public class PlayerController : MonoBehaviour
                 currentWeapon = weapons[1];
                 currentWeapon.gameObject.SetActive(true);
                 currentWeaponModel = currentWeapon.GetWeaponModel().transform;
+                WeaponBobOrignalPostion = currentWeaponModel.localPosition;
             }
         }
     }
