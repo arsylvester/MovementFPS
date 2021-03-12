@@ -4579,11 +4579,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 274398054273963826, guid: c5b1151227bac3842b5630cdaec451c4,
+        type: 3}
+      propertyPath: weaponBobHeight
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 274398054273963826, guid: c5b1151227bac3842b5630cdaec451c4,
+        type: 3}
+      propertyPath: weaponBobSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: WeaponModel
       value: 
       objectReference: {fileID: 948681931}
+    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
+        type: 3}
+      propertyPath: weaponBobHeight
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 692650927441393475, guid: c5b1151227bac3842b5630cdaec451c4,
+        type: 3}
+      propertyPath: weaponBobSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169538, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_LocalPosition.x

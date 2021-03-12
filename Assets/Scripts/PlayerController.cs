@@ -57,8 +57,6 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     [SerializeField] Weapon[] weapons;
     [SerializeField] Weapon currentWeapon;
-    [SerializeField] float weaponBobHeight;
-    [SerializeField] float weaponBobSpeed;
     public static float fovValue = 90;
     [Header("Options")]
     public bool HoldJump = false;
@@ -95,6 +93,8 @@ public class PlayerController : MonoBehaviour
     float lastInput;
     float beforeDashVelocity;
     float timeFromGround;
+    float weaponBobHeight;
+    float weaponBobSpeed;
     Vector3 WeaponBobOrignalPostion;
     Vector2 originalWallVelocity;
     RaycastHit hitRight;
@@ -110,6 +110,8 @@ public class PlayerController : MonoBehaviour
         SetFOV(fovValue);
         currentWeaponModel = currentWeapon.GetWeaponModel().transform;
         WeaponBobOrignalPostion = currentWeaponModel.localPosition;
+        weaponBobHeight = currentWeapon.GetWeaponBobHeight();
+        weaponBobSpeed = currentWeapon.GetWeaponBobSpeed();
     }
     private void Update()
     {
@@ -786,6 +788,8 @@ public class PlayerController : MonoBehaviour
                 currentWeapon.gameObject.SetActive(true);
                 currentWeaponModel = currentWeapon.GetWeaponModel().transform;
                 WeaponBobOrignalPostion = currentWeaponModel.localPosition;
+                weaponBobHeight = currentWeapon.GetWeaponBobHeight();
+                weaponBobSpeed = currentWeapon.GetWeaponBobSpeed();
             }
         }
     }
@@ -801,6 +805,8 @@ public class PlayerController : MonoBehaviour
                 currentWeapon.gameObject.SetActive(true);
                 currentWeaponModel = currentWeapon.GetWeaponModel().transform;
                 WeaponBobOrignalPostion = currentWeaponModel.localPosition;
+                weaponBobHeight = currentWeapon.GetWeaponBobHeight();
+                weaponBobSpeed = currentWeapon.GetWeaponBobSpeed();
             }
         }
     }

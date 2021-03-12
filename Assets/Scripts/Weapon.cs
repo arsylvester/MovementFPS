@@ -6,6 +6,8 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected float coolDown;
     [SerializeField] protected int damage = 1;
+    [SerializeField] protected float weaponBobHeight;
+    [SerializeField] protected float weaponBobSpeed;
     [SerializeField] protected GameObject WeaponModel;
     protected float currentCoolDown;
     protected Transform playerCamera;
@@ -36,5 +38,15 @@ public class Weapon : MonoBehaviour
     public GameObject GetWeaponModel()
     {
         return WeaponModel;
+    }
+
+    public float GetWeaponBobHeight()
+    {
+        return weaponBobHeight;
+    }
+
+    public float GetWeaponBobSpeed()
+    {
+        return weaponBobSpeed;
     }
 }
