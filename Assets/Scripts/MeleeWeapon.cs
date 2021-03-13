@@ -11,15 +11,18 @@ public class MeleeWeapon : Weapon
     [SerializeField] GameObject hitParticle;
     [SerializeField] GameObject enemyHitParticle;
     [SerializeField] Renderer[] swordRenderers;
+    //[SerializeField] Collider[] HitBoxes;
 
     protected RaycastHit hit;
     protected bool isHit;
 
     private int strikeVFXIndex;
+    //private Collider activeHitBox;
 
     protected override void Start()
     {
         base.Start();
+        //activeHitBox = HitBoxes[0];
     }
 
     private void Update()
@@ -27,6 +30,7 @@ public class MeleeWeapon : Weapon
         if (!(swordRenderers[0].enabled) && coolDown + holsterCoolDown + currentCoolDown < Time.time)
         {
             ToggleAllRenderers(true);
+            //activeHitBox.gameObject.SetActive(false);
             strikeVFXIndex = 0;
         }
     }
@@ -36,13 +40,17 @@ public class MeleeWeapon : Weapon
         if (coolDown + currentCoolDown < Time.time)
         {
             StrikeFVXs[strikeVFXIndex].Play();
-            if(++strikeVFXIndex >= StrikeFVXs.Length)
+            //activeHitBox.gameObject.SetActive(false);
+           // activeHitBox = HitBoxes[strikeVFXIndex];
+           // activeHitBox.gameObject.SetActive(true);
+            if (++strikeVFXIndex >= StrikeFVXs.Length)
             {
                 strikeVFXIndex = 0;
             }
 
             currentCoolDown = Time.time;
             ToggleAllRenderers(false);
+   
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, meleeRange))
             {
                 print("Melee hit : " + hit.transform);
@@ -63,8 +71,17 @@ public class MeleeWeapon : Weapon
             {
                 isHit = false;
             }
+            
         }
     }
+    /*
+    public void WeaponHit(IDamageable hit)
+    {
+        hit.TakeDamage(damage);
+        ui.ShowHitMarker();
+        //Instantiate(enemyHitParticle, hit, transform.rotation);
+    }
+    */
 
     public override void UseAltFireWeapon()
     {
