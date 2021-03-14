@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
     float timeFromGround;
     float weaponBobHeight;
     float weaponBobSpeed;
+    int playerLayer;
     Vector3 WeaponBobOrignalPostion;
     Vector2 originalWallVelocity;
     RaycastHit hitRight;
@@ -181,6 +182,7 @@ public class PlayerController : MonoBehaviour
                     movementVector = movementVector.normalized * beforeDashVelocity;
                 }
                 dashParticles.SetActive(false);
+                gameObject.layer = playerLayer; //Default Player Layer
             }
 
             //Going using a Vector 2 for most calculations as y axis is not needed.
@@ -654,6 +656,8 @@ public class PlayerController : MonoBehaviour
             beforeDashVelocity = movementVector.magnitude;
             isDashing = true;
             dashParticles.SetActive(true);
+            playerLayer = gameObject.layer;
+            gameObject.layer = 9; //Dash Layer
         }
     }
     
