@@ -29,8 +29,16 @@ public class DummyEnemy : MonoBehaviour, IDamageable
     {
         FindObjectOfType<TimedCourse>().CountEnemies();
         Destroy(Instantiate(vfx, transform.position, transform.rotation), 2); //have vfx self destroy later
-        gameObject.SetActive(false);
-        //Destroy(gameObject);
+        MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
+        if(crumbleEffect)
+        {
+            crumbleEffect.DestroyMesh();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(int damage)
