@@ -13,6 +13,7 @@ public class MeshDestroy : MonoBehaviour
     public int CutCascades = 1;
     public float ExplodeForce = 0;
     public bool toDestroy = false;
+    public float childernLifeTime = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,8 @@ public class MeshDestroy : MonoBehaviour
         var parts = new List<PartMesh>();
         var subParts = new List<PartMesh>();
 
+        Vector3 playerRotation = FindObjectOfType<PlayerController>().transform.localEulerAngles.normalized;
+
         var mainPart = new PartMesh()
         {
             UV = originalMesh.uv,
@@ -54,12 +57,13 @@ public class MeshDestroy : MonoBehaviour
             for (var i = 0; i < parts.Count; i++)
             {
                 var bounds = parts[i].Bounds;
-                bounds.Expand(0.5f);
-
-                var plane = new Plane(UnityEngine.Random.onUnitSphere, new Vector3(UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-                                                                                   UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
-                                                                                   UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
-
+                //bounds.Expand(0.5f);
+                Vector3 randomUnitSphere = new Vector3(-1f, 1f, 0f);//UnityEngine.Random.onUnitSphere;
+                print(randomUnitSphere);
+                var plane = new Plane(randomUnitSphere, new Vector3(bounds.min.x, bounds.min.y, bounds.min.z));//UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                                                                                  // UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
+                                                                                  // UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
+                
 
                 subParts.Add(GenerateMesh(parts[i], plane, true));
                 subParts.Add(GenerateMesh(parts[i], plane, false));
@@ -297,6 +301,9 @@ public class MeshDestroy : MonoBehaviour
             meshDestroy.CutCascades = original.CutCascades;
             meshDestroy.ExplodeForce = original.ExplodeForce;
 
+            //Custom properties
+            GameObject.layer = 11; //ignore Player
+            Destroy(GameObject, original.childernLifeTime);
         }
 
     }
