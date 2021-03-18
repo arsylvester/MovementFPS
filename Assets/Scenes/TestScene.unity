@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43885428, g: 0.48703986, b: 0.5673074, a: 1}
+  m_IndirectSpecularColor: {r: 0.4388549, g: 0.48704046, b: 0.5673085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -726,7 +726,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1816,7 +1815,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &705507995
@@ -2346,7 +2344,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &1063581251
 Canvas:
   m_ObjectHideFlags: 0
@@ -4425,6 +4422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dummy (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6688774579085210794, guid: c876a7088e6700b43b39ec21f29f1353,
+        type: 3}
+      propertyPath: CutCascades
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c876a7088e6700b43b39ec21f29f1353, type: 3}

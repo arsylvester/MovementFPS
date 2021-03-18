@@ -55,7 +55,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         health -= damage;
-        cutDirection = Vector3.zero;
+        cutDirection = Vector3.left;
         if (IsDead())
         {
             Death();

@@ -51,8 +51,7 @@ public class MeshDestroy : MonoBehaviour
             mainPart.Triangles[i] = originalMesh.GetTriangles(i);
 
         parts.Add(mainPart);
-
-        for (var c = 0; c < CutCascades; c++)
+        if (CutCascades <= 1)
         {
             for (var i = 0; i < parts.Count; i++)
             {
@@ -61,16 +60,34 @@ public class MeshDestroy : MonoBehaviour
                 Vector3 randomUnitSphere = new Vector3(Camera.main.transform.up.z, 0, -Camera.main.transform.up.x);//UnityEngine.Random.onUnitSphere;'
                 print(randomUnitSphere);
                 var plane = new Plane(slashNormal, new Vector3(0, 0, 0));//bounds.max.x, bounds.max.y, bounds.max.z));//UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-                                                                                                               // UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
-                                                                                                               // UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
-                Debug.DrawRay(new Vector3(0, 5, 0), randomUnitSphere, Color.green);
-                Debug.LogError("At " + new Vector3(bounds.min.x, bounds.min.y, bounds.min.z));
+                                                                         // UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
+                                                                         // UnityEngine.Random.Range(bounds.min.z, bounds.max.z)))
 
                 subParts.Add(GenerateMesh(parts[i], plane, true));
                 subParts.Add(GenerateMesh(parts[i], plane, false));
             }
             parts = new List<PartMesh>(subParts);
             subParts.Clear();
+        }
+        else
+        {
+            for (var c = 0; c < CutCascades; c++)
+            {
+                for (var i = 0; i < parts.Count; i++)
+                {
+                    var bounds = parts[i].Bounds;
+                    bounds.Expand(0.5f);
+                    Vector3 randomUnitSphere = UnityEngine.Random.onUnitSphere;
+                    var plane = new Plane(randomUnitSphere, new Vector3(UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                                                                             UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
+                                                                             UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
+
+                    subParts.Add(GenerateMesh(parts[i], plane, true));
+                    subParts.Add(GenerateMesh(parts[i], plane, false));
+                }
+                parts = new List<PartMesh>(subParts);
+                subParts.Clear();
+            }
         }
 
         for (var i = 0; i < parts.Count; i++)
