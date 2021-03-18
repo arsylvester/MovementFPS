@@ -7,7 +7,7 @@ public class MeleeWeapon : Weapon
     //[SerializeField] protected bool hitScan;
     [SerializeField] float meleeRange = 1;
     [SerializeField] float holsterCoolDown = .5f;
-    [SerializeField] ParticleSystem[] StrikeFVXs;
+    [SerializeField] ParticleSystem[] StrikeVFXs;
     [SerializeField] GameObject hitParticle;
     [SerializeField] GameObject enemyHitParticle;
     [SerializeField] Renderer[] swordRenderers;
@@ -39,15 +39,6 @@ public class MeleeWeapon : Weapon
     {
         if (coolDown + currentCoolDown < Time.time)
         {
-            StrikeFVXs[strikeVFXIndex].Play();
-            //activeHitBox.gameObject.SetActive(false);
-           // activeHitBox = HitBoxes[strikeVFXIndex];
-           // activeHitBox.gameObject.SetActive(true);
-            if (++strikeVFXIndex >= StrikeFVXs.Length)
-            {
-                strikeVFXIndex = 0;
-            }
-
             currentCoolDown = Time.time;
             ToggleAllRenderers(false);
    
@@ -58,7 +49,8 @@ public class MeleeWeapon : Weapon
                 //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
                 if (hit.transform.GetComponent<IDamageable>() != null)
                 {
-                    hit.transform.GetComponent<IDamageable>().TakeDamage(damage);
+                    print(strikeVFXIndex);
+                    hit.transform.GetComponent<IDamageable>().TakeDamage(damage, StrikeVFXs[strikeVFXIndex].transform.up);
                     ui.ShowHitMarker();
                     Instantiate(enemyHitParticle, hit.point, transform.rotation);
                 }
@@ -71,7 +63,15 @@ public class MeleeWeapon : Weapon
             {
                 isHit = false;
             }
-            
+
+            StrikeVFXs[strikeVFXIndex].Play();
+            //activeHitBox.gameObject.SetActive(false);
+            // activeHitBox = HitBoxes[strikeVFXIndex];
+            // activeHitBox.gameObject.SetActive(true);
+            if (++strikeVFXIndex >= StrikeVFXs.Length)
+            {
+                strikeVFXIndex = 0;
+            }
         }
     }
     /*

@@ -88,7 +88,7 @@ MonoBehaviour:
   WeaponModel: {fileID: 5616534897433122298}
   meleeRange: 5
   holsterCoolDown: 0.5
-  StrikeFVXs:
+  StrikeVFXs:
   - {fileID: 8870485001141651979}
   - {fileID: 2331370496379440632}
   - {fileID: 5950641699216759999}
@@ -99,10 +99,6 @@ MonoBehaviour:
   swordRenderers:
   - {fileID: 8737419153029088614}
   - {fileID: 960400645370969198}
-  HitBoxes:
-  - {fileID: 4202196104153953347}
-  - {fileID: 1484900074250326544}
-  - {fileID: 4441077258031545112}
 --- !u!1 &1039595951307196933
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,11 +26,11 @@ public class MeshDestroy : MonoBehaviour
     {
         if (toDestroy)
         {
-            DestroyMesh();
+            //DestroyMesh();
         }
     }
 
-    public void DestroyMesh()
+    public void DestroyMesh(Vector3 slashNormal)
     {
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
@@ -58,12 +58,13 @@ public class MeshDestroy : MonoBehaviour
             {
                 var bounds = parts[i].Bounds;
                 //bounds.Expand(0.5f);
-                Vector3 randomUnitSphere = new Vector3(-1f, 1f, 0f);//UnityEngine.Random.onUnitSphere;
+                Vector3 randomUnitSphere = new Vector3(Camera.main.transform.up.z, 0, -Camera.main.transform.up.x);//UnityEngine.Random.onUnitSphere;'
                 print(randomUnitSphere);
-                var plane = new Plane(randomUnitSphere, new Vector3(bounds.min.x, bounds.min.y, bounds.min.z));//UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-                                                                                  // UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
-                                                                                  // UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
-                
+                var plane = new Plane(slashNormal, new Vector3(0, 0, 0));//bounds.max.x, bounds.max.y, bounds.max.z));//UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                                                                                                               // UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
+                                                                                                               // UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
+                Debug.DrawRay(new Vector3(0, 5, 0), randomUnitSphere, Color.green);
+                Debug.LogError("At " + new Vector3(bounds.min.x, bounds.min.y, bounds.min.z));
 
                 subParts.Add(GenerateMesh(parts[i], plane, true));
                 subParts.Add(GenerateMesh(parts[i], plane, false));

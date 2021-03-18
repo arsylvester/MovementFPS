@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c15144d1e2272419e3b83717432de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CutCascades: 3
+  CutCascades: 1
   ExplodeForce: 500
   toDestroy: 0
   childernLifeTime: 2

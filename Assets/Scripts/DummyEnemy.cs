@@ -7,6 +7,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
     [SerializeField] int maxHealth = 5;
     [SerializeField] GameObject vfx;
     int health;
+    Vector3 cutDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
         if(crumbleEffect)
         {
-            crumbleEffect.DestroyMesh();
+            crumbleEffect.DestroyMesh(cutDirection);
         }
         else
         {
@@ -41,14 +42,26 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 cut)
     {
         health -= damage;
+        cutDirection = cut;
         if(IsDead())
         {
             Death();
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        cutDirection = Vector3.zero;
+        if (IsDead())
+        {
+            Death();
+        }
+    }
+
 
     public bool IsDead()
     {
