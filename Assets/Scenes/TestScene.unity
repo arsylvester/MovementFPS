@@ -1652,6 +1652,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1737482732}
     m_Modifications:
+    - target: {fileID: 625470657239064728, guid: c876a7088e6700b43b39ec21f29f1353,
+        type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 625470657239064732, guid: c876a7088e6700b43b39ec21f29f1353,
         type: 3}
       propertyPath: m_RootOrder
@@ -2439,6 +2444,8 @@ GameObject:
   - component: {fileID: 1105711838}
   - component: {fileID: 1105711837}
   - component: {fileID: 1105711836}
+  - component: {fileID: 1105711840}
+  - component: {fileID: 1105711839}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -2454,7 +2461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105711834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.9, y: 3.26, z: -51.1}
+  m_LocalPosition: {x: 17.01, y: 3.26, z: -53.33}
   m_LocalScale: {x: 2, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 802410482}
@@ -2522,6 +2529,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105711834}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1105711839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105711834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c15144d1e2272419e3b83717432de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutCascades: 1
+  ExplodeForce: 500
+  toDestroy: 0
+  childernLifeTime: 2
+--- !u!114 &1105711840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105711834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed14cedf6e6b124288356a583ab8981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  vfx: {fileID: 728188833098558089, guid: 3a4dec9956e9f4c4183af0955acd9bca, type: 3}
 --- !u!1 &1155195955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,7 +4463,7 @@ PrefabInstance:
     - target: {fileID: 6688774579085210794, guid: c876a7088e6700b43b39ec21f29f1353,
         type: 3}
       propertyPath: CutCascades
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c876a7088e6700b43b39ec21f29f1353, type: 3}

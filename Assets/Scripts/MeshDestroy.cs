@@ -30,7 +30,7 @@ public class MeshDestroy : MonoBehaviour
         }
     }
 
-    public void DestroyMesh(Vector3 slashNormal)
+    public void DestroyMesh(Vector3 slashNormal, Vector3 cutPoint)
     {
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
@@ -58,8 +58,10 @@ public class MeshDestroy : MonoBehaviour
                 var bounds = parts[i].Bounds;
                 //bounds.Expand(0.5f);
                 Vector3 randomUnitSphere = new Vector3(Camera.main.transform.up.z, 0, -Camera.main.transform.up.x);//UnityEngine.Random.onUnitSphere;'
-                print(randomUnitSphere);
-                var plane = new Plane(slashNormal, new Vector3(0, 0, 0));//bounds.max.x, bounds.max.y, bounds.max.z));//UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                print("Bounds of x: " + bounds.min.x + ", " + bounds.max.x);
+                print("Bounds of y: " + bounds.min.y + ", " + bounds.max.y);
+                print("Bounds of z: " + bounds.min.z + ", " + bounds.max.z);
+                var plane = new Plane(slashNormal, cutPoint);//bounds.max.x, bounds.max.y, bounds.max.z));//UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
                                                                          // UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
                                                                          // UnityEngine.Random.Range(bounds.min.z, bounds.max.z)))
 
@@ -321,6 +323,8 @@ public class MeshDestroy : MonoBehaviour
 
             //Custom properties
             GameObject.layer = 11; //ignore Player
+            var enemyScript = GameObject.AddComponent<DummyEnemy>();
+            enemyScript.vfx = original.GetComponent<DummyEnemy>().vfx;
             Destroy(GameObject, original.childernLifeTime);
         }
 

@@ -5,9 +5,10 @@ using UnityEngine;
 public class DummyEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField] int maxHealth = 5;
-    [SerializeField] GameObject vfx;
+    public GameObject vfx;
     int health;
     Vector3 cutDirection;
+    Vector3 cutPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
         if(crumbleEffect)
         {
-            crumbleEffect.DestroyMesh(cutDirection);
+            crumbleEffect.DestroyMesh(cutDirection, cutPoint);
         }
         else
         {
@@ -42,10 +43,11 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage, Vector3 cut)
+    public void TakeDamage(int damage, Vector3 cut, Vector3 point)
     {
         health -= damage;
         cutDirection = cut;
+        cutPoint = point;
         if(IsDead())
         {
             Death();
@@ -56,6 +58,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
     {
         health -= damage;
         cutDirection = Vector3.left;
+        cutPoint = Vector3.zero;
         if (IsDead())
         {
             Death();

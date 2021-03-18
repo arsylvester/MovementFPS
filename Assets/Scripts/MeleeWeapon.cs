@@ -49,8 +49,8 @@ public class MeleeWeapon : Weapon
                 //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
                 if (hit.transform.GetComponent<IDamageable>() != null)
                 {
-                    print(strikeVFXIndex);
-                    hit.transform.GetComponent<IDamageable>().TakeDamage(damage, StrikeVFXs[strikeVFXIndex].transform.up);
+                    print(hit.transform.InverseTransformPoint(hit.point));
+                    hit.transform.GetComponent<IDamageable>().TakeDamage(damage, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
                     ui.ShowHitMarker();
                     Instantiate(enemyHitParticle, hit.point, transform.rotation);
                 }
