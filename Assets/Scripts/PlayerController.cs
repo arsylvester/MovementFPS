@@ -183,6 +183,11 @@ public class PlayerController : MonoBehaviour
                 }
                 dashParticles.SetActive(false);
                 gameObject.layer = playerLayer; //Default Player Layer
+
+                if (currentWeapon.GetComponent<MeleeWeapon>())
+                {
+                    currentWeapon.GetComponent<MeleeWeapon>().DashEnd();
+                }
             }
 
             //Going using a Vector 2 for most calculations as y axis is not needed.
@@ -658,6 +663,11 @@ public class PlayerController : MonoBehaviour
             dashParticles.SetActive(true);
             playerLayer = gameObject.layer;
             gameObject.layer = 9; //Dash Layer
+
+            if(currentWeapon.GetComponent<MeleeWeapon>())
+            {
+                currentWeapon.GetComponent<MeleeWeapon>().DashAttack();
+            }
         }
     }
     

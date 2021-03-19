@@ -11,6 +11,8 @@ public class MeleeWeapon : Weapon
     [SerializeField] GameObject hitParticle;
     [SerializeField] GameObject enemyHitParticle;
     [SerializeField] Renderer[] swordRenderers;
+    [SerializeField] Collider DashHitBox;
+    [SerializeField] ParticleSystem dashVFX;
     //[SerializeField] Collider[] HitBoxes;
 
     protected RaycastHit hit;
@@ -74,14 +76,28 @@ public class MeleeWeapon : Weapon
             }
         }
     }
-    /*
+    
     public void WeaponHit(IDamageable hit)
     {
-        hit.TakeDamage(damage);
+        hit.TakeDamage(damage, dashVFX.transform.up, Vector3.zero);
         ui.ShowHitMarker();
         //Instantiate(enemyHitParticle, hit, transform.rotation);
     }
-    */
+
+    public void DashAttack()
+    {
+        DashHitBox.enabled = true;
+        currentCoolDown = Time.time;
+        dashVFX.Play();
+        ToggleAllRenderers(false);
+    }
+
+    public void DashEnd()
+    {
+        DashHitBox.enabled = false;
+        ToggleAllRenderers(true);
+    }
+    
 
     public override void UseAltFireWeapon()
     {

@@ -10,14 +10,16 @@ public class SwordHitbox : MonoBehaviour
     void Start()
     {
         weapon = GetComponentInParent<MeleeWeapon>();
+        GetComponent<Collider>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //print("Touching " + other.transform.GetComponent<IDamageable>());
         if (other.transform.GetComponent<IDamageable>() != null)
         {
-           // weapon.WeaponHit(other.transform.GetComponent<IDamageable>());
-            print("Hit enemy");
+            weapon.WeaponHit(other.transform.GetComponent<IDamageable>());
+            //print("Hit enemy");
         }
         else
         {
