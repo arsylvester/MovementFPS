@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationAir: 3
-  accelerationGround: 6
+  accelerationGround: 5
   maxVelocity: 1
   friction: 7
   frictionStopped: 12
@@ -205,7 +205,7 @@ MonoBehaviour:
   wallRunSpeedCap: 1
   wallRunSpeedMin: 0.5
   wallRunSpeedMinBoost: 0.5
-  slideSpeed: 1
+  slideSpeed: 1.1
   slideFastLength: 1.5
   crouchHeightPercent: 0.4
   slideParticles: {fileID: 6833140820833710864}
@@ -647,6 +647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555730013560025931, guid: 03bc985a87e9619438539fc2a9bfbd8c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03bc985a87e9619438539fc2a9bfbd8c, type: 3}
