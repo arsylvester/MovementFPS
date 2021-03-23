@@ -13,6 +13,7 @@ public class MeleeWeapon : Weapon
     [SerializeField] Renderer[] swordRenderers;
     [SerializeField] Collider DashHitBox;
     [SerializeField] ParticleSystem dashVFX;
+    [SerializeField] float backstabDegree;
     //[SerializeField] Collider[] HitBoxes;
 
     protected RaycastHit hit;
@@ -46,13 +47,23 @@ public class MeleeWeapon : Weapon
    
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, meleeRange))
             {
-                print("Melee hit : " + hit.transform);
                 isHit = true;
                 //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
                 if (hit.transform.GetComponent<IDamageable>() != null)
                 {
-                    print(hit.transform.InverseTransformPoint(hit.point));
-                    hit.transform.GetComponent<IDamageable>().TakeDamage(damage, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
+                    Vector3 stabDirection = (hit.transform.position - hit.point);
+                    float stabDegree = Mathf.Abs(Mathf.Atan2(stabDirection.z, stabDirection.x) * Mathf.Rad2Deg);
+                    float enemyDirection = Mathf.Abs(Mathf.Atan2(hit.transform.forward.z, hit.transform.forward.x) * Mathf.Rad2Deg);
+                    //print("Melee hit with hit: " + stabDegree + ", enemy: " + enemyDirection);
+                    if (Mathf.Abs(stabDegree - enemyDirection) < backstabDegree)
+                    {
+                        print("BACKSTAB");
+                        hit.transform.GetComponent<IDamageable>().TakeDamage(damage * 2, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
+                    }
+                    else
+                    {
+                        hit.transform.GetComponent<IDamageable>().TakeDamage(damage, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
+                    }
                     ui.ShowHitMarker();
                     Instantiate(enemyHitParticle, hit.point, transform.rotation);
                 }

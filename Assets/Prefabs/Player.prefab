@@ -594,6 +594,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Katana
       objectReference: {fileID: 0}
+    - target: {fileID: 2738366491795046703, guid: 03bc985a87e9619438539fc2a9bfbd8c,
+        type: 3}
+      propertyPath: backstabDegree
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3659583352084236439, guid: 03bc985a87e9619438539fc2a9bfbd8c,
         type: 3}
       propertyPath: m_LocalPosition.x
