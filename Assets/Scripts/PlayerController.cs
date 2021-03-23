@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     [SerializeField] Weapon[] weapons;
     [SerializeField] Weapon currentWeapon;
+    [SerializeField] float jumpBuffer;
     public static float fovValue = 90;
     [Header("Options")]
     public bool HoldJump = false;
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour
     RaycastHit hitLeft;
     Transform currentWeaponModel;
     Coroutine headtiltCoroutine;
+    Coroutine jumpbufferCoroutine;
 
     void Start()
     {
@@ -165,6 +167,7 @@ public class PlayerController : MonoBehaviour
         {
             movementVector.y = Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
             hasDoublejumped = true;
+            isJump = false;
             print("Double jump");
         }
 
@@ -614,9 +617,28 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            isJump = context.performed;
-            jumpFirstPressed = true;
+            if (context.performed)
+            {
+                if (jumpbufferCoroutine != null)
+                    StopCoroutine(jumpbufferCoroutine);
+                isJump = true;
+                jumpFirstPressed = true;
+                print("jump true");
+            }
+            else
+            {
+                if (jumpbufferCoroutine != null)
+                    StopCoroutine(jumpbufferCoroutine);
+                jumpbufferCoroutine = StartCoroutine(JumpBuffer());
+            }
         }
+    }
+
+    IEnumerator JumpBuffer()
+    {
+        yield return new WaitForSeconds(jumpBuffer);
+        isJump = false;
+        print("Jump false");
     }
 
     public void OnCrouch(InputAction.CallbackContext context)

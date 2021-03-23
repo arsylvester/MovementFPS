@@ -196,7 +196,7 @@ MonoBehaviour:
   jumpHeight: 0.07
   canDoubleJump: 1
   doubleJumpHeight: 0.05
-  CoyoteTime: 0.1
+  CoyoteTime: 0.15
   dashLength: 0.1
   dashCoolDown: 1
   DashVelocity: 4
@@ -220,6 +220,7 @@ MonoBehaviour:
   - {fileID: 274398054273963826}
   - {fileID: 692650927441393475}
   currentWeapon: {fileID: 274398054273963826}
+  jumpBuffer: 0.2
   HoldJump: 0
   HoldFire: 1
 --- !u!114 &6833140820308169541

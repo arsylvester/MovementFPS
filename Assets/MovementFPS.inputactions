@@ -35,7 +35,7 @@
                     "id": "b458925b-ec48-4f6d-9ae4-e2d5864ce964",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": ""
                 },
                 {
                     "name": "Crouch",
