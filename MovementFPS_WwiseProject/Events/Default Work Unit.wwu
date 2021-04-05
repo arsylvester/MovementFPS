@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B9A9D9B5-0CE0-4A41-932F-890DA5DF4A68}" SchemaVersion="103">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{B9A9D9B5-0CE0-4A41-932F-890DA5DF4A68}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="KunaiHit" ID="{BBAB7A87-7E39-42D4-89EC-FCF1ABA67DA9}">
+					<ChildrenList>
+						<Action Name="" ID="{18BAB27C-2804-4E29-8912-7426A94EEF9F}" ShortID="893835007">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="57918__denalwa__metal-pole" ID="{EBDF1F2D-F878-41A1-BC12-0725DBAC71EC}" WorkUnitID="{9B822DE3-1FBE-4A63-B541-44935E12F122}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
