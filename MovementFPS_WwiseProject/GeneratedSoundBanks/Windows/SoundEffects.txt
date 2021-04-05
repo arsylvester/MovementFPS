@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3251152762	KunaiHit			\Default Work Unit\KunaiHit	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	485605429	57918__denalwa__metal-pole	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\57918__denalwa__metal-pole_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\57918__denalwa__metal-pole		200496
+
