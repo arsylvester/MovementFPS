@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else if(canDoubleJump && isJump && !hasDoublejumped && jumpFirstPressed)
+        else if(canDoubleJump && isJump && !hasDoublejumped && jumpFirstPressed && !OnWall)
         {
             movementVector.y = Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
             hasDoublejumped = true;
