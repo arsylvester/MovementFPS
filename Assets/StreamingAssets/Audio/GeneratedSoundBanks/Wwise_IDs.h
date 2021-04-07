@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID DASH = 1942692385U;
         static const AkUniqueID KUNAIHIT = 3251152762U;
     } // namespace EVENTS
 

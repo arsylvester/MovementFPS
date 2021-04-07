@@ -685,6 +685,7 @@ public class PlayerController : MonoBehaviour
             dashParticles.SetActive(true);
             playerLayer = gameObject.layer;
             gameObject.layer = 9; //Dash Layer
+            AkSoundEngine.PostEvent("Dash", gameObject);
 
             if(currentWeapon.GetComponent<MeleeWeapon>())
             {

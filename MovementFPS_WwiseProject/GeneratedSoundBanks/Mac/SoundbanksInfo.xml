@@ -16,11 +16,19 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3898083304" Language="SFX" Hash="3661487029">
+		<SoundBank Id="3898083304" Language="SFX" Hash="1785201917">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundEffects</ObjectPath>
 			<ShortName>SoundEffects</ShortName>
 			<Path>SoundEffects.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1942692385" Name="Dash" ObjectPath="\Events\Default Work Unit\Dash" DurationType="OneShot" DurationMin="0.460541" DurationMax="0.460541">
+					<IncludedMemoryFiles>
+						<File Id="1042012533" Language="SFX">
+							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
+							<Path>SFX\512683__wavjunction-com__wooshes_E70664D4.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3251152762" Name="KunaiHit" ObjectPath="\Events\Default Work Unit\KunaiHit" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="1.136236" DurationMax="1.136236">
 					<IncludedMemoryFiles>
 						<File Id="485605429" Language="SFX">
