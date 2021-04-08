@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 24a01cc043e2214a9ebd599d0bba9544
     GuidInternal: 
-    m_lastTime: -8585837978953706225
+    m_lastTime: -8585837130562063076
     List:
     - name: SoundEffects
       guid: 7240120726739e489830f14fc682189a
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b5d9a9b9e00c414a932f890da5df4a68
     GuidInternal: 
-    m_lastTime: -8585837978953426161
+    m_lastTime: -8585837130621205307
     List:
     - name: Dash
       guid: 9752b0b119e93440afb5a7cd1e9a4b1d
@@ -130,6 +130,23 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 1.136236
       minDuration: 1.136236
+    - name: KunaiHitEnemy
+      guid: dd33dc6c303d964cbb41b4d115e2d352
+      id: 4155610742
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b5d9a9b9e00c414a932f890da5df4a68
+      - ElementName: KunaiHitEnemy
+        ObjectType: 3
+        guid: dd33dc6c303d964cbb41b4d115e2d352
+      Path: Events\Default Work Unit\KunaiHitEnemy
+      maxAttenuation: 100
+      maxDuration: 0.290858
+      minDuration: 0.290858
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:

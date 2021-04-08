@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3898083304" Language="SFX" Hash="1785201917">
+		<SoundBank Id="3898083304" Language="SFX" Hash="411281604">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundEffects</ObjectPath>
 			<ShortName>SoundEffects</ShortName>
 			<Path>SoundEffects.bnk</Path>
@@ -25,7 +25,7 @@
 					<IncludedMemoryFiles>
 						<File Id="1042012533" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
-							<Path>SFX\512683__wavjunction-com__wooshes_E70664D4.wem</Path>
+							<Path>SFX\512683__wavjunction-com__wooshes_75D0DDFA.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -34,6 +34,14 @@
 						<File Id="485605429" Language="SFX">
 							<ShortName>57918__denalwa__metal-pole.wav</ShortName>
 							<Path>SFX\57918__denalwa__metal-pole_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4155610742" Name="KunaiHitEnemy" ObjectPath="\Events\Default Work Unit\KunaiHitEnemy" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.290858" DurationMax="0.290858">
+					<IncludedMemoryFiles>
+						<File Id="620347645" Language="SFX">
+							<ShortName>SomeHitSounds.wav</ShortName>
+							<Path>SFX\SomeHitSounds_526F2FCB.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

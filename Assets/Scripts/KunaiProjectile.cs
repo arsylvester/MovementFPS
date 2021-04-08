@@ -43,6 +43,7 @@ public class KunaiProjectile : MonoBehaviour
                         hit.transform.GetComponent<IDamageable>().TakeDamage(damageToDeal);
                         ui.ShowHitMarker();
                         Instantiate(enemyHitParticle, transform.position, transform.rotation);
+                        AkSoundEngine.PostEvent("KunaiHitEnemy", hit.transform.gameObject);
                         Destroy(gameObject);
                     }
                     else
