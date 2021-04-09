@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 24a01cc043e2214a9ebd599d0bba9544
     GuidInternal: 
-    m_lastTime: -8585837130562063076
+    m_lastTime: -8585836179142325176
     List:
     - name: SoundEffects
       guid: 7240120726739e489830f14fc682189a
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b5d9a9b9e00c414a932f890da5df4a68
     GuidInternal: 
-    m_lastTime: -8585837130621205307
+    m_lastTime: -8585836185091387782
     List:
     - name: Dash
       guid: 9752b0b119e93440afb5a7cd1e9a4b1d
@@ -113,6 +113,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.460541
       minDuration: 0.460541
+    - name: Footstep
+      guid: 9552f8dd10f2694d8ac6e7d549d1280a
+      id: 1866025847
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b5d9a9b9e00c414a932f890da5df4a68
+      - ElementName: Footstep
+        ObjectType: 3
+        guid: 9552f8dd10f2694d8ac6e7d549d1280a
+      Path: Events\Default Work Unit\Footstep
+      maxAttenuation: 0
+      maxDuration: 0.400263
+      minDuration: 0.256169
     - name: KunaiHit
       guid: 877aabbb397ed44289ecfcf1aba67da9
       id: 3251152762

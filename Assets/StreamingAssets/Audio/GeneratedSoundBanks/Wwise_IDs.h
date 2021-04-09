@@ -14,6 +14,7 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID DASH = 1942692385U;
+        static const AkUniqueID FOOTSTEP = 1866025847U;
         static const AkUniqueID KUNAIHIT = 3251152762U;
         static const AkUniqueID KUNAIHITENEMY = 4155610742U;
     } // namespace EVENTS

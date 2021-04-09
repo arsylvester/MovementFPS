@@ -182,6 +182,318 @@
 						<ActiveSource Name="SomeHitSounds" ID="{E8B8BA81-8C91-4EA1-AFA1-00585086E172}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<RandomSequenceContainer Name="Footsteps" ID="{0653723C-28F7-4DB8-A4D6-52CF663B3D49}" ShortID="112836845">
+					<PropertyList>
+						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Footstep Concrete" ID="{027A77F0-2AB3-45D4-9E11-1BA251F90ADF}" ShortID="711326311">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{1F122D87-125C-4302-B3DE-B7691D316FD5}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.272179065174466"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="925602543"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{1F122D87-125C-4302-B3DE-B7691D316FD5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_01" ID="{9CA3DEDB-AA31-4808-82A8-706368828507}" ShortID="670128169">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{A7093D48-D3EC-4501-8E89-28F747F56BF9}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.304200131665569"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.56036866359447"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="53697303"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{A7093D48-D3EC-4501-8E89-28F747F56BF9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_02" ID="{35763B87-7A6E-4914-B541-0BD683E9BC2A}" ShortID="879535667">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{9BB43121-D3B2-4975-92B5-C97CBC58EDC3}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="1.08871626069783"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.44094799210007"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="576836777"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{9BB43121-D3B2-4975-92B5-C97CBC58EDC3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_03" ID="{BF71DE80-C45B-4A0B-9F20-F0134DE79D09}" ShortID="100009139">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{315B69CE-0B0C-4251-A922-0A24DDAE787B}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="15.5302172481896"/>
+										<Property Name="TrimEnd" Type="Real64" Value="15.802396313364"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="277356264"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{315B69CE-0B0C-4251-A922-0A24DDAE787B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_04" ID="{0927B411-6E62-46A9-BD18-BBB41272ADA6}" ShortID="358655842">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{E9D1165C-1FE5-4848-86CE-C100262EDED5}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="3.25013824884793"/>
+										<Property Name="TrimEnd" Type="Real64" Value="3.52231731402238"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="701023885"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{E9D1165C-1FE5-4848-86CE-C100262EDED5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_05" ID="{8701E1A7-9ED8-4560-AE8A-33DA7317BDE2}" ShortID="952401846">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{495AE826-7569-4EE8-827B-2AD17A9E4195}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="5.53964450296247"/>
+										<Property Name="TrimEnd" Type="Real64" Value="5.82783410138249"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="154356917"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{495AE826-7569-4EE8-827B-2AD17A9E4195}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_06" ID="{9F6F9336-6695-4920-BCF5-7FFA73E76A72}" ShortID="716907765">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{FDCBDB62-70C8-4B08-94D6-D3DEF48D8DC6}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="7.46090849242923"/>
+										<Property Name="TrimEnd" Type="Real64" Value="7.76510862409481"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="662967639"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{FDCBDB62-70C8-4B08-94D6-D3DEF48D8DC6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_07" ID="{0390E660-5DFD-4C99-9CA7-2B72B6BA9225}" ShortID="1044457910">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{CD81A8DA-6BE5-4534-ADF1-B8F084F413B8}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="7.79712969058591"/>
+										<Property Name="TrimEnd" Type="Real64" Value="8.06930875576037"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="38762456"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{CD81A8DA-6BE5-4534-ADF1-B8F084F413B8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_08" ID="{2E0CC32C-EA7E-4D18-A5B7-374435FD5DBE}" ShortID="811782948">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{9549A5DE-6388-48C2-88ED-B7BC97C8E163}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="8.64568795260039"/>
+										<Property Name="TrimEnd" Type="Real64" Value="9.01393021724818"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="698281991"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{9549A5DE-6388-48C2-88ED-B7BC97C8E163}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Footstep Concrete_09" ID="{850F08FC-7EF8-46CB-BD20-478F29889EEE}" ShortID="882470524">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{EDAD6E66-5FDD-4155-8BA3-8E19BB52FB3F}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="14.5535747202107"/>
+										<Property Name="TrimEnd" Type="Real64" Value="14.9538380513496"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>459964__florianreichelt__footsteps-on-concrete.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1013090464"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="459964__florianreichelt__footsteps-on-concrete" ID="{EDAD6E66-5FDD-4155-8BA3-8E19BB52FB3F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<ObjectLists/>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

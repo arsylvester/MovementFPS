@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3898083304" Language="SFX" Hash="411281604">
+		<SoundBank Id="3898083304" Language="SFX" Hash="3396953888">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundEffects</ObjectPath>
 			<ShortName>SoundEffects</ShortName>
 			<Path>SoundEffects.bnk</Path>
@@ -26,6 +26,50 @@
 						<File Id="1042012533" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
 							<Path>SFX\512683__wavjunction-com__wooshes_75D0DDFA.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1866025847" Name="Footstep" ObjectPath="\Events\Default Work Unit\Footstep" DurationType="OneShot" DurationMin="0.256169" DurationMax="0.400263">
+					<IncludedMemoryFiles>
+						<File Id="38762456" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_04A087FA.wem</Path>
+						</File>
+						<File Id="53697303" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_77B37F6E.wem</Path>
+						</File>
+						<File Id="154356917" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_AF9E3F4E.wem</Path>
+						</File>
+						<File Id="277356264" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_B58B414B.wem</Path>
+						</File>
+						<File Id="576836777" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_2255A9B8.wem</Path>
+						</File>
+						<File Id="662967639" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_8AEB5ACE.wem</Path>
+						</File>
+						<File Id="698281991" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_82CFFB0F.wem</Path>
+						</File>
+						<File Id="701023885" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_EE702BD3.wem</Path>
+						</File>
+						<File Id="925602543" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_3F141D27.wem</Path>
+						</File>
+						<File Id="1013090464" Language="SFX">
+							<ShortName>459964__florianreichelt__footsteps-on-concrete.wav</ShortName>
+							<Path>SFX\459964__florianreichelt__footsteps-on-concrete_E4147447.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -41,7 +85,7 @@
 					<IncludedMemoryFiles>
 						<File Id="620347645" Language="SFX">
 							<ShortName>SomeHitSounds.wav</ShortName>
-							<Path>SFX\SomeHitSounds_526F2FCB.wem</Path>
+							<Path>SFX\SomeHitSounds_064C1536.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

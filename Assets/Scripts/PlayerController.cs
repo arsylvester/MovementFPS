@@ -578,7 +578,10 @@ public class PlayerController : MonoBehaviour
     {
         float x = currentWeaponModel.transform.localPosition.x;
         float z = currentWeaponModel.transform.localPosition.z;
-        currentWeaponModel.localPosition = new Vector3(WeaponBobOrignalPostion.x + (Mathf.Sin(Time.time * weaponBobSpeed * .5f) * weaponBobHeight), WeaponBobOrignalPostion.y + (Mathf.Sin(Time.time * weaponBobSpeed) * weaponBobHeight), z);
+        float yPositionChange = Mathf.Sin(Time.time * weaponBobSpeed);
+        currentWeaponModel.localPosition = new Vector3(WeaponBobOrignalPostion.x + (Mathf.Sin(Time.time * weaponBobSpeed * .5f) * weaponBobHeight), WeaponBobOrignalPostion.y + (yPositionChange * weaponBobHeight), z);
+        if(yPositionChange < -.99f)
+            AkSoundEngine.PostEvent("Footstep", gameObject);
     }
 
     //Move input action
