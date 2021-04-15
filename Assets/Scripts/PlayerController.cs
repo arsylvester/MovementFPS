@@ -424,6 +424,7 @@ public class PlayerController : MonoBehaviour
                             timeFromGround = Time.time;
                             hasDoublejumped = false;
                             hasJumped = true;
+                            isJump = false; //Remove if want to be able to hold to wall jump. So can't buffer a wall jump, but probably better then jumping after a just jumping off another.
                             TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                             jumpedOffWall = true;
