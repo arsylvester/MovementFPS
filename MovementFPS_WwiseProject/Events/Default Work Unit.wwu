@@ -47,6 +47,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="SwordSwing" ID="{57192A26-1F5F-4307-8F92-5A71949AC442}">
+					<ChildrenList>
+						<Action Name="" ID="{2D697795-C39F-4243-AF77-A74B0820FCA1}" ShortID="625852477">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WindSlash" ID="{2F28CB66-AFC9-4E9D-9F15-4A0A56F70172}" WorkUnitID="{9B822DE3-1FBE-4A63-B541-44935E12F122}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

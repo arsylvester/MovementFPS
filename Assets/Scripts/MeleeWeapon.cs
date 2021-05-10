@@ -85,6 +85,7 @@ public class MeleeWeapon : Weapon
             {
                 strikeVFXIndex = 0;
             }
+            AkSoundEngine.PostEvent("SwordSwing", gameObject);
         }
     }
     

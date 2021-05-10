@@ -6,6 +6,21 @@
 				<Sound Name="57918__denalwa__metal-pole" ID="{EBDF1F2D-F878-41A1-BC12-0725DBAC71EC}" ShortID="78234806">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="1"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>45</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>350</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
@@ -64,6 +79,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="57918__denalwa__metal-pole" ID="{54F30D58-3E33-44BF-8D82-CCA17C4F6775}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.401347816545973"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.401347816545973"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>57918__denalwa__metal-pole.wav</AudioFile>
 							<MediaIDList>
@@ -494,6 +514,79 @@
 					</ChildrenList>
 					<ObjectLists/>
 				</RandomSequenceContainer>
+				<Sound Name="WindSlash" ID="{2F28CB66-AFC9-4E9D-9F15-4A0A56F70172}" ShortID="902468222">
+					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>35</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MakeUpGain" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>950</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="WindSlash" ID="{47EC9AE3-59E3-4D92-AA12-7FDF8831C9A7}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.0702216370419136"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.347737546631556"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>WindSlash.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="428807096"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="WindSlash" ID="{47EC9AE3-59E3-4D92-AA12-7FDF8831C9A7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="VineWhip" ID="{F8916051-6C27-4D23-BE80-91193B739E10}" ShortID="494941332">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="VineWhip" ID="{743B58FE-ED0C-40E8-B878-05B6ACF31811}">
+							<Language>SFX</Language>
+							<AudioFile>VineWhip.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="967611229"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="VineWhip" ID="{743B58FE-ED0C-40E8-B878-05B6ACF31811}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

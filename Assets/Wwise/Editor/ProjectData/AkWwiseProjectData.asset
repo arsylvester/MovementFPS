@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 24a01cc043e2214a9ebd599d0bba9544
     GuidInternal: 
-    m_lastTime: -8585836179142325176
+    m_lastTime: -8585809395927811852
     List:
     - name: SoundEffects
       guid: 7240120726739e489830f14fc682189a
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b5d9a9b9e00c414a932f890da5df4a68
     GuidInternal: 
-    m_lastTime: -8585836185091387782
+    m_lastTime: -8585809395927581801
     List:
     - name: Dash
       guid: 9752b0b119e93440afb5a7cd1e9a4b1d
@@ -145,8 +145,8 @@ MonoBehaviour:
         guid: 877aabbb397ed44289ecfcf1aba67da9
       Path: Events\Default Work Unit\KunaiHit
       maxAttenuation: 100
-      maxDuration: 1.136236
-      minDuration: 1.136236
+      maxDuration: 0.327884
+      minDuration: 0.327884
     - name: KunaiHitEnemy
       guid: dd33dc6c303d964cbb41b4d115e2d352
       id: 4155610742
@@ -164,6 +164,23 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 0.290858
       minDuration: 0.290858
+    - name: SwordSwing
+      guid: 262a19575f1f07438f925a71949ac442
+      id: 1328934038
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b5d9a9b9e00c414a932f890da5df4a68
+      - ElementName: SwordSwing
+        ObjectType: 3
+        guid: 262a19575f1f07438f925a71949ac442
+      Path: Events\Default Work Unit\SwordSwing
+      maxAttenuation: 0
+      maxDuration: 0.160314
+      minDuration: 0.160314
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -220,9 +237,9 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8585839495710968488
     List: []
-  ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0a0000000b000000
+  ExpandedFileSystemItemIds: 0a0000000b0000000c0000000d000000
+  ExpandedWaapiItemIds: 0a0000000b0000000c0000000d000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 

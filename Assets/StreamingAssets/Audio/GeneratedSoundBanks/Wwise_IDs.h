@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID FOOTSTEP = 1866025847U;
         static const AkUniqueID KUNAIHIT = 3251152762U;
         static const AkUniqueID KUNAIHITENEMY = 4155610742U;
+        static const AkUniqueID SWORDSWING = 1328934038U;
     } // namespace EVENTS
 
     namespace BANKS
