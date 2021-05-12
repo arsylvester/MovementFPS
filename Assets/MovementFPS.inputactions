@@ -76,6 +76,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Last Weapon",
+                    "type": "Button",
+                    "id": "df1312b2-bba4-453d-8e86-360d675bcb8d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -323,17 +331,6 @@
                 },
                 {
                     "name": "",
-                    "id": "4e51800d-f7e8-48a0-bf38-fb34ff1b7022",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "843af082-c591-48b4-9d37-6519e14d1a6b",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -384,6 +381,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Weapon Slot 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86b1d880-8738-4f2a-814b-fb7277a505ac",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Last Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

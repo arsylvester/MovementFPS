@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     [Header("Other")]
     [SerializeField] Weapon[] weapons;
     [SerializeField] Weapon currentWeapon;
+    Weapon lastWeapon;
     [SerializeField] float jumpBuffer;
     public static float fovValue = 90;
     [Header("Options")]
@@ -824,8 +825,12 @@ public class PlayerController : MonoBehaviour
         {
             if (context.performed && weapons[0] != null && currentWeapon != weapons[0])
             {
+                lastWeapon = currentWeapon;
+                print("last: " + lastWeapon);
                 currentWeapon.gameObject.SetActive(false);
                 currentWeapon = weapons[0];
+                print("current: " + currentWeapon);
+                print("new last: " + lastWeapon);
                 currentWeapon.gameObject.SetActive(true);
                 currentWeaponModel = currentWeapon.GetWeaponModel().transform;
                 WeaponBobOrignalPostion = currentWeaponModel.localPosition;
@@ -841,8 +846,30 @@ public class PlayerController : MonoBehaviour
         {
             if (context.performed && weapons[1] != null && currentWeapon != weapons[1])
             {
+                lastWeapon = currentWeapon;
                 currentWeapon.gameObject.SetActive(false);
                 currentWeapon = weapons[1];
+                currentWeapon.gameObject.SetActive(true);
+                currentWeaponModel = currentWeapon.GetWeaponModel().transform;
+                WeaponBobOrignalPostion = currentWeaponModel.localPosition;
+                weaponBobHeight = currentWeapon.GetWeaponBobHeight();
+                weaponBobSpeed = currentWeapon.GetWeaponBobSpeed();
+            }
+        }
+    }
+
+    public void OnLastWeaponSlot(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            print("Last: " + lastWeapon + " Current: " + currentWeapon);
+            if (context.performed && lastWeapon != null && currentWeapon != lastWeapon)
+            {
+                Weapon temp = lastWeapon;
+                lastWeapon = currentWeapon;
+                currentWeapon.gameObject.SetActive(false);
+                currentWeapon = temp;
+                print("Weapon swapped to: " + currentWeapon);
                 currentWeapon.gameObject.SetActive(true);
                 currentWeaponModel = currentWeapon.GetWeaponModel().transform;
                 WeaponBobOrignalPostion = currentWeaponModel.localPosition;
