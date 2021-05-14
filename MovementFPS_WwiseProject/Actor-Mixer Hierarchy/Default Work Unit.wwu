@@ -587,6 +587,46 @@
 						<ActiveSource Name="VineWhip" ID="{743B58FE-ED0C-40E8-B878-05B6ACF31811}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="386572__shanef91__jumping-1" ID="{6E43C005-A0DC-4273-A1FE-C24827D7F481}" ShortID="634884228">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-50</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="386572__shanef91__jumping-1" ID="{D4056B25-8398-4E5B-9B59-E4AF73E5343A}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.128225806451613"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.283064516129032"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>386572__shanef91__jumping-1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="252108288"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="386572__shanef91__jumping-1" ID="{D4056B25-8398-4E5B-9B59-E4AF73E5343A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

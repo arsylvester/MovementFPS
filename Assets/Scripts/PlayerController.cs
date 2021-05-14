@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
             if (!hasJumped)
             {
                 movementVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                AkSoundEngine.PostEvent("Jump", gameObject);
                 firstFrameGrounded = true;
                 jumpFirstPressed = false;
                 hasJumped = true;
@@ -169,6 +170,7 @@ public class PlayerController : MonoBehaviour
             movementVector.y = Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
             hasDoublejumped = true;
             isJump = false;
+            AkSoundEngine.PostEvent("Jump", gameObject);
             print("Double jump");
         }
 
@@ -428,6 +430,7 @@ public class PlayerController : MonoBehaviour
                             isJump = false; //Remove if want to be able to hold to wall jump. So can't buffer a wall jump, but probably better then jumping after a just jumping off another.
                             TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                            AkSoundEngine.PostEvent("Jump", gameObject);
                             jumpedOffWall = true;
                             print("Jumped off wall");
                         }

@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3898083304" Language="SFX" Hash="4097530898">
+		<SoundBank Id="3898083304" Language="SFX" Hash="4109081285">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundEffects</ObjectPath>
 			<ShortName>SoundEffects</ShortName>
 			<Path>SoundEffects.bnk</Path>
@@ -73,11 +73,19 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3833651337" Name="Jump" ObjectPath="\Events\Default Work Unit\Jump" DurationType="OneShot" DurationMin="0.159376" DurationMax="0.159376">
+					<IncludedMemoryFiles>
+						<File Id="252108288" Language="SFX">
+							<ShortName>386572__shanef91__jumping-1.wav</ShortName>
+							<Path>SFX\386572__shanef91__jumping-1_C0467D62.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3251152762" Name="KunaiHit" ObjectPath="\Events\Default Work Unit\KunaiHit" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.327884" DurationMax="0.327884">
 					<IncludedMemoryFiles>
 						<File Id="485605429" Language="SFX">
 							<ShortName>57918__denalwa__metal-pole.wav</ShortName>
-							<Path>SFX\57918__denalwa__metal-pole_898DF6E7.wem</Path>
+							<Path>SFX\57918__denalwa__metal-pole_937BFBD7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -93,7 +101,7 @@
 					<IncludedMemoryFiles>
 						<File Id="428807096" Language="SFX">
 							<ShortName>WindSlash.wav</ShortName>
-							<Path>SFX\WindSlash_9F52F010.wem</Path>
+							<Path>SFX\WindSlash_DF1B2086.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

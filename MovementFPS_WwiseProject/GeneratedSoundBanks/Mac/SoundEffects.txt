@@ -3,15 +3,17 @@ Event	ID	Name			Wwise Object Path	Notes
 	1866025847	Footstep			\Default Work Unit\Footstep	
 	1942692385	Dash			\Default Work Unit\Dash	
 	3251152762	KunaiHit			\Default Work Unit\KunaiHit	
+	3833651337	Jump			\Default Work Unit\Jump	
 	4155610742	KunaiHitEnemy			\Default Work Unit\KunaiHitEnemy	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	38762456	Footstep Concrete_07	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\459964__florianreichelt__footsteps-on-concrete_FCBEB6D0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_07		48080
 	53697303	Footstep Concrete_01	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\459964__florianreichelt__footsteps-on-concrete_2AB773C7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_01		45252
 	154356917	Footstep Concrete_05	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\459964__florianreichelt__footsteps-on-concrete_537E175E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_05		50900
+	252108288	386572__shanef91__jumping-1	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\386572__shanef91__jumping-1_C0467D62.wem		\Actor-Mixer Hierarchy\Default Work Unit\386572__shanef91__jumping-1		29792
 	277356264	Footstep Concrete_03	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\459964__florianreichelt__footsteps-on-concrete_740A9CB3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_03		48076
-	428807096	WindSlash	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\WindSlash_9F52F010.wem		\Actor-Mixer Hierarchy\Default Work Unit\WindSlash		49016
-	485605429	57918__denalwa__metal-pole	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\57918__denalwa__metal-pole_898DF6E7.wem		\Actor-Mixer Hierarchy\Default Work Unit\57918__denalwa__metal-pole		70860
+	428807096	WindSlash	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\WindSlash_DF1B2086.wem		\Actor-Mixer Hierarchy\Default Work Unit\WindSlash		49016
+	485605429	57918__denalwa__metal-pole	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\57918__denalwa__metal-pole_937BFBD7.wem		\Actor-Mixer Hierarchy\Default Work Unit\57918__denalwa__metal-pole		70860
 	576836777	Footstep Concrete_02	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\459964__florianreichelt__footsteps-on-concrete_B09B0FFD.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_02		62200
 	620347645	SomeHitSounds	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\SomeHitSounds_064C1536.wem		\Actor-Mixer Hierarchy\Default Work Unit\SomeHitSounds		51372
 	662967639	Footstep Concrete_06	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Mac\SFX\459964__florianreichelt__footsteps-on-concrete_FA6D90AC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_06		53724
