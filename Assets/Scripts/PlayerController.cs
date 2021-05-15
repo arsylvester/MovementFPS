@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     Vector2 currentVelocity;
     Vector2 prevSlideVelocity;
     Vector2 wallPositionLast;
+    Vector3 AppliedVelocity;
     PlayerInput playerInput;
     CharacterController characterController;
     bool isGrounded;
@@ -494,9 +495,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            movementVector.x = currentVelocity.x;
-            movementVector.z = currentVelocity.y;
+            movementVector.x = currentVelocity.x + AppliedVelocity.x;
+            movementVector.y += AppliedVelocity.y;
+            movementVector.z = currentVelocity.y + AppliedVelocity.z;
 
+            //Reset applied velocity
+            AppliedVelocity = Vector3.zero;
         }
         else //Dash
         {
@@ -508,6 +512,13 @@ public class PlayerController : MonoBehaviour
         characterController.Move(movementVector);
         //print("Move Vector: " + movementVector.magnitude);
         //print("Char Control: " + characterController.velocity.magnitude);
+    }
+
+    public void ApplyVelocity(float x, float y, float z)
+    {
+        AppliedVelocity.x = x;
+        AppliedVelocity.y = y;
+        AppliedVelocity.z = z;
     }
 
     private void GetWishDirection()
