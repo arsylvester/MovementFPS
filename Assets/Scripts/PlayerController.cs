@@ -514,11 +514,18 @@ public class PlayerController : MonoBehaviour
         //print("Char Control: " + characterController.velocity.magnitude);
     }
 
-    public void ApplyVelocity(float x, float y, float z)
+    public void ApplyVelocity(float x, float y, float z, bool resetVel)
     {
         AppliedVelocity.x = x;
         AppliedVelocity.y = y;
         AppliedVelocity.z = z;
+        jumpedOffWall = true;
+        isGrounded = false;
+        if(resetVel)
+        {
+            movementVector = Vector3.zero;
+        }
+        //Maybe consider disabling input during this time
     }
 
     private void GetWishDirection()
