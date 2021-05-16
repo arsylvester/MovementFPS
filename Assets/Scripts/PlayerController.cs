@@ -879,6 +879,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnWeaponSlotThree(InputAction.CallbackContext context)
+    {
+        if (canMove)
+        {
+            if (context.performed && weapons[2] != null && currentWeapon != weapons[2])
+            {
+                lastWeapon = currentWeapon;
+                currentWeapon.gameObject.SetActive(false);
+                currentWeapon = weapons[2];
+                currentWeapon.gameObject.SetActive(true);
+                currentWeaponModel = currentWeapon.GetWeaponModel().transform;
+                WeaponBobOrignalPostion = currentWeaponModel.localPosition;
+                weaponBobHeight = currentWeapon.GetWeaponBobHeight();
+                weaponBobSpeed = currentWeapon.GetWeaponBobSpeed();
+            }
+        }
+    }
+
     public void OnLastWeaponSlot(InputAction.CallbackContext context)
     {
         if (canMove)
