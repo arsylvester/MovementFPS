@@ -7,7 +7,7 @@ public class ExplosiveWeapon : ProjectileWeapon
     [SerializeField] float throwSpeed = 1;
     [SerializeField] float lifeTime = 1;
     [SerializeField] GameObject projectileToSpawn;
-    private GameObject kunaiProjectile;
+    private GameObject projectile;
     private Renderer[] rends;
 
     protected override void Start()
@@ -29,15 +29,15 @@ public class ExplosiveWeapon : ProjectileWeapon
         if (coolDown + currentCoolDown < Time.time)
         {
             base.UseWeapon();
-            kunaiProjectile = Instantiate(projectileToSpawn, playerCamera.position, transform.rotation);
-            kunaiProjectile.GetComponent<KunaiProjectile>().SetParameters(throwSpeed, damage, ui);
-            Destroy(kunaiProjectile, lifeTime);
+            projectile = Instantiate(projectileToSpawn, playerCamera.position, transform.rotation);
+            projectile.GetComponent<ExplosiveProjectile>().SetParameters(throwSpeed, damage, ui);
+            Destroy(projectile, lifeTime);
             currentCoolDown = Time.time;
             ToggleAllRenderers(false);
 
             if (isHit)
             {
-                kunaiProjectile.transform.LookAt(hit.point);
+                projectile.transform.LookAt(hit.point);
             }
         }
     }

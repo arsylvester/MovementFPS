@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 6289552883243086391}
   - component: {fileID: 6289552883243086384}
   - component: {fileID: 6289552883243086390}
-  - component: {fileID: 8531227316574599426}
+  - component: {fileID: 2688211191887112054}
   m_Layer: 0
   m_Name: Explosive Kunai Projectile
   m_TagString: Untagged
@@ -358,7 +358,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8531227316574599426
+--- !u!114 &2688211191887112054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,13 +367,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6289552883243086388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7f66c3784532d4ca531924fd841bfb, type: 3}
+  m_Script: {fileID: 11500000, guid: e207fd7f85382c14198b8e9324844e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   renderDelay: 0.01
-  hitParticle: {fileID: 7202464691744934070, guid: 5f645309d867bd94fbafe50607634ce6,
-    type: 3}
-  enemyHitParticle: {fileID: 7202464691744934070, guid: 5f645309d867bd94fbafe50607634ce6,
+  explosion: {fileID: 7202464691744934070, guid: 5f645309d867bd94fbafe50607634ce6,
     type: 3}
 --- !u!1 &6474995069381040463
 GameObject:

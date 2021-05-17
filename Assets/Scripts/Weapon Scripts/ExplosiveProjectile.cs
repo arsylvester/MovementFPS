@@ -5,8 +5,7 @@ using UnityEngine;
 public class ExplosiveProjectile : MonoBehaviour
 {
     [SerializeField] float renderDelay = .5f;
-    [SerializeField] GameObject hitParticle;
-    [SerializeField] GameObject enemyHitParticle;
+    [SerializeField] GameObject explosion;
     private float throwSpeed;
     private bool shouldMove = true;
     private int damageToDeal;
@@ -42,14 +41,14 @@ public class ExplosiveProjectile : MonoBehaviour
                     {
                         hit.transform.GetComponent<IDamageable>().TakeDamage(damageToDeal);
                         ui.ShowHitMarker();
-                        Instantiate(enemyHitParticle, transform.position, transform.rotation);
+                        Instantiate(explosion, transform.position, transform.rotation);
                         AkSoundEngine.PostEvent("KunaiHitEnemy", hit.transform.gameObject);
                         Destroy(gameObject);
                     }
                     else
                     {
-                        Instantiate(hitParticle, transform.position, transform.rotation);
-                        AkSoundEngine.PostEvent("KunaiHit", gameObject);
+                        Instantiate(explosion, transform.position, transform.rotation);
+                        Destroy(gameObject);
                     }
                 }
             }

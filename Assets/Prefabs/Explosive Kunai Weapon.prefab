@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 6289552883243086391}
   - component: {fileID: 6289552883243086384}
   - component: {fileID: 6289552883243086390}
-  - component: {fileID: 1584380647}
+  - component: {fileID: 632572855228016106}
   m_Layer: 2
   m_Name: Explosive Kunai Weapon
   m_TagString: Untagged
@@ -250,7 +250,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1584380647
+--- !u!114 &632572855228016106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,19 +259,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6289552883243086388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d47d9349b8ab3ff4ebed67ad2008183a, type: 3}
+  m_Script: {fileID: 11500000, guid: e4702e0eec3756c4188a56726439a250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coolDown: 0.5
   damage: 5
-  weaponBobHeight: 0
-  weaponBobSpeed: 0
+  weaponBobHeight: 0.1
+  weaponBobSpeed: 0.1
   WeaponModel: {fileID: 4337084575608559891}
   objectAtEnd: {fileID: 6289552883243086388}
   zoomAmount: 55
   zoomSpeed: 0.05
-  throwSpeed: 120
-  lifeTime: 3
+  throwSpeed: 100
+  lifeTime: 4
   projectileToSpawn: {fileID: 6289552883243086388, guid: 935efd39408bfe04cbb2085e450cbe20,
     type: 3}
 --- !u!1 &6474995069381040463

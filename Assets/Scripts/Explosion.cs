@@ -7,6 +7,7 @@ public class Explosion : MonoBehaviour
     public float explosionForce = 1;
     [SerializeField] bool resetVelcity = true;
     [SerializeField] float lifetime = 1;
+    [SerializeField] int damage = 5;
     public float upwardsForce = .5f;
 
     private void Start()
@@ -28,6 +29,12 @@ public class Explosion : MonoBehaviour
             {
                 player.ApplyVelocity(explosionDirection.x, explosionDirection.y, explosionDirection.z, resetVelcity);
             }
+        }
+
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if(damageable != null)
+        {
+            damageable.TakeDamage(damage);
         }
     }
 
