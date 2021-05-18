@@ -39,7 +39,7 @@ public class ExplosiveProjectile : MonoBehaviour
                     shouldMove = false;
                     if (hit.transform.GetComponent<IDamageable>() != null)
                     {
-                        hit.transform.GetComponent<IDamageable>().TakeDamage(damageToDeal);
+                        hit.transform.GetComponent<IDamageable>().TakeExplosiveDamage(damageToDeal, 10000);
                         ui.ShowHitMarker();
                         Instantiate(explosion, transform.position, transform.rotation);
                         AkSoundEngine.PostEvent("KunaiHitEnemy", hit.transform.gameObject);

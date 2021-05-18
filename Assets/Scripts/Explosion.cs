@@ -34,7 +34,7 @@ public class Explosion : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.TakeExplosiveDamage(damage, 8000);
         }
     }
 

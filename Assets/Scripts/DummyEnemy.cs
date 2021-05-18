@@ -9,6 +9,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
     int health;
     Vector3 cutDirection;
     Vector3 cutPoint;
+    bool canCutChild;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
         if(crumbleEffect)
         {
-            crumbleEffect.DestroyMesh(cutDirection, cutPoint);
+            crumbleEffect.DestroyMesh(cutDirection, cutPoint, canCutChild);
         }
         else
         {
@@ -48,7 +49,8 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         health -= damage;
         cutDirection = cut;
         cutPoint = point;
-        if(IsDead())
+        canCutChild = true;
+        if (IsDead())
         {
             Death();
         }
@@ -59,10 +61,19 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         health -= damage;
         cutDirection = Vector3.left;
         cutPoint = Vector3.zero;
+        canCutChild = false;
         if (IsDead())
         {
             Death();
         }
+    }
+
+    public void TakeExplosiveDamage(int damage, float force)
+    {
+        MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
+        crumbleEffect.ExplodeForce = force;
+        crumbleEffect.CutCascades = 4;
+        TakeDamage(damage);
     }
 
 

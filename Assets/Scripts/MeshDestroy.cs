@@ -30,7 +30,7 @@ public class MeshDestroy : MonoBehaviour
         }
     }
 
-    public void DestroyMesh(Vector3 slashNormal, Vector3 cutPoint)
+    public void DestroyMesh(Vector3 slashNormal, Vector3 cutPoint, bool canCutChild)
     {
         var originalMesh = GetComponent<MeshFilter>().mesh;
         originalMesh.RecalculateBounds();
@@ -94,7 +94,7 @@ public class MeshDestroy : MonoBehaviour
 
         for (var i = 0; i < parts.Count; i++)
         {
-            parts[i].MakeGameobject(this);
+            parts[i].MakeGameobject(this, canCutChild);
             parts[i].GameObject.GetComponent<Rigidbody>().AddForceAtPosition(parts[i].Bounds.center * ExplodeForce, transform.position);
         }
 
@@ -290,7 +290,7 @@ public class MeshDestroy : MonoBehaviour
                 Triangles[i] = _Triangles[i].ToArray();
         }
 
-        public void MakeGameobject(MeshDestroy original)
+        public void MakeGameobject(MeshDestroy original, bool canCutChild)
         {
             GameObject = new GameObject(original.name);
             GameObject.transform.position = original.transform.position;
@@ -323,8 +323,11 @@ public class MeshDestroy : MonoBehaviour
 
             //Custom properties
             GameObject.layer = 11; //ignore Player
-            var enemyScript = GameObject.AddComponent<DummyEnemy>();
-            enemyScript.vfx = original.GetComponent<DummyEnemy>().vfx;
+            if (canCutChild)
+            {
+                var enemyScript = GameObject.AddComponent<DummyEnemy>();
+                enemyScript.vfx = original.GetComponent<DummyEnemy>().vfx;
+            }
             Destroy(GameObject, original.childernLifeTime);
         }
 

@@ -6,6 +6,7 @@ public interface IDamageable
 {
     void TakeDamage(int damage);
     void TakeDamage(int damage, Vector3 cutDirection, Vector3 cutPoint);
+    void TakeExplosiveDamage(int damage, float force);
     int GetHealth();
     bool IsDead();
 }
