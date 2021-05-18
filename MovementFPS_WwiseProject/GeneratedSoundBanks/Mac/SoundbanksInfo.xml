@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3898083304" Language="SFX" Hash="4109081285">
+		<SoundBank Id="3898083304" Language="SFX" Hash="2182320632">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundEffects</ObjectPath>
 			<ShortName>SoundEffects</ShortName>
 			<Path>SoundEffects.bnk</Path>
@@ -26,6 +26,14 @@
 						<File Id="1042012533" Language="SFX">
 							<ShortName>512683__wavjunction-com__wooshes.wav</ShortName>
 							<Path>SFX\512683__wavjunction-com__wooshes_75D0DDFA.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="13776098" Name="Explosion" ObjectPath="\Events\Default Work Unit\Explosion" MaxAttenuation="100.000000" DurationType="OneShot" DurationMin="0.989146" DurationMax="0.989146">
+					<IncludedMemoryFiles>
+						<File Id="585734590" Language="SFX">
+							<ShortName>77535__superex1110__sharp-explosion-lots-of-debris.wav</ShortName>
+							<Path>SFX\77535__superex1110__sharp-explosion-lots-of-debris_E7AFCBC6.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -77,7 +85,7 @@
 					<IncludedMemoryFiles>
 						<File Id="252108288" Language="SFX">
 							<ShortName>386572__shanef91__jumping-1.wav</ShortName>
-							<Path>SFX\386572__shanef91__jumping-1_C0467D62.wem</Path>
+							<Path>SFX\386572__shanef91__jumping-1_E520E680.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

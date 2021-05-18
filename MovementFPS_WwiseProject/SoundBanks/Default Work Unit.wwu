@@ -6,6 +6,7 @@
 				<SoundBank Name="SoundEffects" ID="{07124072-7326-489E-9830-F14FC682189A}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Dash" ID="{B1B05297-E919-4034-AFB5-A7CD1E9A4B1D}" WorkUnitID="{B9A9D9B5-0CE0-4A41-932F-890DA5DF4A68}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Explosion" ID="{F32AD141-BCF1-4288-83E4-831A859BDF4D}" WorkUnitID="{B9A9D9B5-0CE0-4A41-932F-890DA5DF4A68}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="KunaiHit" ID="{BBAB7A87-7E39-42D4-89EC-FCF1ABA67DA9}" WorkUnitID="{B9A9D9B5-0CE0-4A41-932F-890DA5DF4A68}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="SwordSwing" ID="{57192A26-1F5F-4307-8F92-5A71949AC442}" WorkUnitID="{B9A9D9B5-0CE0-4A41-932F-890DA5DF4A68}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="KunaiHitEnemy" ID="{6CDC33DD-3D30-4C96-BB41-B4D115E2D352}" WorkUnitID="{B9A9D9B5-0CE0-4A41-932F-890DA5DF4A68}" Origin="Manual" Filter="7"/>

@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 1.6
+  rbExplosionForce: 1000
   resetVelcity: 1
   lifetime: 0.1
   damage: 5

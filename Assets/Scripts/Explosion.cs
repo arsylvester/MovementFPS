@@ -5,6 +5,7 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     public float explosionForce = 1;
+    public float rbExplosionForce = 100;
     [SerializeField] bool resetVelcity = true;
     [SerializeField] float lifetime = 1;
     [SerializeField] int damage = 5;
@@ -12,6 +13,7 @@ public class Explosion : MonoBehaviour
 
     private void Start()
     {
+        AkSoundEngine.PostEvent("Explosion", gameObject);
         Destroy(gameObject, lifetime);
     }
 
@@ -34,7 +36,13 @@ public class Explosion : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            damageable.TakeExplosiveDamage(damage, 8000);
+            damageable.TakeExplosiveDamage(damage, 1000);
+        }
+
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        if(rb)
+        {
+            rb.AddExplosionForce(rbExplosionForce, transform.position, transform.localScale.x);
         }
     }
 

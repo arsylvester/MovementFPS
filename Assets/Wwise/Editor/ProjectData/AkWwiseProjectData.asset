@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 24a01cc043e2214a9ebd599d0bba9544
     GuidInternal: 
-    m_lastTime: -8585806468623176220
+    m_lastTime: -8585802359732929244
     List:
     - name: SoundEffects
       guid: 7240120726739e489830f14fc682189a
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b5d9a9b9e00c414a932f890da5df4a68
     GuidInternal: 
-    m_lastTime: -8585806468623286245
+    m_lastTime: -8585802359733019265
     List:
     - name: Dash
       guid: 9752b0b119e93440afb5a7cd1e9a4b1d
@@ -113,6 +113,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.460541
       minDuration: 0.460541
+    - name: Explosion
+      guid: 41d12af3f1bc884283e4831a859bdf4d
+      id: 13776098
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b5d9a9b9e00c414a932f890da5df4a68
+      - ElementName: Explosion
+        ObjectType: 3
+        guid: 41d12af3f1bc884283e4831a859bdf4d
+      Path: Events\Default Work Unit\Explosion
+      maxAttenuation: 100
+      maxDuration: 0.989146
+      minDuration: 0.989146
     - name: Footstep
       guid: 9552f8dd10f2694d8ac6e7d549d1280a
       id: 1866025847
