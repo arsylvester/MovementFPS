@@ -213,7 +213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6289552883243086391
 Transform:
   m_ObjectHideFlags: 0
@@ -265,11 +265,11 @@ MonoBehaviour:
   coolDown: 0.5
   damage: 5
   weaponBobHeight: 0.1
-  weaponBobSpeed: 0.1
+  weaponBobSpeed: 10
   WeaponModel: {fileID: 4337084575608559891}
   objectAtEnd: {fileID: 6289552883243086388}
   zoomAmount: 55
-  zoomSpeed: 0.05
+  zoomSpeed: 10
   throwSpeed: 100
   lifeTime: 4
   projectileToSpawn: {fileID: 6289552883243086388, guid: 935efd39408bfe04cbb2085e450cbe20,

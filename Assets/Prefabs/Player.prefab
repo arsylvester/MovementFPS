@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6833140820239332429}
   - component: {fileID: 6833140820239332426}
-  - component: {fileID: 6833140820239332427}
+  - component: {fileID: 6833140820397201723}
+  - component: {fileID: 6833140820397201724}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -55,7 +56,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -75,14 +76,42 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6833140820239332427
-AudioListener:
+--- !u!114 &6833140820397201723
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6833140820239332424}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f8c34789d86154ca0e0c61d91fc190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
+--- !u!114 &6833140820397201724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6833140820239332424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24f829ca59ee2b4db933b1e68b96d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &6833140820308169551
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +249,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 274398054273963826}
   - {fileID: 692650927441393475}
-  - {fileID: 6441348673183473292}
+  - {fileID: 5882578337994162561}
   currentWeapon: {fileID: 274398054273963826}
   jumpBuffer: 0.2
   HoldJump: 0
@@ -436,9 +465,21 @@ MonoBehaviour:
     m_ActionId: 8baef19f-5e90-49e3-ba38-43ae6e7ef3c5
     m_ActionName: Player/New action
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6833140820308169550}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnLastWeaponSlot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: df1312b2-bba4-453d-8e86-360d675bcb8d
-    m_ActionName: Player/Last Weapon[/Keyboard/q]
+    m_ActionName: Player/New action
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6833140820308169550}
@@ -454,7 +495,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 6925a04f-cbbc-480f-a36f-7cc88cfd7a35
-    m_ActionName: Player/New action
+    m_ActionName: Player/Weapon Slot 3[/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -862,16 +903,16 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6441348674162746475}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6441348673183473292 stripped
+--- !u!114 &5882578337994162561 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1584380647, guid: 6b7cf2253a982bf498e79e5abe64ef68,
+  m_CorrespondingSourceObject: {fileID: 632572855228016106, guid: 6b7cf2253a982bf498e79e5abe64ef68,
     type: 3}
   m_PrefabInstance: {fileID: 6441348674162746475}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d47d9349b8ab3ff4ebed67ad2008183a, type: 3}
+  m_Script: {fileID: 11500000, guid: e4702e0eec3756c4188a56726439a250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7100653762644428978

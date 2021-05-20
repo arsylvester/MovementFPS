@@ -2220,18 +2220,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598875025}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &671349795 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5882578337994162561, guid: c5b1151227bac3842b5630cdaec451c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6833140820397201721}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4702e0eec3756c4188a56726439a250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &691101731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4719,18 +4707,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572604991}
   m_CullTransparentMesh: 0
---- !u!114 &1632775271 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6833140820397201721}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdeb5217c10ccf74697cd09295e350dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1662840036
 GameObject:
   m_ObjectHideFlags: 0
@@ -6739,21 +6715,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1021401754070914655, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5882578337994162561, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: weaponBobSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820239332426, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: near clip plane
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 6833140820308169538, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -6809,146 +6770,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
-      value: df1312b2-bba4-453d-8e86-360d675bcb8d
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
-      value: Player/New action
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
-      value: Player/Weapon Slot 3[/Keyboard/3]
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1632775271}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1632775271}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnLastWeaponSlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnWeaponSlotThree
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169541, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833140820308169550, guid: c5b1151227bac3842b5630cdaec451c4,
-        type: 3}
-      propertyPath: weapons.Array.data[2]
-      value: 
-      objectReference: {fileID: 671349795}
     - target: {fileID: 6833140820308169551, guid: c5b1151227bac3842b5630cdaec451c4,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6833140820239332427, guid: c5b1151227bac3842b5630cdaec451c4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b1151227bac3842b5630cdaec451c4, type: 3}
---- !u!1 &6833140820397201722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6833140820239332424, guid: c5b1151227bac3842b5630cdaec451c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6833140820397201721}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6833140820397201723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6833140820397201722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f8c34789d86154ca0e0c61d91fc190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDefaultListener: 1
-  listenerId: 0
---- !u!114 &6833140820397201724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6833140820397201722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24f829ca59ee2b4db933b1e68b96d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 0
-  isStaticObject: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!1001 &7202464692789503047
 PrefabInstance:
   m_ObjectHideFlags: 0

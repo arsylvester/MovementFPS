@@ -34,7 +34,7 @@ public class ExplosiveProjectile : MonoBehaviour
             Debug.DrawRay(transform.position, lastPointDirection, Color.cyan, Vector3.Distance(transform.position, lastPoint));
             if (Physics.Raycast(lastPoint, lastPointDirection, out hit, Vector3.Distance(transform.position, lastPoint)))
             {
-                if (hit.transform.tag != "Player")
+                if (hit.transform.tag != "Player" && !hit.transform.GetComponent<Collider>().isTrigger)
                 {
                     shouldMove = false;
                     if (hit.transform.GetComponent<IDamageable>() != null)
