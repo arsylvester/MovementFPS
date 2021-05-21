@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
     bool canMove = true;
     bool crouchJump = false;
     bool jumpFirstPressed;
+    bool setBackToStanding;
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
@@ -144,6 +145,16 @@ public class PlayerController : MonoBehaviour
             timeFromGround = Time.time;
         }
         wasGrounded = isGrounded;
+
+        if (setBackToStanding)
+        {
+            RaycastHit hit;
+            if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, 1))
+            {
+                setBackToStanding = false;
+                characterController.height = normalHeight;
+            }
+        }
 
         //Check to jump
         if (isJump && (isGrounded || timeFromGround + CoyoteTime >= Time.time))
@@ -684,7 +695,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                characterController.height = normalHeight;
+                setBackToStanding = true;
+                //characterController.height = normalHeight;
                 isSliding = false;
                 slideParticles.SetActive(false);
             }
