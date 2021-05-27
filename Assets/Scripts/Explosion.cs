@@ -33,7 +33,7 @@ public class Explosion : MonoBehaviour
             }
         }
 
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        IDamageable damageable = other.GetComponentInParent<IDamageable>();
         if(damageable != null)
         {
             damageable.TakeExplosiveDamage(damage, 1000);

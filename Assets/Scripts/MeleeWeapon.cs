@@ -49,7 +49,7 @@ public class MeleeWeapon : Weapon
             {
                 isHit = true;
                 //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
-                if (hit.transform.GetComponent<IDamageable>() != null)
+                if (hit.transform.GetComponentInParent<IDamageable>() != null)
                 {
                     Vector3 stabDirection = (hit.transform.position - hit.point);
                     float stabDegree = Mathf.Abs(Mathf.Atan2(stabDirection.z, stabDirection.x) * Mathf.Rad2Deg);
@@ -58,11 +58,11 @@ public class MeleeWeapon : Weapon
                     if (Mathf.Abs(stabDegree - enemyDirection) < backstabDegree)
                     {
                         print("BACKSTAB");
-                        hit.transform.GetComponent<IDamageable>().TakeDamage(damage * 2, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
+                        hit.transform.GetComponentInParent<IDamageable>().TakeDamage(damage * 2, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
                     }
                     else
                     {
-                        hit.transform.GetComponent<IDamageable>().TakeDamage(damage, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
+                        hit.transform.GetComponentInParent<IDamageable>().TakeDamage(damage, StrikeVFXs[strikeVFXIndex].transform.up, hit.transform.InverseTransformPoint(hit.point));
                     }
                     ui.ShowHitMarker();
                     Instantiate(enemyHitParticle, hit.point, transform.rotation);

@@ -37,9 +37,9 @@ public class ExplosiveProjectile : MonoBehaviour
                 if (hit.transform.tag != "Player" && !hit.transform.GetComponent<Collider>().isTrigger)
                 {
                     shouldMove = false;
-                    if (hit.transform.GetComponent<IDamageable>() != null)
+                    if (hit.transform.GetComponentInParent<IDamageable>() != null)
                     {
-                        hit.transform.GetComponent<IDamageable>().TakeExplosiveDamage(damageToDeal, 100);
+                        hit.transform.GetComponentInParent<IDamageable>().TakeExplosiveDamage(damageToDeal, 100);
                         ui.ShowHitMarker();
                         Instantiate(explosion, transform.position, transform.rotation);
                         AkSoundEngine.PostEvent("KunaiHitEnemy", hit.transform.gameObject);

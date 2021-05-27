@@ -38,9 +38,9 @@ public class KunaiProjectile : MonoBehaviour
                 if (hit.transform.tag != "Player" && !hit.transform.GetComponent<Collider>().isTrigger)
                 {
                     shouldMove = false;
-                    if (hit.transform.GetComponent<IDamageable>() != null)
+                    if (hit.transform.GetComponentInParent<IDamageable>() != null)
                     {
-                        hit.transform.GetComponent<IDamageable>().TakeDamage(damageToDeal);
+                        hit.transform.GetComponentInParent<IDamageable>().TakeDamage(damageToDeal);
                         ui.ShowHitMarker();
                         Instantiate(enemyHitParticle, transform.position, transform.rotation);
                         AkSoundEngine.PostEvent("KunaiHitEnemy", hit.transform.gameObject);
