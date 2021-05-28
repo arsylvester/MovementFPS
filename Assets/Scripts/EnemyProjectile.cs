@@ -9,12 +9,14 @@ public class EnemyProjectile : MonoBehaviour
     private Vector3 lastPoint;
     private Vector3 lastPointDirection;
     private RaycastHit hit;
+    private Vector3 movementDirection;
 
 
     // Start is called before the first frame update
     void Start()
     {
         lastPoint = transform.position;
+        movementDirection = transform.forward;
     }
 
     //Checks both a raycast and an ontrigger. The trigger is mainly for the player. This may potential cause double damage to things and the trigger could be bad detection on the player. Look to improve.
@@ -22,7 +24,7 @@ public class EnemyProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
+            transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
             lastPointDirection = transform.position - lastPoint;
             if (Physics.Raycast(lastPoint, lastPointDirection, out hit, Vector3.Distance(transform.position, lastPoint)))
             {
@@ -69,5 +71,11 @@ public class EnemyProjectile : MonoBehaviour
         this.speed = speed;
         damageToDeal = damage;
         lastPoint = transform.position;
+    }
+
+    //For now reverse. Mess with changing to the direction looking or maybe directly back to source (tracking).
+    public void reverseDirection()
+    {
+        movementDirection = -movementDirection;
     }
 }

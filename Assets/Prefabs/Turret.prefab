@@ -352,8 +352,9 @@ MonoBehaviour:
   maxHealth: 10
   enemyProjectile: {fileID: 1844331769355372881, guid: 2224cfd1eceef3e4ca8a3e356948d57d,
     type: 3}
-  fireRate: 0.5
+  fireRate: 1
   projectileSpawnLocation: {fileID: 7639860860372974704}
+  detectionRange: 50
   vfx: {fileID: 728188833098558089, guid: cc189c970fbdbdb48b551f3f955147b4, type: 3}
 --- !u!1 &8759371806365816360
 GameObject:

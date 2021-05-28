@@ -8,6 +8,7 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
     [SerializeField] GameObject enemyProjectile;
     [SerializeField] float fireRate = .5f;
     [SerializeField] Transform projectileSpawnLocation;
+    [SerializeField] float detectionRange = 10;
     public GameObject vfx;
     int health;
     Vector3 cutDirection;
@@ -33,12 +34,15 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        if(fireCooldown + fireRate < Time.time)
+        if (Vector3.Distance(transform.position, player.position) < detectionRange)
         {
-            Instantiate(enemyProjectile, projectileSpawnLocation.position, projectileSpawnLocation.rotation);
-            fireCooldown = Time.time;
+            if (fireCooldown + fireRate < Time.time)
+            {
+                Instantiate(enemyProjectile, projectileSpawnLocation.position, projectileSpawnLocation.rotation);
+                fireCooldown = Time.time;
+            }
+            transform.LookAt(player);
         }
-        transform.LookAt(player);
     }
 
     private void Death()
@@ -83,9 +87,9 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
 
     public void TakeExplosiveDamage(int damage, float force)
     {
-        MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
-        crumbleEffect.ExplodeForce = force;
-        crumbleEffect.CutCascades = 4;
+        //MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
+        //crumbleEffect.ExplodeForce = force;
+        //crumbleEffect.CutCascades = 4;
         TakeDamage(damage);
     }
 

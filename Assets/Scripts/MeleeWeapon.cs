@@ -67,6 +67,10 @@ public class MeleeWeapon : Weapon
                     ui.ShowHitMarker();
                     Instantiate(enemyHitParticle, hit.point, transform.rotation);
                 }
+                else if(hit.transform.GetComponent<EnemyProjectile>())
+                {
+                    hit.transform.GetComponent<EnemyProjectile>().reverseDirection();
+                }
                 else
                 {
                     Instantiate(hitParticle, hit.point, transform.rotation);
