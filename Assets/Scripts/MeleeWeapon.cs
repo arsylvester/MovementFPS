@@ -6,6 +6,7 @@ public class MeleeWeapon : Weapon
 {
     //[SerializeField] protected bool hitScan;
     [SerializeField] float meleeRange = 1;
+    [SerializeField] float parryRange = 1;
     [SerializeField] float holsterCoolDown = .5f;
     [SerializeField] ParticleSystem[] StrikeVFXs;
     [SerializeField] GameObject hitParticle;
@@ -14,12 +15,16 @@ public class MeleeWeapon : Weapon
     [SerializeField] Collider DashHitBox;
     [SerializeField] ParticleSystem dashVFX;
     [SerializeField] float backstabDegree;
+    [SerializeField] float parryCooldown = .5f;
+    [SerializeField] float slowdownTimeScale = .05f;
+    [SerializeField] float slowdownTimeduration = .25f;
     //[SerializeField] Collider[] HitBoxes;
 
     protected RaycastHit hit;
     protected bool isHit;
 
     private int strikeVFXIndex;
+    private float parryCurrentCooldown;
     //private Collider activeHitBox;
 
     protected override void Start()
@@ -30,7 +35,7 @@ public class MeleeWeapon : Weapon
 
     private void Update()
     {
-        if (!(swordRenderers[0].enabled) && coolDown + holsterCoolDown + currentCoolDown < Time.time)
+        if (!(swordRenderers[0].enabled) && coolDown + holsterCoolDown + currentCoolDown < Time.time && parryCooldown + parryCurrentCooldown + holsterCoolDown < Time.time)
         {
             ToggleAllRenderers(true);
             //activeHitBox.gameObject.SetActive(false);
@@ -66,10 +71,6 @@ public class MeleeWeapon : Weapon
                     }
                     ui.ShowHitMarker();
                     Instantiate(enemyHitParticle, hit.point, transform.rotation);
-                }
-                else if(hit.transform.GetComponent<EnemyProjectile>())
-                {
-                    hit.transform.GetComponent<EnemyProjectile>().reverseDirection();
                 }
                 else
                 {
@@ -117,7 +118,34 @@ public class MeleeWeapon : Weapon
 
     public override void UseAltFireWeapon()
     {
+        if (parryCooldown + parryCurrentCooldown < Time.time)
+        {
+            parryCurrentCooldown = Time.time;
+            ToggleAllRenderers(false);
 
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, parryRange))
+            {
+                isHit = true;
+                if (hit.transform.GetComponent<EnemyProjectile>())
+                {
+                    hit.transform.GetComponent<EnemyProjectile>().reverseDirection();
+                    StartCoroutine(SlowDownTime());
+                }
+                parryCurrentCooldown = 0;
+            }
+            else
+            {
+                isHit = false;
+            }
+
+            StrikeVFXs[strikeVFXIndex].Play();
+
+            if (++strikeVFXIndex >= StrikeVFXs.Length)
+            {
+                strikeVFXIndex = 0;
+            }
+            AkSoundEngine.PostEvent("SwordSwing", gameObject);
+        }
     }
 
     public override void AltFireWeaponRelease()
@@ -131,6 +159,13 @@ public class MeleeWeapon : Weapon
         {
             rend.enabled = enable;
         }
+    }
+
+    IEnumerator SlowDownTime()
+    {
+        Time.timeScale = slowdownTimeScale;
+        yield return new WaitForSecondsRealtime(slowdownTimeduration);
+        Time.timeScale = 1;
     }
 
 }

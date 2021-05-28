@@ -6,6 +6,7 @@ public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] int damageToDeal;
+    [SerializeField] float lifeTime;
     private Vector3 lastPoint;
     private Vector3 lastPointDirection;
     private RaycastHit hit;
@@ -17,6 +18,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         lastPoint = transform.position;
         movementDirection = transform.forward;
+        Destroy(gameObject, lifeTime);
     }
 
     //Checks both a raycast and an ontrigger. The trigger is mainly for the player. This may potential cause double damage to things and the trigger could be bad detection on the player. Look to improve.

@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785b5bd9711a0f3468c7f55c17b15397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealthMax: 100
 --- !u!143 &6833140820308169540
 CharacterController:
   m_ObjectHideFlags: 0
@@ -672,8 +673,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2738366491795046703, guid: 03bc985a87e9619438539fc2a9bfbd8c,
         type: 3}
+      propertyPath: parryRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738366491795046703, guid: 03bc985a87e9619438539fc2a9bfbd8c,
+        type: 3}
       propertyPath: backstabDegree
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738366491795046703, guid: 03bc985a87e9619438539fc2a9bfbd8c,
+        type: 3}
+      propertyPath: slowdownTimeduration
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3659583352084236439, guid: 03bc985a87e9619438539fc2a9bfbd8c,
         type: 3}
