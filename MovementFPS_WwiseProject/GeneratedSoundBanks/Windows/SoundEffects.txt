@@ -3,6 +3,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1328934038	SwordSwing			\Default Work Unit\SwordSwing	
 	1866025847	Footstep			\Default Work Unit\Footstep	
 	1942692385	Dash			\Default Work Unit\Dash	
+	3076648345	Parry			\Default Work Unit\Parry	
 	3251152762	KunaiHit			\Default Work Unit\KunaiHit	
 	3833651337	Jump			\Default Work Unit\Jump	
 	4155610742	KunaiHitEnemy			\Default Work Unit\KunaiHitEnemy	
@@ -16,12 +17,13 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	428807096	WindSlash	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\WindSlash_DF1B2086.wem		\Actor-Mixer Hierarchy\Default Work Unit\WindSlash		49016
 	485605429	57918__denalwa__metal-pole	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\57918__denalwa__metal-pole_937BFBD7.wem		\Actor-Mixer Hierarchy\Default Work Unit\57918__denalwa__metal-pole		70860
 	576836777	Footstep Concrete_02	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\459964__florianreichelt__footsteps-on-concrete_B09B0FFD.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_02		62200
-	585734590	77535__superex1110__sharp-explosion-lots-of-debris	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\77535__superex1110__sharp-explosion-lots-of-debris_E7AFCBC6.wem		\Actor-Mixer Hierarchy\Default Work Unit\77535__superex1110__sharp-explosion-lots-of-debris		112988
+	585734590	77535__superex1110__sharp-explosion-lots-of-debris	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\77535__superex1110__sharp-explosion-lots-of-debris_900D970D.wem		\Actor-Mixer Hierarchy\Default Work Unit\77535__superex1110__sharp-explosion-lots-of-debris		112988
 	620347645	SomeHitSounds	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\SomeHitSounds_064C1536.wem		\Actor-Mixer Hierarchy\Default Work Unit\SomeHitSounds		51372
 	662967639	Footstep Concrete_06	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\459964__florianreichelt__footsteps-on-concrete_FA6D90AC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_06		53724
 	698281991	Footstep Concrete_08	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\459964__florianreichelt__footsteps-on-concrete_686DD226.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_08		65020
 	701023885	Footstep Concrete_04	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\459964__florianreichelt__footsteps-on-concrete_476A6475.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_04		48076
 	925602543	Footstep Concrete	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\459964__florianreichelt__footsteps-on-concrete_D6FB8CA4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete		48076
+	949031753	FireingTempParry	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\FireingTempParry_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\FireingTempParry		6140
 	1013090464	Footstep Concrete_09	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\459964__florianreichelt__footsteps-on-concrete_92EB7BA0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footstep Concrete_09		70668
 	1042012533	512683__wavjunction-com__wooshes	C:\Unity Projects\Git Kraken\MovementFPS\MovementFPS_WwiseProject\.cache\Windows\SFX\512683__wavjunction-com__wooshes_75D0DDFA.wem		\Actor-Mixer Hierarchy\Default Work Unit\512683__wavjunction-com__wooshes		88488
 

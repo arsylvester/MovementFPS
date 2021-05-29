@@ -14,6 +14,7 @@ public class MeleeWeapon : Weapon
     [SerializeField] Renderer[] swordRenderers;
     [SerializeField] Collider DashHitBox;
     [SerializeField] ParticleSystem dashVFX;
+    [SerializeField] ParticleSystem parryVFX;
     [SerializeField] float backstabDegree;
     [SerializeField] float parryCooldown = .5f;
     [SerializeField] float slowdownTimeScale = .05f;
@@ -129,6 +130,8 @@ public class MeleeWeapon : Weapon
                 if (hit.transform.GetComponent<EnemyProjectile>())
                 {
                     hit.transform.GetComponent<EnemyProjectile>().reverseDirection();
+                    AkSoundEngine.PostEvent("Parry", gameObject);
+                    parryVFX.Play();
                     StartCoroutine(SlowDownTime());
                 }
                 parryCurrentCooldown = 0;

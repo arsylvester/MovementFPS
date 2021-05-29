@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3898083304" Language="SFX" Hash="2182320632">
+		<SoundBank Id="3898083304" Language="SFX" Hash="3363429469">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundEffects</ObjectPath>
 			<ShortName>SoundEffects</ShortName>
 			<Path>SoundEffects.bnk</Path>
@@ -33,7 +33,7 @@
 					<IncludedMemoryFiles>
 						<File Id="585734590" Language="SFX">
 							<ShortName>77535__superex1110__sharp-explosion-lots-of-debris.wav</ShortName>
-							<Path>SFX\77535__superex1110__sharp-explosion-lots-of-debris_E7AFCBC6.wem</Path>
+							<Path>SFX\77535__superex1110__sharp-explosion-lots-of-debris_900D970D.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -102,6 +102,14 @@
 						<File Id="620347645" Language="SFX">
 							<ShortName>SomeHitSounds.wav</ShortName>
 							<Path>SFX\SomeHitSounds_064C1536.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3076648345" Name="Parry" ObjectPath="\Events\Default Work Unit\Parry" DurationType="OneShot" DurationMin="0.072985" DurationMax="0.072985">
+					<IncludedMemoryFiles>
+						<File Id="949031753" Language="SFX">
+							<ShortName>FireingTempParry.wav</ShortName>
+							<Path>SFX\FireingTempParry_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

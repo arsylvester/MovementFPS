@@ -19,6 +19,7 @@ namespace AK
         static const AkUniqueID JUMP = 3833651337U;
         static const AkUniqueID KUNAIHIT = 3251152762U;
         static const AkUniqueID KUNAIHITENEMY = 4155610742U;
+        static const AkUniqueID PARRY = 3076648345U;
         static const AkUniqueID SWORDSWING = 1328934038U;
     } // namespace EVENTS
 

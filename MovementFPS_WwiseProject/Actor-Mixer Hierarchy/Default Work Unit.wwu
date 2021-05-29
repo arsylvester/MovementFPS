@@ -477,6 +477,13 @@
 										<MediaID ID="698281991"/>
 									</MediaIDList>
 								</AudioFileSource>
+								<AudioFileSource Name="FireingTempParry" ID="{7F930A14-447C-40D3-BC88-27907FFCDE90}">
+									<Language>SFX</Language>
+									<AudioFile>FireingTempParry.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="949031753"/>
+									</MediaIDList>
+								</AudioFileSource>
 							</ChildrenList>
 							<ObjectLists/>
 							<ActiveSourceList>
@@ -709,6 +716,41 @@
 					<ObjectLists/>
 					<ActiveSourceList>
 						<ActiveSource Name="77535__superex1110__sharp-explosion-lots-of-debris" ID="{E59DF6F7-EFD6-4066-B713-4EA277996BDF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FireingTempParry" ID="{01CC9DFB-E44C-446C-873C-AEE15F8EB21F}" ShortID="308172521">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{46DDF066-0989-4C6F-BD20-C233E54F1581}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{86A951E4-48C1-4EC5-B679-D296D6652ACD}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FireingTempParry" ID="{0F081AC7-2810-4F29-8E70-515BEBA98DD4}">
+							<Language>SFX</Language>
+							<AudioFile>FireingTempParry.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="949031753"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="FireingTempParry" ID="{0F081AC7-2810-4F29-8E70-515BEBA98DD4}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

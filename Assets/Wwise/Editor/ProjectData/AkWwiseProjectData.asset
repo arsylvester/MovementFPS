@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 24a01cc043e2214a9ebd599d0bba9544
     GuidInternal: 
-    m_lastTime: -8585802359732929244
+    m_lastTime: -8585793560496024642
     List:
     - name: SoundEffects
       guid: 7240120726739e489830f14fc682189a
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: b5d9a9b9e00c414a932f890da5df4a68
     GuidInternal: 
-    m_lastTime: -8585802359733019265
+    m_lastTime: -8585793560495914615
     List:
     - name: Dash
       guid: 9752b0b119e93440afb5a7cd1e9a4b1d
@@ -198,6 +198,23 @@ MonoBehaviour:
       maxAttenuation: 100
       maxDuration: 0.290858
       minDuration: 0.290858
+    - name: Parry
+      guid: 522ab73976864c42ba0527a4e3e7bdc2
+      id: 3076648345
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b5d9a9b9e00c414a932f890da5df4a68
+      - ElementName: Parry
+        ObjectType: 3
+        guid: 522ab73976864c42ba0527a4e3e7bdc2
+      Path: Events\Default Work Unit\Parry
+      maxAttenuation: 0
+      maxDuration: 0.072985
+      minDuration: 0.072985
     - name: SwordSwing
       guid: 262a19575f1f07438f925a71949ac442
       id: 1328934038
