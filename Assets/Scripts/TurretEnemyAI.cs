@@ -19,7 +19,6 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
     Transform player;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;

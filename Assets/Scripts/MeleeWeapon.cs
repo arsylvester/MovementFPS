@@ -36,6 +36,7 @@ public class MeleeWeapon : Weapon
 
     private void Update()
     {
+        //Re-enable the sword renderer after a brief time without using the main or alt ability. Also reset the VFX to the first in the list.
         if (!(swordRenderers[0].enabled) && coolDown + holsterCoolDown + currentCoolDown < Time.time && parryCooldown + parryCurrentCooldown + holsterCoolDown < Time.time)
         {
             ToggleAllRenderers(true);
@@ -46,15 +47,16 @@ public class MeleeWeapon : Weapon
 
     public override void UseWeapon()
     {
-        if (coolDown + currentCoolDown < Time.time)
+        //If enough time has passed since last attack
+        if (coolDown + currentCoolDown < Time.time && parryCooldown + parryCurrentCooldown < Time.time)
         {
             currentCoolDown = Time.time;
             ToggleAllRenderers(false);
-   
+            
+            //Raycast to see if hits an object. If the object can be damaged deal damage.
             if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, meleeRange))
             {
                 isHit = true;
-                //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
                 if (hit.transform.GetComponentInParent<IDamageable>() != null)
                 {
                     Vector3 stabDirection = (hit.transform.position - hit.point);
@@ -95,6 +97,7 @@ public class MeleeWeapon : Weapon
         }
     }
     
+    //Used for special abilities such as the dash attack, so that the proper damage is used.
     public void WeaponHit(IDamageable hit)
     {
         hit.TakeDamage(damage, dashVFX.transform.up, Vector3.zero);
@@ -102,6 +105,7 @@ public class MeleeWeapon : Weapon
         //Instantiate(enemyHitParticle, hit, transform.rotation);
     }
 
+    //On a dash while the sword is equiped, this is called.
     public void DashAttack()
     {
         DashHitBox.enabled = true;
@@ -110,13 +114,16 @@ public class MeleeWeapon : Weapon
         ToggleAllRenderers(false);
     }
 
+    //Disable the dash attack hitbox.
     public void DashEnd()
     {
         DashHitBox.enabled = false;
         ToggleAllRenderers(true);
     }
     
-
+    //For the sword it parries attakcs. 
+    //Currently just parries enemy projectiles, sending them directly back the direction they came.
+    //Consider: Have projectile move in the direction facing, instead of directly back. or if directly back have it track at a higher speed back to the enemy.
     public override void UseAltFireWeapon()
     {
         if (parryCooldown + parryCurrentCooldown < Time.time)
@@ -151,11 +158,13 @@ public class MeleeWeapon : Weapon
         }
     }
 
+    //Not used, but inherited
     public override void AltFireWeaponRelease()
     {
         //StartCoroutine(Zoom(zoomAmount, oldZoom));
     }
 
+    //Show sword or not
     private void ToggleAllRenderers(bool enable)
     {
         foreach (Renderer rend in swordRenderers)
@@ -164,6 +173,8 @@ public class MeleeWeapon : Weapon
         }
     }
 
+    //Slows down time very briefly. Gives impact to the parry. (Thanks ULTRAKILL :) )
+    //Might consider putting this in a more universal script if a similar concept is used elsewhere. But for now this is fine.
     IEnumerator SlowDownTime()
     {
         Time.timeScale = slowdownTimeScale;
