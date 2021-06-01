@@ -11,23 +11,19 @@ public class DummyEnemy : MonoBehaviour, IDamageable
     Vector3 cutPoint;
     bool canCutChild;
 
-    // Start is called before the first frame update
+    //Make sure start with full health
     void Start()
     {
         health = maxHealth;
     }
 
+    //For none cutable enemies have the health reset when reenabled
     private void OnEnable()
     {
         health = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //When the enemy dies play a VFX and either cut/crumble depending on the enemy and attack, or just deactivate.
     private void Death()
     {
         FindObjectOfType<TimedCourse>().CountEnemies();
@@ -44,35 +40,44 @@ public class DummyEnemy : MonoBehaviour, IDamageable
         }
     }
 
+    //This take damage takes into account cut and point hit, so if the damage is to kill the enemy they will cut/crumble correctly.
     public void TakeDamage(int damage, Vector3 cut, Vector3 point)
     {
         health -= damage;
-        cutDirection = cut;
-        cutPoint = point;
-        canCutChild = true;
+
         if (IsDead())
         {
+            cutDirection = cut;
+            cutPoint = point;
+            canCutChild = true;
             Death();
         }
     }
 
+    //Take damage but set cut and point to default (Cuts straight in half vertically)
     public void TakeDamage(int damage)
     {
         health -= damage;
-        cutDirection = Vector3.left;
-        cutPoint = Vector3.zero;
-        canCutChild = false;
+
         if (IsDead())
         {
+            cutDirection = Vector3.left;
+            cutPoint = Vector3.zero;
+            canCutChild = false;
             Death();
         }
     }
 
+    //Explosive damage to set a crumble effect with force if it would kill the enemy.
     public void TakeExplosiveDamage(int damage, float force)
     {
-        MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
-        crumbleEffect.ExplodeForce = force;
-        crumbleEffect.CutCascades = 4;
+        //Only change crumble force if this would kill the enemy.
+        if (health - damage <= 0)
+        {
+            MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
+            crumbleEffect.ExplodeForce = force;
+            crumbleEffect.CutCascades = 4;
+        }
         TakeDamage(damage);
     }
 
