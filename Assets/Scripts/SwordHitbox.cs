@@ -13,13 +13,12 @@ public class SwordHitbox : MonoBehaviour
         GetComponent<Collider>().enabled = false;
     }
 
+    //If collides with damageable object thats not a player, call the damage funtion for the weapon.
     private void OnTriggerEnter(Collider other)
     {
-        //print("Touching " + other.transform.GetComponent<IDamageable>());
-        if (other.transform.GetComponent<IDamageable>() != null)
+        if (other.transform.GetComponentInParent<IDamageable>() != null && other.GetComponent<PlayerController>() == null)
         {
-            weapon.WeaponHit(other.transform.GetComponent<IDamageable>());
-            //print("Hit enemy");
+            weapon.WeaponHit(other.transform.GetComponentInParent<IDamageable>());
         }
         else
         {

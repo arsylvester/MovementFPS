@@ -62,6 +62,7 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, Vector3 cut, Vector3 point)
     {
+        print("Was dealt " + damage + " damage");
         health -= damage;
         cutDirection = cut;
         cutPoint = point;
