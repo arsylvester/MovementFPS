@@ -18,12 +18,14 @@ public class ExplosiveWeapon : ProjectileWeapon
 
     private void Update()
     {
+        //If kunai not thrown after some time show it again.
         if (!(rends[0].enabled) && coolDown + currentCoolDown < Time.time)
         {
             ToggleAllRenderers(true);
         }
     }
 
+    //If not on cooldown spawns a projectile and sets its renderer off.
     public override void UseWeapon()
     {
         if (coolDown + currentCoolDown < Time.time)
@@ -47,6 +49,7 @@ public class ExplosiveWeapon : ProjectileWeapon
         base.UseAltFireWeapon();
     }
 
+    //Hide or show the held weapon.
     private void ToggleAllRenderers(bool enable)
     {
         foreach (Renderer rend in rends)

@@ -16,7 +16,6 @@ public class ExplosiveProjectile : MonoBehaviour
     private UI ui;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rends = GetComponentsInChildren<Renderer>();
@@ -24,14 +23,16 @@ public class ExplosiveProjectile : MonoBehaviour
         StartCoroutine(DelayRender());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (shouldMove)
         {
+            //Move projectile forward
             transform.Translate(transform.forward * throwSpeed * Time.deltaTime, Space.World);
+
+            //Raycast from the current frame's position to last frame's position. This should make a more precise colision detection.
             lastPointDirection = transform.position - lastPoint;
-            Debug.DrawRay(transform.position, lastPointDirection, Color.cyan, Vector3.Distance(transform.position, lastPoint));
+            //Debug.DrawRay(transform.position, lastPointDirection, Color.cyan, Vector3.Distance(transform.position, lastPoint));
             if (Physics.Raycast(lastPoint, lastPointDirection, out hit, Vector3.Distance(transform.position, lastPoint)))
             {
                 if (hit.transform.tag != "Player" && !hit.transform.GetComponent<Collider>().isTrigger)
@@ -56,6 +57,7 @@ public class ExplosiveProjectile : MonoBehaviour
         }
     }
 
+    //Used by the weapon that spawns this projectile to adjust values.
     public void SetParameters(float speed, int damage, UI uiToSet)
     {
         throwSpeed = speed;
@@ -72,6 +74,7 @@ public class ExplosiveProjectile : MonoBehaviour
         }
     }
 
+    //Used to make the projectile invisible breifly when thrown. Looks better this way
     private IEnumerator DelayRender()
     {
         yield return new WaitForSeconds(renderDelay);

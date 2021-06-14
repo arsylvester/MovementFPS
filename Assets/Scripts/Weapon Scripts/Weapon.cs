@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour
     {
         playerCamera = Camera.main.transform;
         ui = FindObjectOfType<UI>();
-        print("playerCamera set");
     }
 
     public virtual void UseWeapon()

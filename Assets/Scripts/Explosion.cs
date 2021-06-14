@@ -19,6 +19,7 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Check if player as velocity/force from the explosion has to be handled differently.
         PlayerController player = other.GetComponent<PlayerController>();
         if (player)
         {
@@ -33,18 +34,18 @@ public class Explosion : MonoBehaviour
             }
         }
 
+        //If can be damaged, deal damage
         IDamageable damageable = other.GetComponentInParent<IDamageable>();
         if(damageable != null)
         {
             damageable.TakeExplosiveDamage(damage, 1000);
         }
 
+        //Apply a force to anything with a rigidbody in the blast.
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if(rb)
         {
             rb.AddExplosionForce(rbExplosionForce, transform.position, transform.localScale.x);
         }
     }
-
-    //Add damage
 }

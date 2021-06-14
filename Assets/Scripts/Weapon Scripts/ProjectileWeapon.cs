@@ -26,7 +26,7 @@ public class ProjectileWeapon : Weapon
 
         if(Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, 1000))
         {
-            print("Projectile hit : " + hit.transform);
+            //print("Projectile hit : " + hit.transform);
             isHit = true;
             //Instantiate(objectAtEnd, hit.point, playerCamera.rotation);
         }
@@ -36,6 +36,7 @@ public class ProjectileWeapon : Weapon
         }
     }
 
+    //Default for projectile weapons is to be able to zoom on right click.
     public override void UseAltFireWeapon()
     {
         oldZoom = PlayerController.fovValue;
