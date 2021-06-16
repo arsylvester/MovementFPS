@@ -30,9 +30,9 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
         health = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //If player is within a certain distance aim and fire at them. This can be improved with proper player detection.
         if (Vector3.Distance(transform.position, player.position) < detectionRange)
         {
             if (fireCooldown + fireRate < Time.time)
@@ -44,9 +44,10 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
         }
     }
 
+    //On death play crumble/slice effect if can. Otherwise just set inactive.
     private void Death()
     {
-        FindObjectOfType<TimedCourse>().CountEnemies();
+        //FindObjectOfType<TimedCourse>().CountEnemies();
         Destroy(Instantiate(vfx, transform.position, transform.rotation), 2); //have vfx self destroy later
         MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
         if (crumbleEffect)
@@ -60,6 +61,7 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
         }
     }
 
+    //We set the cutpoints for future use, but does nothing now
     public void TakeDamage(int damage, Vector3 cut, Vector3 point)
     {
         print("Was dealt " + damage + " damage");
@@ -73,6 +75,7 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
         }
     }
 
+    //We set the cutpoints for future use, but does nothing now
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -85,6 +88,7 @@ public class TurretEnemyAI : MonoBehaviour, IDamageable
         }
     }
 
+    //No special effects
     public void TakeExplosiveDamage(int damage, float force)
     {
         //MeshDestroy crumbleEffect = GetComponent<MeshDestroy>();
