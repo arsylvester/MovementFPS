@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//For all enemies, the player, and likely destructible objects.
 public interface IDamageable
 {
     void TakeDamage(int damage);

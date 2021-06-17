@@ -10,6 +10,7 @@ public class JumpPad : MonoBehaviour
     [SerializeField] bool resetVelcity = true;
     private void OnTriggerEnter(Collider other)
     {
+        //Just affect player, apply set velocity.
         PlayerController player = other.GetComponent<PlayerController>();
         if (player)
         {
