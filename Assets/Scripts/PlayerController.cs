@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
     bool crouchJump = false;
     bool jumpFirstPressed;
     bool setBackToStanding;
+    bool holdAlt = false;
     float normalHeight;
     float currentDashTime;
     float currentSlideTime;
@@ -140,12 +141,14 @@ public class PlayerController : MonoBehaviour
             jumpedOffWall = false;
         }
 
+        //Set coyote time window
         if(wasGrounded != isGrounded && !isJump)
         {
             timeFromGround = Time.time;
         }
         wasGrounded = isGrounded;
 
+        //After crouching check if we have anything above us or not. If not set height back to normal.
         if (setBackToStanding)
         {
             RaycastHit hit;
@@ -171,12 +174,14 @@ public class PlayerController : MonoBehaviour
                     isJump = false;
                 }
 
+                //Different jump state if sliding
                 if (isSliding)
                 {
                     crouchJump = true;
                 }
             }
         }
+        //Double jump if able
         else if(canDoubleJump && isJump && !hasDoublejumped && jumpFirstPressed && !OnWall)
         {
             movementVector.y = Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
@@ -216,7 +221,6 @@ public class PlayerController : MonoBehaviour
             {
                 if(OnWall)
                 {
-                    //StartCoroutine(TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall));
                     OnWall = false;
                 }
 
@@ -338,6 +342,7 @@ public class PlayerController : MonoBehaviour
 
                             if(wallRight)
                             {
+                                //Find normal then rotate 90 degrees
                                 Vector2 rotatedWallNormal = new Vector2(hitRight.normal.z, -hitRight.normal.x);
                                 if (currentVelocity.magnitude < wallRunSpeedMin)
                                 {
@@ -358,6 +363,7 @@ public class PlayerController : MonoBehaviour
                             }
                             else
                             {
+                                //Find normal then rotate 90 degrees
                                 Vector2 rotatedWallNormal = new Vector3(-hitLeft.normal.z, hitLeft.normal.x);
                                 if (currentVelocity.magnitude < wallRunSpeedMin)
                                 {
@@ -376,17 +382,6 @@ public class PlayerController : MonoBehaviour
                                     currentVelocity.y = rotatedWallNormal.normalized.y * magnitude;
                                 }
                             }
-                            /*
-                            if (characterController.velocity.magnitude < wallRunSpeedMin)
-                            {
-                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedMinBoost ;
-                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedMinBoost;
-                            }
-                            else
-                            {
-                                currentVelocity.x = currentVelocity.normalized.x * wallRunSpeedCap ;
-                                currentVelocity.y = currentVelocity.normalized.y * wallRunSpeedCap ;
-                            }*/
                             wallPositionLast = new Vector2(transform.position.x, transform.position.z);
                         }
 
@@ -423,9 +418,6 @@ public class PlayerController : MonoBehaviour
                             //GetDirectionLooking();
                             if (wallRight)
                             {
-                                /*float jumpPercentX = wishDirection.normalized.x / hitRight.normal.x;
-                                float jumpPercentY = wishDirection.normalized.y / hitRight.normal.z;
-                                float jumpPercentTotal = Mathf.Abs(jumpPercentX + jumpPercentY / 2);*/
                                 currentVelocity.x += hitRight.normal.x * wallJumpForce;
                                 currentVelocity.y += hitRight.normal.z * wallJumpForce;
                             }
@@ -444,7 +436,6 @@ public class PlayerController : MonoBehaviour
                             movementVector.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
                             AkSoundEngine.PostEvent("Jump", gameObject);
                             jumpedOffWall = true;
-                            print("Jumped off wall");
                         }
 
                         OnWall = true;
@@ -456,19 +447,7 @@ public class PlayerController : MonoBehaviour
                         if (OnWall)
                         {
                             TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall);
-                            /*
-                            if (wallRight)
-                            {
-                                currentVelocity.x = hitRight.normal.x * wallJumpForce;
-                                currentVelocity.y = hitRight.normal.z * wallJumpForce;
-                            }
-                            else
-                            {
-                                currentVelocity.x = hitLeft.normal.x * wallJumpForce;
-                                currentVelocity.y = hitLeft.normal.z * wallJumpForce;
-                            }*/
                         }
-                        //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
                         OnWall = false;
                         currentVelocity = Accelerate(accelerationAir);
                         movementVector.y += gravity * Time.fixedDeltaTime;
@@ -477,22 +456,6 @@ public class PlayerController : MonoBehaviour
                 //Not on ground nor a wall
                 else
                 {
-                    //If jumped off wall tilt head back and counter velocity that was going into wall.
-                    if (OnWall)
-                    {
-                       // StartCoroutine(TiltHead(0, headTiltAdditiveWall, tiltHeadSpeedWall));
-                        /*if (wallRight)
-                        {
-                            currentVelocity.x = hitRight.normal.x * wallJumpForce;
-                            currentVelocity.y = hitRight.normal.z * wallJumpForce;
-                        }
-                        else
-                        {
-                            currentVelocity.x = hitLeft.normal.x * wallJumpForce;
-                            currentVelocity.y = hitLeft.normal.z * wallJumpForce;
-                        }*/
-                    }
-                    //TiltHeadGround(); //Allows head tilt change with air direction, But causes issues with wall running head tilts for some reason.
                     OnWall = false;
                     if (wishDirection.magnitude == 0 && !crouchJump && !jumpedOffWall)
                     {
@@ -521,10 +484,9 @@ public class PlayerController : MonoBehaviour
 
         //Move the player dependent on code above.
         characterController.Move(movementVector);
-        //print("Move Vector: " + movementVector.magnitude);
-        //print("Char Control: " + characterController.velocity.magnitude);
     }
 
+    //Meant to be applied from external forces such as explosions
     public void ApplyVelocity(float x, float y, float z, bool resetVel)
     {
         AppliedVelocity.x = x;
@@ -539,6 +501,7 @@ public class PlayerController : MonoBehaviour
         //Maybe consider disabling input during this time
     }
 
+    //Find input intended direction
     private void GetWishDirection()
     {
         //Using theorem x2 = xcosB - ysinB
@@ -551,10 +514,9 @@ public class PlayerController : MonoBehaviour
 
 
     //Acceleration caluclations
-    //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3.
+    //Mostly implemented from my own work but https://adrianb.io/2015/02/14/bunnyhop.html definitly helped, and of course Quake 3. Ehh, not any more, mainly just me
     private Vector2 Accelerate(float acceleration)
     {
-        //float projectedVelocity = Vector2.Dot(currentVelocity, wishDirection.normalized);
         Vector2 acceleratedVelocity = ((acceleration * Time.fixedDeltaTime) * wishDirection.normalized) + currentVelocity;
 
         if (acceleratedVelocity.magnitude > maxVelocity)
@@ -650,6 +612,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Jump button pressed, not the actual jump action
     public void OnJump(InputAction.CallbackContext context)
     {
         if (canMove)
@@ -660,7 +623,6 @@ public class PlayerController : MonoBehaviour
                     StopCoroutine(jumpbufferCoroutine);
                 isJump = true;
                 jumpFirstPressed = true;
-                print("jump true");
             }
             else
             {
@@ -671,13 +633,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Buffer for input
     IEnumerator JumpBuffer()
     {
         yield return new WaitForSeconds(jumpBuffer);
         isJump = false;
-        print("Jump false");
     }
 
+    //Crouch or slide input
     public void OnCrouch(InputAction.CallbackContext context)
     {
         if (canMove)
@@ -696,13 +659,13 @@ public class PlayerController : MonoBehaviour
             else
             {
                 setBackToStanding = true;
-                //characterController.height = normalHeight;
                 isSliding = false;
                 slideParticles.SetActive(false);
             }
         }
     }
 
+    //Dash input
     public void OnDash(InputAction.CallbackContext context)
     {
         if(canMove && context.ReadValueAsButton() && currentDashTime + dashLength + dashCoolDown < Time.time && !OnWall && !isSliding)
@@ -732,6 +695,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    //Mouse button one input
     public void OnFire(InputAction.CallbackContext context)
     {
         if (canMove)
@@ -754,7 +718,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool holdAlt = false;
+    //Right click pressed.
     public void OnAltFire(InputAction.CallbackContext context)
     {
         if (canMove)
@@ -834,6 +798,7 @@ public class PlayerController : MonoBehaviour
         return  (Time.time - currentDashTime) / (dashLength + dashCoolDown);
     }
 
+    //Prevent any movement. Needed for moving the player instantly
     public void StopMovement()
     {
         movementVector = Vector3.zero;
@@ -846,12 +811,14 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
+    //Set field of view
     public static void SetFOV(float value)
     {
         fovValue = value;
         Camera.main.fieldOfView = value;
     }
 
+    //Swap to the first weapon slot
     public void OnWeaponSlotOne(InputAction.CallbackContext context)
     {
         if (canMove)
@@ -873,6 +840,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Swap to the second weapon slot
     public void OnWeaponSlotTwo(InputAction.CallbackContext context)
     {
         if (canMove)
@@ -891,6 +859,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Swap to the third weapon slot
     public void OnWeaponSlotThree(InputAction.CallbackContext context)
     {
         if (canMove)
@@ -909,6 +878,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Swap to the last weapon used. Used for Q quick swap.
     public void OnLastWeaponSlot(InputAction.CallbackContext context)
     {
         if (canMove)
