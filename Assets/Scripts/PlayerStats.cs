@@ -7,11 +7,13 @@ public class PlayerStats : MonoBehaviour, IDamageable
     int playerHealth = 100;
     [SerializeField] int playerHealthMax = 100;
 
+    //Return player health
     public int GetHealth()
     {
         return playerHealth;
     }
 
+    //Return bool if player is dead
     public bool IsDead()
     {
         if (playerHealth <= 0)
@@ -20,6 +22,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
             return false;
     }
 
+    //Damages player by int damage, then checks if they died from that damage.
     public void TakeDamage(int damage)
     {
         playerHealth -= damage;
@@ -27,6 +30,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
             Debug.Log("PLAYER DIED");
     }
 
+    //Damages player by int damage, then checks if they died from that damage. Other parameters are not used by the player.
     public void TakeDamage(int damage, Vector3 cutDirection, Vector3 cutPoint)
     {
         playerHealth -= damage;
@@ -34,10 +38,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
             Debug.Log("PLAYER DIED");
     }
 
+    //Damages player by int damage, then checks if they died from that damage. Force is not used, as it is calculated as a velocity by the explosion.
     public void TakeExplosiveDamage(int damage, float force)
     {
         playerHealth -= damage;
-        Debug.Log("PLAYER Damaged");
         if (IsDead())
             Debug.Log("PLAYER DIED");
     }
